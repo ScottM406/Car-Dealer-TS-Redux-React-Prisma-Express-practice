@@ -47,8 +47,6 @@ const seed = async () => {
 
 const allModels = await prisma.model.findMany();
 
-console.log(allModels);
-
 const testCars = [
   {
     headline: "Test ZR1 Corvette",
@@ -62,42 +60,6 @@ const testCars = [
     MPG_city: 16,
     MPG_highway: 25,
     modelId: allModels[7].id,
-    features: [
-      "SRT Hellcat Package",
-      "Advanced Infotainment System",
-      "Heads-Up Display",
-      "Smart Keyless Entry",
-      "Customizable Ambient Lighting",
-      "Heated and Ventilated Seats",
-      "Leather Upholstery",
-      "Memory Seat Settings",
-      "Dual-Zone Climate Control",
-      "Automatic Dimming Rearview Mirror",
-      "Enhanced Navigation System",
-      "Adaptive Cruise Control",
-      "Remote Start",
-      "Digital Instrument Cluster",
-      "Rear Cross Traffic Alert",
-      "Apple CarPlay and Android Auto",
-      "Wi-Fi Hotspot",
-      "Blind Spot Monitoring",
-      "Advanced Parking Assist",
-      "LED Headlights and Taillights",
-    ],
-    price: 194999 
-  },
-  {
-    headline: "Test Challenger Hellcat",
-    description: "This is a test car for use in site development.",
-    image: "https://bringatrailer.com/wp-content/uploads/2023/02/2023_dodge_challenger-srt-hellcat-widebody-jailbreak-redeye-last-call_A-3-62209-scaled.jpg",
-    year: 2023,
-    miles: 12588,
-    drivetrain: "RWD",
-    engine: "Supercharged 6.2L V8",
-    color: "Red",
-    MPG_city: 13,
-    MPG_highway: 22,
-    modelId: allModels[2].id,
     features: [
       "ZR1 Package",
       "Advanced Infotainment System",
@@ -126,6 +88,42 @@ const testCars = [
       "Premium Paint Options",
       "LED Headlights and Taillights",
       "Blackout Appearance Package"
+    ],
+    price: 194999 
+  },
+  {
+    headline: "Test Challenger Hellcat",
+    description: "This is a test car for use in site development.",
+    image: "https://bringatrailer.com/wp-content/uploads/2023/02/2023_dodge_challenger-srt-hellcat-widebody-jailbreak-redeye-last-call_A-3-62209-scaled.jpg",
+    year: 2023,
+    miles: 12588,
+    drivetrain: "RWD",
+    engine: "Supercharged 6.2L V8",
+    color: "Red",
+    MPG_city: 13,
+    MPG_highway: 22,
+    modelId: allModels[2].id,
+    features: [
+      "SRT Hellcat Package",
+      "Advanced Infotainment System",
+      "Heads-Up Display",
+      "Smart Keyless Entry",
+      "Customizable Ambient Lighting",
+      "Heated and Ventilated Seats",
+      "Leather Upholstery",
+      "Memory Seat Settings",
+      "Dual-Zone Climate Control",
+      "Automatic Dimming Rearview Mirror",
+      "Enhanced Navigation System",
+      "Adaptive Cruise Control",
+      "Remote Start",
+      "Digital Instrument Cluster",
+      "Rear Cross Traffic Alert",
+      "Apple CarPlay and Android Auto",
+      "Wi-Fi Hotspot",
+      "Blind Spot Monitoring",
+      "Advanced Parking Assist",
+      "LED Headlights and Taillights",
     ],
     price: 92999 
   }
