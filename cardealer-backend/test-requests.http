@@ -2,3 +2,53 @@
 
 ### GET ALL USERS
 GET {{host}}/users
+
+### REGISTER USER
+POST {{host}}/register
+Content-Type: application/json
+
+{
+  "email": "jankypete3000@gmail.com",
+  "password": "OgresAreLikeOnions1!"
+}
+
+### LOGIN
+POST {{host}}/login
+Content-Type: application/json
+
+{
+  "email": "jankypete3000@gmail.com",
+  "password": "OgresAreLikeOnions1!"
+}
+
+### GET ALL CARS ON LOT
+GET {{host}}/cars-on-lot
+
+### GET SPECIFIC CAR ON LOT
+GET {{host}}/cars-on-lot/1
+
+### CREATE NEW CAR ON LOT
+POST {{host}}/cars-on-lot
+Content-Type: application/json
+
+{
+  "headline": "Top of the Line 2024 Chevy Camaro",
+  "description": "Experience the power and luxury of the 2024 Chevy Camaro with the latest features and technology.",
+  "image": "https://content.homenetiol.com/e5770a7a3d964049ae21b10a8a737b89.jpg",
+  "year": 2024,
+  "miles": 5800,
+  "drivetrain": "RWD",
+  "engine": "6.2L V8",
+  "color": "Red",
+  "MPG_city": 16,
+  "MPG_highway": 24,
+  "modelId": 2,
+  "features": [
+    "Heated seats",
+    "Navigation system",
+    "Backup camera",
+    "Bluetooth connectivity",
+    "Premium sound system"
+  ],
+  "price": 72000
+}
