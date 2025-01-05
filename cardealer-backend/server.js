@@ -1,16 +1,16 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-// app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "http://localhost:5173" }));
 
-const usersRouter = require("./API/users");
-
-app.use("/users", usersRouter);
+app.use(require("./API/auth").router);
+app.use("/cars-on-lot", require("./API/cars-on-lot"));
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
