@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -35,23 +36,30 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={registerUser}>
-      <input
-      type= "email"
-      placeholder= "Enter email address"
-      required
-      value = {email}
-      onChange={(event) => setEmail(event.target.value)}
-      />
-      <input 
-      type= "password"
-      placeholder= "Enter password"
-      required
-      value = {password}
-      onChange={(event) => setPassword(event.target.value)}
-      />
-      <button type= "submit">Register</button>
-    </form>
+    <>
+      <h2>Please Register Below</h2>
+      {token ? (
+        <p>Thank you for registering. please click <Link to="/login">here</Link> to login.</p>
+      ) : (
+      <form onSubmit={registerUser}>
+        <input
+        type= "email"
+        placeholder= "Enter email address"
+        required
+        value = {email}
+        onChange={(event) => setEmail(event.target.value)}
+        />
+        <input 
+        type= "password"
+        placeholder= "Enter password"
+        required
+        value = {password}
+        onChange={(event) => setPassword(event.target.value)}
+        />
+        <button type= "submit">Register</button>
+      </form>
+      )}
+    </>
   )
 }
 
