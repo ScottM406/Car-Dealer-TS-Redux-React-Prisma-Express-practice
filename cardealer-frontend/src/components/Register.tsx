@@ -31,7 +31,7 @@ const Register = () => {
       setToken(token);
 
     } catch(e: any){
-      alert(e.message)
+      alert(e.message || "Something has gone wrong. Please try again later.")
     }
   };
 
