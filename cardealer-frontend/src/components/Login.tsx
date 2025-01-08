@@ -44,23 +44,28 @@ const Login = () => {
 
   return (
     <>
-     <form onSubmit={logInUser}>
-      <input 
-      type="email"
-      placeholder="Enter email address"
-      required
-      value={email}
-      onChange={(event) => setEmail(event.target.value)}
-      />
-      <input 
-      type="password"
-      placeholder="Enter password"
-      required
-      value={password}
-      onChange={(event) => setPassword(event.target.value)}
-      />
-      <button type="submit">Log In</button>
-     </form>
+    <h2>Please Login Below</h2>
+      {token ? (
+      <h3>Thank you for logging in, you will be redirected shortly.</h3>
+      ) : (
+      <form onSubmit={logInUser}>
+        <input 
+        type="email"
+        placeholder="Enter email address"
+        required
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        />
+        <input 
+        type="password"
+        placeholder="Enter password"
+        required
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+        />
+        <button type="submit">Log In</button>
+      </form>
+      )} 
     </>
   )
 }
