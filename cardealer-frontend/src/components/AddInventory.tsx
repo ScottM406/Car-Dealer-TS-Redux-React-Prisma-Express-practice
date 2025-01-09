@@ -2,7 +2,7 @@ const AddInventroy = () => {
 
   return (
     <>
-      <h2>Add Vehicle</h2>
+      <h2>Add Vehicle to Inventory</h2>
       <form>
         <input 
         type= "text"
@@ -66,6 +66,7 @@ const AddInventroy = () => {
         placeholder= "features"
         required 
         />
+        <button type="submit">Add Vehicle</button>
       </form>
     </>
   )
