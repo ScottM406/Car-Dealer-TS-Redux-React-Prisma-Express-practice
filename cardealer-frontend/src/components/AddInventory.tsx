@@ -1,21 +1,21 @@
-import { setAddInventoryInputValue } from "../state/addInventorySlice";
+import { setAddInventoryInputValue, initialState } from "../state/addInventorySlice";
 import { AppDispatch, RootState } from "../state/store";
 import { useSelector, useDispatch } from "react-redux";
 
 const AddInventory = () => {
   const dispatch = useDispatch<AppDispatch>();
   const addInventoryState = useSelector((state: RootState) => state.addInventory);
-  
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
     dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value }))
   }
 
-  //Tests
-  console.log(addInventoryState.headline);
-  console.log(addInventoryState.modelID)
-  console.log(addInventoryState.MPG_highway)
-  
+  const resetForm = () => {
+    Object.keys(initialState).forEach((key, value) => {
+      dispatch(setAddInventoryInputValue({ field: key as keyof typeof initialState, value: initialState[key as keyof typeof initialState] }));
+    })
+  };
 
   //TO DO : AFTER CREATING MODELS API, FETCH ALL MODELS AND
   //        REPLACE DROP-DOWN MODEL MENU WITH ACTUAL MODELS
@@ -23,10 +23,40 @@ const AddInventory = () => {
   //   const response = await fetch("http://localhost:3000/models")
   // }
 
+  const addCartoInventory = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const carData = {
+      ...addInventoryState,
+      features: addInventoryState.features.split(",").map((feature) => feature.trim()) 
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/cars-on-lot", {
+        method: "POST",
+        headers: { "Content-Type" : "application/json" },
+        body: JSON.stringify(carData),
+        })
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message)
+      }
+
+      const responseJSON = await response.json();
+      console.log(responseJSON);
+      resetForm();
+      alert("Car added successfully")
+      
+    } catch(e: any) {
+      alert(e.message || "There was an error. Please try again.");
+    }
+}
+
   return (
     <>
       <h2>Add Vehicle to Inventory</h2>
-      <form>
+      <form onSubmit={addCartoInventory}>
         <label htmlFor="headline">Headline: </label>
         <input 
         type= "text"
@@ -117,8 +147,8 @@ const AddInventory = () => {
         value={addInventoryState.MPG_highway}
         onChange={handleInputChange}
         />
-        <label htmlFor="model">Model: </label>
-        <select name="modelID" onChange={handleInputChange}>
+        <label htmlFor="modelId">Model: </label>
+        <select name="modelId" onChange={handleInputChange} value={addInventoryState.modelId}>
           <option value={1}>Silverado</option>  {/*Remove these options and replace WITH FETCHED MODELS */}
           <option value={2}>Corvette</option>
           <option value={3}>Camaro</option>
@@ -135,6 +165,15 @@ const AddInventory = () => {
         placeholder= "features"
         required
         value={addInventoryState.features}
+        onChange={handleInputChange}
+        />
+        <label htmlFor="price">Price: </label>
+        <input
+        type= "text"
+        name= "price"
+        placeholder= "price"
+        required
+        value={addInventoryState.price}
         onChange={handleInputChange}
         />
         <button type="submit">Add Vehicle</button>

@@ -11,12 +11,12 @@ interface AddInverntoryState {
   color: string;
   MPG_city: number;
   MPG_highway: number;
-  modelID: number;
+  modelId: number;
   features: string;
   price: number;
 }
 
-const initialState: AddInverntoryState = {
+export const initialState: AddInverntoryState = {
   headline: "",
   description: "",
   image: "",
@@ -27,7 +27,7 @@ const initialState: AddInverntoryState = {
   color: "",
   MPG_city: 0,
   MPG_highway: 0,
-  modelID: 0,
+  modelId: 0,
   features: "",
   price: 0
 }
@@ -42,5 +42,5 @@ const addInventorySlice = createSlice({
   }
 })
 
-export const { setAddInventoryInputValue } = addInventorySlice.actions
+export const { setAddInventoryInputValue } = addInventorySlice.actions;
 export default addInventorySlice.reducer

@@ -32,16 +32,16 @@ router.post("/", async (req, res, next) => {
         headline,
         description,
         image,
-        year,
-        miles,
+        year: Number(year),
+        miles: Number(miles),
         drivetrain,
         engine,
         color,
-        MPG_city,
-        MPG_highway,
-        modelId,
+        MPG_city: Number(MPG_city),
+        MPG_highway: Number(MPG_highway),
+        modelId: Number(modelId),
         features,
-        price
+        price: Number(price)
       }
     });
     res.status(201).json(newCar);
