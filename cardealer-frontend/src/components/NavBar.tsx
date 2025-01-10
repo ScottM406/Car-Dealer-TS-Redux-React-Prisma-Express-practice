@@ -10,10 +10,13 @@ const NavBar: React.FC<Props> = ({ token, isSuperUser }) => {
   return (
     <>
       <Link to="/">Home</Link>
-      <Link to="/register">Register</Link>
-      <Link to="/login">Log In</Link>
+      {!token && <Link to="/register">Register</Link>}
+      {!token && <Link to="/login">Log In</Link>}
       {token && isSuperUser && (
+        <div>
+        <p>Super User Menu:</p>
         <Link to="/addinventory">Add Inventory</Link>
+        </div>
       )}
     </>
   )
