@@ -41,7 +41,8 @@ router.post("/login", async (req, res, next) => {
   try {
     const user = await prisma.user.login(email, password);
     const token = createToken(user.id);
-    res.json({ token });
+    const isSuperUser = user.isSuperUser
+    res.json({ token, isSuperUser });
   } catch (e) {
     next(e);
   }
