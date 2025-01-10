@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import addInventoryReducer from './addInventorySlice'
+
+
 
 export const store = configureStore({
   reducer: {
-
+    addInventory: addInventoryReducer
   }
 });
 
