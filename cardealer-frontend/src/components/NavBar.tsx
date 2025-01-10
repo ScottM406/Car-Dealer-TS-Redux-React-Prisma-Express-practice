@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+interface Props {
+  token: string;
+}
+
+const NavBar: React.FC<Props> = ({ token }) => {
 
   return (
     <>

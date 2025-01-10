@@ -1,10 +1,14 @@
 import { FormEvent, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+interface Props {
+  token: string;
+  setToken: (value: string) => void;
+}
+
+const Login: React.FC<Props> = ({ token, setToken }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("")
-  const [token, setToken] = useState<string>("");
 
   const navigate = useNavigate();
 
