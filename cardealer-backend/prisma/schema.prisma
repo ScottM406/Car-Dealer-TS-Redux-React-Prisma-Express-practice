@@ -17,6 +17,7 @@ model User {
   id Int @id @default(autoincrement())
   email String @unique
   password String
+  isSuperUser Boolean @default(false)
   watchlist CarsOnLot[]
 }
 
@@ -30,7 +31,6 @@ model Make {
 model Model {
   id Int @id @default(autoincrement())
   name String
-  factoryIncentive Boolean @default(false)
   make  Make @relation(fields: [makeId], references: [id])
   makeId Int
   cars_on_lot CarsOnLot[]
