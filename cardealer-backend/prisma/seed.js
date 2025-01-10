@@ -7,7 +7,7 @@ const seed = async () => {
       name: "Chevy",
       description: "Chevrolet, commonly referred to as Chevy, is an iconic American automobile brand known for its reliable trucks, performance-oriented sports cars, and versatile SUVs. With a legacy dating back to 1911, Chevy combines innovation with tradition in its diverse vehicle lineup,",
       models: [
-        { name: "Silverado", factoryIncentive: true },
+        { name: "Silverado" },
         { name: "Corvette" },
         { name: "Camaro" }
       ]
