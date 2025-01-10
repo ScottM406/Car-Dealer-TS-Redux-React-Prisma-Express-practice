@@ -8,14 +8,16 @@ import AddInventory from "./components/AddInventory";
 
 const App = () => {
   const [token, setToken] = useState<string>("");
+  const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
+  console.log(isSuperUser);
 
   return (
     <>
-    <NavBar token={token}/>
+    <NavBar token={token} isSuperUser={isSuperUser}/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login token={token} setToken={setToken}/>} />
+        <Route path="/login" element={<Login token={token} setToken={setToken} setIsSuperUser={setIsSuperUser}/>} />
         <Route path="/addinventory" element={<AddInventory />} />
       </Routes>
     </>
