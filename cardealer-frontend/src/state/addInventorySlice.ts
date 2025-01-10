@@ -36,11 +36,11 @@ const addInventorySlice = createSlice({
   name: "addInventory",
   initialState,
   reducers: {
-    setInputValue: (state, action: PayloadAction<{ field: keyof AddInverntoryState; value: any}>) => {
+    setAddInventoryInputValue: (state, action: PayloadAction<{ field: keyof AddInverntoryState; value: any}>) => {
       (state[action.payload.field] as typeof state[keyof AddInverntoryState]) = action.payload.value;
     }
   }
 })
 
-export const { setInputValue } = addInventorySlice.actions
+export const { setAddInventoryInputValue } = addInventorySlice.actions
 export default addInventorySlice.reducer
