@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   token: string;
   setToken: (value: string) => void;
+  setIsSuperUser: (value: boolean) => void;
 }
 
-const Login: React.FC<Props> = ({ token, setToken }) => {
+const Login: React.FC<Props> = ({ token, setToken, setIsSuperUser }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("")
 
@@ -33,6 +34,7 @@ const Login: React.FC<Props> = ({ token, setToken }) => {
       const responseJSON = await response.json();
       console.log(responseJSON);
       const token = responseJSON.token;
+      setIsSuperUser(responseJSON.isSuperUser);
       setToken(token);
 
     } catch(e: any) {

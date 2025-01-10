@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 
 interface Props {
   token: string;
+  isSuperUser: boolean;
 }
 
-const NavBar: React.FC<Props> = ({ token }) => {
+const NavBar: React.FC<Props> = ({ token, isSuperUser }) => {
 
   return (
     <>
