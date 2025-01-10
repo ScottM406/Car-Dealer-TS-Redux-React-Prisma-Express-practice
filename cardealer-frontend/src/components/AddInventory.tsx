@@ -3,9 +3,9 @@ import { AppDispatch, RootState } from "../state/store";
 import { useSelector, useDispatch } from "react-redux";
 
 const AddInventory = () => {
-  
   const dispatch = useDispatch<AppDispatch>();
   const addInventoryState = useSelector((state: RootState) => state.addInventory);
+  
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
     dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value }))
@@ -27,6 +27,7 @@ const AddInventory = () => {
     <>
       <h2>Add Vehicle to Inventory</h2>
       <form>
+        <label htmlFor="headline">Headline: </label>
         <input 
         type= "text"
         name= "headline"
@@ -35,6 +36,7 @@ const AddInventory = () => {
         value={addInventoryState.headline}
         onChange={handleInputChange}
         />
+        <label htmlFor="description">Description: </label>
         <input
         type= "text"
         placeholder= "description"
@@ -43,6 +45,7 @@ const AddInventory = () => {
         value={addInventoryState.description}
         onChange={handleInputChange}
         />
+        <label htmlFor="image">Image: </label>
         <input 
         type= "text"
         name= "image"
@@ -51,6 +54,7 @@ const AddInventory = () => {
         value={addInventoryState.image}
         onChange={handleInputChange}
         />
+        <label htmlFor="year">Model Year: </label>
         <input
         type= "text"
         name= "year"
@@ -59,6 +63,7 @@ const AddInventory = () => {
         value={addInventoryState.year}
         onChange={handleInputChange}
         />
+        <label htmlFor="miles">Odometer Reading: </label>
         <input 
         type= "text"
         name= "miles"
@@ -67,6 +72,7 @@ const AddInventory = () => {
         value={addInventoryState.miles}
         onChange={handleInputChange}
         />
+        <label htmlFor="drivetrain">Drivetrain: </label>
         <input
         type= "text"
         name= "drivetrain"
@@ -75,6 +81,7 @@ const AddInventory = () => {
         value={addInventoryState.drivetrain}
         onChange={handleInputChange}
         />
+        <label htmlFor="engine">Engine: </label>
         <input 
         type= "text"
         name= "engine"
@@ -83,6 +90,7 @@ const AddInventory = () => {
         value={addInventoryState.engine}
         onChange={handleInputChange}
         />
+        <label htmlFor="color">Color: </label>
         <input
         type= "text"
         name= "color"
@@ -91,6 +99,7 @@ const AddInventory = () => {
         value={addInventoryState.color}
         onChange={handleInputChange}
         />
+        <label>MPG City: </label>
         <input 
         type= "text"
         name= "MPG_city"
@@ -99,6 +108,7 @@ const AddInventory = () => {
         value={addInventoryState.MPG_city}
         onChange={handleInputChange}
         />
+        <label>MPG Highway: </label>
         <input
         type= "text"
         name= "MPG_highway"
@@ -107,7 +117,7 @@ const AddInventory = () => {
         value={addInventoryState.MPG_highway}
         onChange={handleInputChange}
         />
-        <label htmlFor="model">model:</label>
+        <label htmlFor="model">Model: </label>
         <select name="modelID" onChange={handleInputChange}>
           <option value={1}>Silverado</option>  {/*Remove these options and replace WITH FETCHED MODELS */}
           <option value={2}>Corvette</option>
@@ -118,6 +128,7 @@ const AddInventory = () => {
           <option value={7}>Charger</option>
           <option value={8}>Challenger</option>
         </select>
+        <label htmlFor="features">Features: </label>
         <input
         type= "text"
         name= "features"
