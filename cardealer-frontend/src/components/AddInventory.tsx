@@ -44,7 +44,6 @@ const AddInventory = () => {
       }
 
       const responseJSON = await response.json();
-      console.log(responseJSON);
       resetForm();
       alert("Car added successfully")
       
