@@ -11,7 +11,6 @@ import Inventory from "./components/view_inventory/inventory";
 const App = () => {
   const [token, setToken] = useState<string>("");
   const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
-  console.log(isSuperUser);
 
   return (
     <>

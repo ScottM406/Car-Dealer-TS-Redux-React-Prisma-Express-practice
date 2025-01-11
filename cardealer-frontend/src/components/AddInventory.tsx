@@ -12,7 +12,7 @@ const AddInventory = () => {
   }
 
   const resetForm = () => {
-    Object.keys(initialState).forEach((key, value) => {
+    Object.keys(initialState).forEach((key, _value) => {
       dispatch(setAddInventoryInputValue({ field: key as keyof typeof initialState, value: initialState[key as keyof typeof initialState] }));
     })
   };
@@ -44,7 +44,6 @@ const AddInventory = () => {
       }
 
       const responseJSON = await response.json();
-      console.log(responseJSON);
       resetForm();
       alert("Car added successfully")
       
