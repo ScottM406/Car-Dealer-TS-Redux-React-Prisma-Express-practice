@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 interface VehicleState {
+  id: number;
   headline: string;
   description: string;
   image: string;
@@ -25,7 +26,7 @@ const vehicleSlice = createSlice({
   reducers: {
   },
   extraReducers: (builder) => {
-    builder.addCase(getVehicles.fulfilled, (state, action) => {
+    builder.addCase(getVehicles.fulfilled, (_state, action) => {
       return action.payload
     })
   }
