@@ -32,7 +32,6 @@ const Login: React.FC<Props> = ({ token, setToken, setIsSuperUser }) => {
       }
 
       const responseJSON = await response.json();
-      console.log(responseJSON);
       const token = responseJSON.token;
       setIsSuperUser(responseJSON.isSuperUser);
       setToken(token);
