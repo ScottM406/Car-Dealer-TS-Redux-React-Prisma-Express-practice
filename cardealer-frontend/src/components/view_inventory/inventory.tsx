@@ -19,9 +19,9 @@ const Inventory: React.FC = () => {
     <p>Click on vehicle for more details.</p>
     {vehicles.map((vehicle) => (
       <div key={vehicle.id}>
+      <img src={vehicle.image} style={{ width: "400px", height: "250px"}}/>
       <h3>{vehicle.headline}</h3>
       <h4>${vehicle.price}</h4>
-      <img src={vehicle.image} style={{ width: "400px", height: "250px"}}/>
       </div>
     ))}
     </>
