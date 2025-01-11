@@ -13,8 +13,6 @@ const Inventory: React.FC = () => {
     dispatch(getVehicles());
   }, [])
 
-  console.log(vehicles);
-
   return (
     <>
     <h2>Vehicles for Sale</h2>
