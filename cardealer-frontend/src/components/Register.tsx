@@ -27,7 +27,6 @@ const Register = () => {
 
       const responseJSON = await response.json();
       const token = responseJSON.token;
-      console.log(responseJSON);
       setToken(token);
 
     } catch(e: any){
