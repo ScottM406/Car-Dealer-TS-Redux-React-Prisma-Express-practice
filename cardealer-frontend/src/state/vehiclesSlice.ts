@@ -38,7 +38,6 @@ export const getVehicles = createAsyncThunk(
   async () => {
     const response = await fetch("http://localhost:3000/cars-on-lot");
     const allVehicles = await response.json();
-    console.log(allVehicles);
     return allVehicles
     }
 )
