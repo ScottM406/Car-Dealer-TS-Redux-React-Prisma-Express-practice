@@ -24,7 +24,17 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
   useEffect(() => {
     const popover = new Popover(popoverRef.current!, {
       trigger: 'manual',
-      delay: { show: 750, hide: 0}
+      delay: { show: 750, hide: 0},
+      html: true,
+      content: `
+        <div>
+          <img src=${image} />
+          <p><strong>${headline}</strong></p>
+          <p><strong>$${price}</strong><p>
+          <p>Year: ${year}</p>
+          <p>${description}</p>
+        </div>
+      `
     });
 
     const showPopover = () => popover.show();
@@ -40,11 +50,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
   }, []);
 
   return (
-    <div ref={popoverRef} data-bs-toggle="popover" data-bs-content={
-    <div>
-      <img src={image} />
-    </div>
-    }>
+    <div ref={popoverRef} data-bs-toggle="popover">
       <img src={image} style={{ width: "400px", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
