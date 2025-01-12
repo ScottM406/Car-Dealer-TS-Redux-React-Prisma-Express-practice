@@ -1,4 +1,10 @@
-const makes = [
+interface Make {
+  name: string;
+  description: string;
+  models: { name: string; }[]
+}
+
+const makes: Make[] = [
   {
     name: "Acura",
     description: "Acura, the luxury vehicle division of Honda Motor Co., Ltd., was launched in 1986. Known for its precision-crafted performance and innovative technology, Acura offers a range of luxurious and high-performance vehicles that blend comfort and style with advanced engineering.",
