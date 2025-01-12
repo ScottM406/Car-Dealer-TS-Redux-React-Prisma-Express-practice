@@ -1,35 +1,7 @@
 const prisma = require("../prisma")
+const makes = require("./seed-data/makes-and-models.ts");
 
 const seed = async () => {
-
-  const makes = [
-    {
-      name: "Chevy",
-      description: "Chevrolet, commonly referred to as Chevy, is an iconic American automobile brand known for its reliable trucks, performance-oriented sports cars, and versatile SUVs. With a legacy dating back to 1911, Chevy combines innovation with tradition in its diverse vehicle lineup,",
-      models: [
-        { name: "Silverado" },
-        { name: "Corvette" },
-        { name: "Camaro" }
-      ]
-    },
-    {
-      name: "Ford",
-      description: "Ford Motor Company, founded by Henry Ford in 1903, is a pioneer in the automotive industry, famous for its durable trucks, versatile SUVs, and the legendary Mustang. Ford continues to lead with advancements in automotive technology and a strong commitment to performance and reliability.",
-      models: [
-        { name: "F-150" },
-        { name: "Mustang" }
-      ]
-    },
-    {
-      name: "Dodge",
-      description: "Dodge, a division of Stellantis, is renowned for its bold and powerful vehicles, especially its muscle cars and robust trucks. With a history of performance-driven engineering, Dodge offers a thrilling driving experience and distinctive, aggressive designs.",
-      models: [
-        { name: "RAM 1500"},
-        { name: "Charger"},
-        { name: "Challenger"}
-      ]
-    }
-  ]
 
   for (const makeData of makes) {
     const { models, ...makeDetails } = makeData;
