@@ -14,7 +14,7 @@ interface VehicleProps {
   MPG_city: number
   MPG_highway: number
   modelId: number
-  features: string[]
+  features: any
   price: number
 }
 
@@ -28,11 +28,21 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
       html: true,
       content: `
         <div class="vehicle-popover-container">
-          <div class="vehicle-popover-header"><strong>${headline}</strong></div>
+          <div class="vehicle-popover-header">
+            <strong>${headline}</strong>
+            <p>Stock Number: ${id}</p>
+          </div>
           <div class="vehicle-popover-body">
             <img src=${image} />
             <p><strong>$${price}</strong></p>
             <p>Year: ${year}</p>
+            <p>Odometer: ${miles} miles</p>
+            <p>Drivetrain: ${drivetrain}</p>
+            <p>Engine: ${engine}</p>
+            <p>Color: ${color}</p>
+            <p>MPG: ${MPG_city}/${MPG_highway}</p>
+            <p>Model: ${modelId}</p>
+            <p>Features: ${features}</p>
             <p>${description}</p>
           </div>
         </div>
