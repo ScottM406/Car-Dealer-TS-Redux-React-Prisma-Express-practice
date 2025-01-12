@@ -27,12 +27,14 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
       delay: { show: 750, hide: 0},
       html: true,
       content: `
-        <div>
-          <img src=${image} />
-          <p><strong>${headline}</strong></p>
-          <p><strong>$${price}</strong><p>
-          <p>Year: ${year}</p>
-          <p>${description}</p>
+        <div class="vehicle-popover-container">
+          <div class="vehicle-popover-header"><strong>${headline}</strong></div>
+          <div class="vehicle-popover-body">
+            <img src=${image} style="width: 100%;" />
+            <p><strong>$${price}</strong></p>
+            <p>Year: ${year}</p>
+            <p>${description}</p>
+          </div>
         </div>
       `
     });
@@ -44,8 +46,11 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
     popoverRef.current!.addEventListener('mouseleave', hidePopover);
 
     return () => {
-      popoverRef.current!.removeEventListener('mouseover', showPopover);
-      popoverRef.current!.removeEventListener('mouseleave', hidePopover);
+      if (popoverRef.current) {
+        popoverRef.current!.removeEventListener('mouseover', showPopover);
+        popoverRef.current!.removeEventListener('mouseleave', hidePopover);
+        popover.dispose();
+      }
     };
   }, []);
 
