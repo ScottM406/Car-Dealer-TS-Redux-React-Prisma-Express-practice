@@ -30,7 +30,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
         <div class="vehicle-popover-container">
           <div class="vehicle-popover-header"><strong>${headline}</strong></div>
           <div class="vehicle-popover-body">
-            <img src=${image} style="width: 100%;" />
+            <img src=${image} />
             <p><strong>$${price}</strong></p>
             <p>Year: ${year}</p>
             <p>${description}</p>
@@ -56,7 +56,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
 
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
-      <img src={image} style={{ width: "400px", height: "250px" }} alt={headline} />
+      <img src={image} style={{ width:"95%", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
     </div>

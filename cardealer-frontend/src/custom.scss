@@ -1,12 +1,12 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 $theme-colors: (
-  "primary": rgba(241, 230, 230, 0.87),
-  "popover": rgb(149, 158, 158),
+  "primary": rgba(243, 243, 243, 0.87),
+  "popover": blanchedalmond,
   "success": rgb(110, 206, 142),
 );
 
-html {
+body {
   background-color: map-get($theme-colors, "primary");
 }
 
@@ -15,7 +15,7 @@ html {
   background-color: map-get($theme-colors, "popover");
   border: 2px solid black;
   padding-left: 400px;
-  padding-right: 400px;
+  padding-right: 420px;
   .vehicle-popover-container {
     background-color: map-get($theme-colors, "popover");
     border-color: map-get($theme-colors, "popover");
@@ -36,4 +36,14 @@ html {
   //   background-color: map-get($theme-colors, "popover") !important;
   //   color: #fff !important;
   // }
+}
+
+.single-vehicle-inventory-container {
+  width: 500px;
+  background-color: rgb(168, 166, 166);
+  float: left;
+  padding: 12px;
+  padding-left: 34px;
+  margin: 4px;
+  border: 2px solid black;
 }
