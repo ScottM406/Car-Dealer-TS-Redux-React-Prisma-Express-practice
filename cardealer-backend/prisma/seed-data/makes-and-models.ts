@@ -1,10 +1,4 @@
-interface Make {
-  name: string;
-  description: string;
-  models: { name: string; }[]
-}
-
-const makes: Make[] = [
+const makes = [
   {
     name: "Acura",
     description: "Acura, the luxury vehicle division of Honda Motor Co., Ltd., was launched in 1986. Known for its precision-crafted performance and innovative technology, Acura offers a range of luxurious and high-performance vehicles that blend comfort and style with advanced engineering.",
@@ -27,8 +21,6 @@ const makes: Make[] = [
       { name: "EL" },
       { name: "TL" },
       { name: "RL" },
-      { name: "RDX" },
-      { name: "MDX" }
     ]
   },
   {
@@ -75,7 +67,7 @@ const makes: Make[] = [
     ]
   },    
   {
-    name: "Chevy",
+    name: "Chevrolet",
     description: "Chevrolet, commonly referred to as Chevy, is an iconic American automobile brand known for its reliable trucks, performance-oriented sports cars, and versatile SUVs. With a legacy dating back to 1911, Chevy combines innovation with tradition in its diverse vehicle lineup.",
     models: [
       { name: "Silverado" },
@@ -91,7 +83,7 @@ const makes: Make[] = [
       { name: "Colorado" },
       { name: "Blazer" },
       { name: "Trax" },
-      { name: "Sonic" },
+      { name: "Sonic (Chevy)" },
       { name: "Spark" },
       { name: "Bolt" },
       { name: "Cavalier" },
@@ -131,7 +123,6 @@ const makes: Make[] = [
       { name: "300" },
       { name: "Pacifica" },
       { name: "Voyager" },
-      { name: "Aspen" },
       { name: "Crossfire" },
       { name: "PT Cruiser" },
       { name: "Sebring" },
@@ -142,7 +133,6 @@ const makes: Make[] = [
       { name: "Imperial" },
       { name: "LeBaron" },
       { name: "Cirrus" },
-      { name: "Stratus" },
       { name: "Fifth Avenue" },
       { name: "Newport" },
       { name: "Cordoba" },
@@ -152,13 +142,11 @@ const makes: Make[] = [
       { name: "Crown Imperial" },
       { name: "Windsor" },
       { name: "Airflow" },
-      { name: "Saratoga" },
       { name: "Royal" },
       { name: "Fury" },
-      { name: "Imperial" },
       { name: "Valiant" },
       { name: "St. Regis" },
-      { name: "Dakota" }
+      { name: "Dakota (Chrystler)" }
     ]
   },   
   {
@@ -187,7 +175,7 @@ const makes: Make[] = [
       { name: "Spirit" },
       { name: "Shadow" },
       { name: "Daytona" },
-      { name: "Lancer" },
+      { name: "Lancer (Dodge)" },
       { name: "Mirada" },
       { name: "Aspen" },
       { name: "Monaco" },
@@ -201,10 +189,8 @@ const makes: Make[] = [
       { name: "Coronet" },
       { name: "Custom 880" },
       { name: "Meadowbrook" },
-      { name: "Raider" },
       { name: "Rampage" },
       { name: "Swinger" },
-      { name: "Wagoneer" },
       { name: "Warlock" },
       { name: "Wayfarer" }
     ]  
@@ -245,7 +231,6 @@ const makes: Make[] = [
       { name: "Windstar" },
       { name: "Aerostar" },
       { name: "C-Max" },
-      { name: "Edge" },
       { name: "Ka" },
       { name: "Focus RS" },
       { name: "Sierra" },
@@ -294,12 +279,11 @@ const makes: Make[] = [
       { name: "Crosstour" },
       { name: "CR-Z" },
       { name: "Del Sol" },
-      { name: "Integra" },
-      { name: "Legend" },
+      { name: "Integra (Honda)" },
       { name: "Beat" },
       { name: "Stream" },
       { name: "Acty" },
-      { name: "NSX" },
+      { name: "NSX (Honda)" },
       { name: "Clarity" },
       { name: "Ballade" },
       { name: "Brio" },
@@ -308,7 +292,6 @@ const makes: Make[] = [
       { name: "Jazz" },
       { name: "Logo" },
       { name: "Mobilio" },
-      { name: "Odyssey" },
       { name: "Shuttle" },
       { name: "Z" },
       { name: "Vamos" },
@@ -344,7 +327,6 @@ const makes: Make[] = [
       { name: "DJ" },
       { name: "Tornado" },
       { name: "Hurricane" },
-      { name: "Gladiator" },
       { name: "Universal" },
       { name: "FJ" },
       { name: "Renegade II" },
@@ -380,15 +362,12 @@ const makes: Make[] = [
       { name: "K900" },
       { name: "Rondo" },
       { name: "Picanto" },
-      { name: "Ceed" },
       { name: "Venga" },
       { name: "Carens" },
       { name: "Shuma" },
       { name: "XCeed" },
       { name: "Stonic" },
-      { name: "Xceed" },
       { name: "EV6" },
-      { name: "Carnival" },
       { name: "Ray" },
       { name: "ProCeed" }
     ]
@@ -465,7 +444,7 @@ const makes: Make[] = [
       { name: "190" },
       { name: "250" },
       { name: "280" },
-      { name: "300" },
+      { name: "300 (Mercedes)" },
       { name: "500" },
       { name: "600" },
       { name: "220" },
@@ -498,9 +477,9 @@ const makes: Make[] = [
       { name: "Endeavor" },
       { name: "Raider" },
       { name: "Starion" },
-      { name: "Challenger" },
+      { name: "Challenger (Mitsubishi)" },
       { name: "Grandis" },
-      { name: "Colt" },
+      { name: "Colt (Mitsubishi)" },
       { name: "Outlander Sport" },
       { name: "i-MiEV" },
       { name: "RVR" },
@@ -547,8 +526,7 @@ const makes: Make[] = [
       { name: "Turnpike Cruiser" },
       { name: "Park Lane" },
       { name: "Breezeway" },
-      { name: "Voyager" },
-      { name: "Marauder X100" },
+      { name: "Voyager (Mercury)" },
       { name: "Custom" },
       { name: "Medalist" }
     ]
@@ -581,7 +559,7 @@ const makes: Make[] = [
       { name: "300ZX" },
       { name: "Pulsar" },
       { name: "Stanza" },
-      { name: "NX" },
+      { name: "NX (Nissan)" },
       { name: "Murano CrossCabriolet" },
       { name: "NV200" },
       { name: "NV3500" },
@@ -633,7 +611,6 @@ const makes: Make[] = [
       { name: "LSS" },
       { name: "Cutlass Ciera" },
       { name: "Cutlass Calais" },
-      { name: "Cutlass Cruiser" },
       { name: "Super 88" },
       { name: "Golden Rocket" },
       { name: "Brougham" },
@@ -699,7 +676,6 @@ const makes: Make[] = [
       { name: "MR2" },
       { name: "Previa" },
       { name: "Corona" },
-      { name: "Cressida" },
       { name: "Tercel" },
       { name: "Starlet" },
       { name: "Paseo" },
@@ -745,7 +721,6 @@ const makes: Make[] = [
       { name: "ID.3" },
       { name: "ID.4" },
       { name: "ID.Buzz" },
-      { name: "New Beetle" },
       { name: "Corrado" },
       { name: "Routan" },
       { name: "Cabrio" },
@@ -767,5 +742,26 @@ const makes: Make[] = [
     ]
   }  
 ];
+
+const findDuplicateModelNames = (makes) => {
+  const modelNames = new Map();
+  const duplicates = new Set();
+
+  makes.forEach(make => {
+    make.models.forEach(model => {
+      if (modelNames.has(model.name)) {
+        duplicates.add(model.name);
+      } else {
+        modelNames.set(model.name, true);
+      }
+    });
+  });
+
+  return Array.from(duplicates);
+};
+
+const duplicateNames = findDuplicateModelNames(makes);
+console.log(duplicateNames);
+
 
 module.exports = makes;

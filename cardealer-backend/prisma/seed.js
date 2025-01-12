@@ -31,7 +31,7 @@ const testCars = [
     color: "Black",
     MPG_city: 16,
     MPG_highway: 25,
-    modelId: allModels[7].id,
+    modelName: allModels[56].name,
     features: [
       "ZR1 Package",
       "Advanced Infotainment System",
@@ -74,7 +74,7 @@ const testCars = [
     color: "Red",
     MPG_city: 13,
     MPG_highway: 22,
-    modelId: allModels[2].id,
+    modelName: allModels[118].name,
     features: [
       "SRT Hellcat Package",
       "Advanced Infotainment System",
