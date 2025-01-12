@@ -2,6 +2,7 @@ import { getVehicles } from "../../state/vehiclesSlice";
 import { AppDispatch, RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import VehiclePopover from "./VehiclePopover";
 
 const Inventory: React.FC = () => {
 
@@ -18,11 +19,23 @@ const Inventory: React.FC = () => {
     <h2>Vehicles for Sale</h2>
     <p>Click on vehicle for more details.</p>
     {vehicles.map((vehicle) => (
-      <div key={vehicle.id}>
-      <img src={vehicle.image} style={{ width: "400px", height: "250px"}}/>
-      <h3>{vehicle.headline}</h3>
-      <h4>${vehicle.price}</h4>
-      </div>
+      <VehiclePopover
+      key={vehicle.id} 
+      id={vehicle.id}
+      headline={vehicle.headline}
+      description={vehicle.description}
+      image={vehicle.image}
+      year={vehicle.year}
+      miles={vehicle.miles}
+      drivetrain={vehicle.drivetrain}
+      engine={vehicle.engine}
+      color={vehicle.color}
+      MPG_city={vehicle.MPG_city}
+      MPG_highway={vehicle.MPG_highway}
+      modelId={vehicle.modelId}
+      features={vehicle.features}
+      price={vehicle.price}
+      />
     ))}
     </>
   )
