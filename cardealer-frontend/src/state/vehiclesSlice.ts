@@ -13,7 +13,7 @@ interface VehicleState {
   color: string;
   MPG_city: number;
   MPG_highway: number;
-  modelId: number;
+  modelName: string;
   features: string;
   price: number;
 };

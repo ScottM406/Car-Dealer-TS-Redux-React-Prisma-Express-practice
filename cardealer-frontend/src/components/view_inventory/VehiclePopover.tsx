@@ -13,12 +13,12 @@ interface VehicleProps {
   color: string
   MPG_city: number
   MPG_highway: number
-  modelId: number
+  modelName: string
   features: any
   price: number
 }
 
-const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, modelId, features, price}) => {
+const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, modelName, features, price}) => {
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
             <p>Engine: ${engine}</p>
             <p>Color: ${color}</p>
             <p>MPG: ${MPG_city}/${MPG_highway}</p>
-            <p>Model: ${modelId}</p>
+            <p>Model: ${modelName}</p>
             <p>Features: ${features}</p>
             <p>${description}</p>
           </div>

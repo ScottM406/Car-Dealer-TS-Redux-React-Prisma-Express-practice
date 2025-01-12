@@ -7,6 +7,7 @@ import VehiclePopover from "./VehiclePopover";
 const Inventory: React.FC = () => {
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
+  console.log(vehicles);
   const dispatch = useDispatch<AppDispatch>();
 
 
@@ -33,7 +34,7 @@ const Inventory: React.FC = () => {
         color={vehicle.color}
         MPG_city={vehicle.MPG_city}
         MPG_highway={vehicle.MPG_highway}
-        modelId={vehicle.modelId}
+        modelName={vehicle.modelName}
         features={vehicle.features}
         price={vehicle.price}
         />
