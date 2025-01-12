@@ -2,7 +2,7 @@
 
 $theme-colors: (
   "primary": rgba(243, 243, 243, 0.87),
-  "popover": rgb(149, 158, 158),
+  "popover": blanchedalmond,
   "success": rgb(110, 206, 142),
 );
 
@@ -39,6 +39,11 @@ body {
 }
 
 .single-vehicle-inventory-container {
-  width: 400px;
-  background-color: white;
+  width: 500px;
+  background-color: rgb(168, 166, 166);
+  float: left;
+  padding: 12px;
+  padding-left: 34px;
+  margin: 4px;
+  border: 2px solid black;
 }
