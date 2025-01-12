@@ -22,17 +22,17 @@ model User {
 }
 
 model Make {
-  id Int @id @default(autoincrement())
-  name String
+  id Int @default(autoincrement())
+  name String @id
   description String
   models Model[]
 }
 
 model Model {
-  id Int @id @default(autoincrement())
-  name String
-  make  Make @relation(fields: [makeId], references: [id])
-  makeId Int
+  id Int @default(autoincrement())
+  name String @id
+  make  Make? @relation(fields: [makeName], references: [name])
+  makeName String?
   cars_on_lot CarsOnLot[]
 }
 
@@ -48,8 +48,8 @@ model CarsOnLot {
   color String
   MPG_city Int
   MPG_highway Int
-  model Model @relation(fields: [modelId], references: [id])
-  modelId Int
+  model Model? @relation(fields: [modelName], references: [name])
+  modelName String?
   features String[]
 
   price Int
