@@ -19,23 +19,25 @@ const Inventory: React.FC = () => {
     <h2>Vehicles for Sale</h2>
     <p>Click on vehicle for more details.</p>
     {vehicles.map((vehicle) => (
-      <VehiclePopover
-      key={vehicle.id} 
-      id={vehicle.id}
-      headline={vehicle.headline}
-      description={vehicle.description}
-      image={vehicle.image}
-      year={vehicle.year}
-      miles={vehicle.miles}
-      drivetrain={vehicle.drivetrain}
-      engine={vehicle.engine}
-      color={vehicle.color}
-      MPG_city={vehicle.MPG_city}
-      MPG_highway={vehicle.MPG_highway}
-      modelId={vehicle.modelId}
-      features={vehicle.features}
-      price={vehicle.price}
-      />
+      <div className="single-vehicle-inventory-container">
+        <VehiclePopover
+        key={vehicle.id} 
+        id={vehicle.id}
+        headline={vehicle.headline}
+        description={vehicle.description}
+        image={vehicle.image}
+        year={vehicle.year}
+        miles={vehicle.miles}
+        drivetrain={vehicle.drivetrain}
+        engine={vehicle.engine}
+        color={vehicle.color}
+        MPG_city={vehicle.MPG_city}
+        MPG_highway={vehicle.MPG_highway}
+        modelId={vehicle.modelId}
+        features={vehicle.features}
+        price={vehicle.price}
+        />
+      </div>
     ))}
     </>
   )
