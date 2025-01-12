@@ -41,4 +41,5 @@ export const getVehicles = createAsyncThunk(
     return allVehicles
     }
 )
+
 export default vehicleSlice.reducer
