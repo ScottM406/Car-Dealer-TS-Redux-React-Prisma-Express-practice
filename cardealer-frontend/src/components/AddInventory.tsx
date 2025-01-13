@@ -9,6 +9,7 @@ const AddInventory = () => {
   const addInventoryState = useSelector((state: RootState) => state.addInventory);
   const makes = useSelector((state: RootState) => state.makes)
   console.log(makes)
+  console.log(addInventoryState);
 
     useEffect(() => {
       dispatch(getMakes());
@@ -24,6 +25,8 @@ const AddInventory = () => {
       dispatch(setAddInventoryInputValue({ field: key as keyof typeof initialState, value: initialState[key as keyof typeof initialState] }));
     })
   };
+
+  const filteredModels = makes.find((make) => make.name === addInventoryState.make)?.models || [];
 
   const addCartoInventory = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -149,14 +152,18 @@ const AddInventory = () => {
         onChange={handleInputChange}
         />
         <label>Make: </label>
-        <select>
+        <select name="make" onChange={handleInputChange} value={addInventoryState.make}>
           <option>Select Make</option>
           {makes.map((make) => (
             <option>{make.name}</option>
           ))}
         </select>
-        <label htmlFor="modelId">Model: </label>
-        <select name="modelId" onChange={handleInputChange} value={addInventoryState.modelId}>
+        <label htmlFor="modelName">Model: </label>
+        <select name="modelName" onChange={handleInputChange} value={addInventoryState.modelName}>
+          <option>Select Model</option>
+          {filteredModels.map((model: any) => (
+              <option key={model.id}>{model.name}</option>
+            ))};
         </select>
         <label htmlFor="features">Features: </label>
         <input
