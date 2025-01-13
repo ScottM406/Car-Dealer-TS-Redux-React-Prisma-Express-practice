@@ -150,6 +150,7 @@ const AddInventory = () => {
         />
         <label>Make: </label>
         <select>
+          <option>Select Make</option>
           {makes.map((make) => (
             <option>{make.name}</option>
           ))}
