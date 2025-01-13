@@ -20,11 +20,14 @@ const AddInventory = () => {
   const getMakes = async () => {
     try {
     const response = await fetch("http://localhost:3000/makes")
-    const makes = response.json
+    const makes = await response.json();
+    console.log(makes)
     } catch(e: any) {
       alert(e.message || "Something went wrong. Please try again later.")
     }
   };
+
+  getMakes();
 
   const addCartoInventory = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
