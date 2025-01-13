@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-  const makes = await prisma.make.findMany();
+  const makes = await prisma.make.findMany({
+    include: { models: true }
+  });
   res.json(makes);
   } catch(e) {
     next(e);
