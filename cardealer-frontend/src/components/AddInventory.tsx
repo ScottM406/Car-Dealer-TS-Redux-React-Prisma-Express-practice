@@ -17,11 +17,14 @@ const AddInventory = () => {
     })
   };
 
-  //TO DO : AFTER CREATING MODELS API, FETCH ALL MODELS AND
-  //        REPLACE DROP-DOWN MODEL MENU WITH ACTUAL MODELS
-  // const getModelList = async () => {
-  //   const response = await fetch("http://localhost:3000/models")
-  // }
+  const getMakes = async () => {
+    try {
+    const response = await fetch("http://localhost:3000/makes")
+    const makes = response.json
+    } catch(e: any) {
+      alert(e.message || "Something went wrong. Please try again later.")
+    }
+  };
 
   const addCartoInventory = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,7 +53,7 @@ const AddInventory = () => {
     } catch(e: any) {
       alert(e.message || "There was an error. Please try again.");
     }
-}
+};
 
   return (
     <>
