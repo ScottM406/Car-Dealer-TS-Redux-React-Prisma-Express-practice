@@ -1,10 +1,18 @@
 import { setAddInventoryInputValue, initialState } from "../state/addInventorySlice";
 import { AppDispatch, RootState } from "../state/store";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { getMakes } from "../state/makesSlice";
 
 const AddInventory = () => {
   const dispatch = useDispatch<AppDispatch>();
   const addInventoryState = useSelector((state: RootState) => state.addInventory);
+  const makes = useSelector((state: RootState) => state.makes)
+  console.log(makes)
+
+    useEffect(() => {
+      dispatch(getMakes());
+    }, [])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -16,18 +24,6 @@ const AddInventory = () => {
       dispatch(setAddInventoryInputValue({ field: key as keyof typeof initialState, value: initialState[key as keyof typeof initialState] }));
     })
   };
-
-  const getMakes = async () => {
-    try {
-    const response = await fetch("http://localhost:3000/makes")
-    const makes = await response.json();
-    console.log(makes)
-    } catch(e: any) {
-      alert(e.message || "Something went wrong. Please try again later.")
-    }
-  };
-
-  getMakes();
 
   const addCartoInventory = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -152,16 +148,14 @@ const AddInventory = () => {
         value={addInventoryState.MPG_highway}
         onChange={handleInputChange}
         />
+        <label>Make: </label>
+        <select>
+          {makes.map((make) => (
+            <option>{make.name}</option>
+          ))}
+        </select>
         <label htmlFor="modelId">Model: </label>
         <select name="modelId" onChange={handleInputChange} value={addInventoryState.modelId}>
-          <option value={1}>Silverado</option>  {/*Remove these options and replace WITH FETCHED MODELS */}
-          <option value={2}>Corvette</option>
-          <option value={3}>Camaro</option>
-          <option value={4}>F-150</option>
-          <option value={5}>Mustang</option>
-          <option value={6}>RAM 1500 </option>
-          <option value={7}>Charger</option>
-          <option value={8}>Challenger</option>
         </select>
         <label htmlFor="features">Features: </label>
         <input
