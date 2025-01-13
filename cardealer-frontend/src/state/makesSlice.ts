@@ -17,7 +17,7 @@ const makesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getMakes.fulfilled, (state, action) => {
+    builder.addCase(getMakes.fulfilled, (_state, action) => {
       return action.payload;
     })
   }
