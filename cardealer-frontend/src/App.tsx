@@ -5,9 +5,9 @@ import NavBar from "./components/NavBar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
-import AddInventory from "./components/AddInventory";
+import AddInventory from "./components/Inventory/AddInventory";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Inventory from "./components/view_inventory/inventory";
+import Inventory from "./components/Inventory/inventory";
 
 const App = () => {
   const [token, setToken] = useState<string>("");
