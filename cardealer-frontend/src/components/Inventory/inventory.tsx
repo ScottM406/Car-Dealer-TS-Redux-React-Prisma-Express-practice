@@ -3,13 +3,13 @@ import { AppDispatch, RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import VehiclePopover from "./VehiclePopover";
+import InventoryFilter from "./InventoryFilter";
 
 const Inventory: React.FC = () => {
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
   console.log(vehicles);
   const dispatch = useDispatch<AppDispatch>();
-
 
   useEffect(() => {
     dispatch(getVehicles());
@@ -19,6 +19,8 @@ const Inventory: React.FC = () => {
     <>
     <h2>Vehicles for Sale</h2>
     <p>Click on vehicle for more details.</p>
+    <InventoryFilter />
+
     {vehicles.map((vehicle) => (
       <div className="single-vehicle-inventory-container">
         <VehiclePopover
@@ -38,6 +40,7 @@ const Inventory: React.FC = () => {
         features={vehicle.features}
         price={vehicle.price}
         />
+        
       </div>
     ))}
     </>

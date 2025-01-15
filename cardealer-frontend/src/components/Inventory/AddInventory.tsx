@@ -1,8 +1,8 @@
-import { setAddInventoryInputValue, initialState } from "../state/addInventorySlice";
-import { AppDispatch, RootState } from "../state/store";
+import { setAddInventoryInputValue, initialState } from "../../state/addInventorySlice";
+import { AppDispatch, RootState } from "../../state/store";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getMakes } from "../state/makesSlice";
+import { getMakes } from "../../state/makesSlice";
 
 const AddInventory = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -48,7 +48,6 @@ const AddInventory = () => {
         throw new Error(errorData.message)
       }
 
-      const responseJSON = await response.json();
       resetForm();
       alert("Car added successfully")
       
