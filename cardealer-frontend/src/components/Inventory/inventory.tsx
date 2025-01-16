@@ -6,8 +6,8 @@ import VehiclePopover from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
 
 const Inventory: React.FC = () => {
-  const [selectedMake, setSelectedMake] = useState("")
-  const [selectedModel, setSelectedModel] = useState("")
+  const [selectedMake, setSelectedMake] = useState<string>("")
+  const [selectedModel, setSelectedModel] = useState<string>("")
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
   console.log(vehicles);

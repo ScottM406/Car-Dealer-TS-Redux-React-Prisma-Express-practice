@@ -1,13 +1,13 @@
 import { AppDispatch, RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux"; 
 import { getMakes } from "../../state/makesSlice";
+import { Dispatch, SetStateAction } from "react";
 
 interface InventoryFilterProps {
   selectedMake: string
-  setSelectedMake: () => string
+  setSelectedMake: Dispatch<SetStateAction<string>>
   selectedModel: string
-  setSelectedModel: () => string
-    
+  setSelectedModel: Dispatch<SetStateAction<string>>
   }
 
 const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSelectedMake, selectedModel, setSelectedModel }) => {
