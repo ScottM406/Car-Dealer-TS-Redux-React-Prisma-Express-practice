@@ -13,8 +13,7 @@ const Inventory: React.FC = () => {
   const filteredVehiclesByModel = selectedModel
     ? vehicles.filter((vehicle) => vehicle.modelName === selectedModel)
     : vehicles;
-    
-  console.log(filteredVehiclesByModel);
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
