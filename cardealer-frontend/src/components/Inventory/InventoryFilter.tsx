@@ -35,14 +35,3 @@ const InventoryFilter = () => {
 }
 
 export default InventoryFilter
-
-//OLD CODE
-
-  // const createMakesSelector = () => {
-  //   useEffect(() => {
-  //     dispatch(getMakes());
-  //   }, [])
-
-  // }
-  
-  // console.log(createMakesSelector())
