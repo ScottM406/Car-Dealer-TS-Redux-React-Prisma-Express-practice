@@ -1,11 +1,13 @@
 import { getVehicles } from "../../state/vehiclesSlice";
 import { AppDispatch, RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import VehiclePopover from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
 
 const Inventory: React.FC = () => {
+  const [selectedMake, setSelectedMake] = useState("")
+  const [selectedModel, setSelectedModel] = useState("")
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
   console.log(vehicles);
@@ -19,7 +21,12 @@ const Inventory: React.FC = () => {
     <>
     <h2>Vehicles for Sale</h2>
     <p>Click on vehicle for more details.</p>
-    <InventoryFilter />
+    <InventoryFilter
+    selectedMake={selectedMake}
+    setSelectedMake={setSelectedMake}
+    selectedModel={selectedModel}
+    setSelectedModel={setSelectedModel}
+    />
 
     {vehicles.map((vehicle) => (
       <div className="single-vehicle-inventory-container">
