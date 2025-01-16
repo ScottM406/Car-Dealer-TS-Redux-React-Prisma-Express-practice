@@ -31,6 +31,7 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
       </select>
       <label>Model:</label>
       <select onChange={(e) => setSelectedModel(e.target.value)}>
+        <option>Select Model</option>
         {fileteredModels.map((model) => (
           <option key={model.name}>{model.name}</option>
         ))}
