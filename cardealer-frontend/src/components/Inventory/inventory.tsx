@@ -40,7 +40,7 @@ const Inventory: React.FC = () => {
         features={vehicle.features}
         price={vehicle.price}
         />
-        
+
       </div>
     ))}
     </>
