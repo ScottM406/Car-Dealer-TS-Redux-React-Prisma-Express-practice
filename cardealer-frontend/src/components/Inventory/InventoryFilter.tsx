@@ -1,11 +1,16 @@
 import { AppDispatch, RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux"; 
-import { useState } from "react";
 import { getMakes } from "../../state/makesSlice";
+import { Dispatch, SetStateAction } from "react";
 
-const InventoryFilter = () => {
-  const [selectedMake, setSelectedMake] = useState("")
-  const [selectedModel, setSelectedModel] = useState("")
+interface InventoryFilterProps {
+  selectedMake: string
+  setSelectedMake: Dispatch<SetStateAction<string>>
+  selectedModel: string
+  setSelectedModel: Dispatch<SetStateAction<string>>
+  }
+
+const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSelectedMake, selectedModel, setSelectedModel }) => {
 
   const makes = useSelector((state: RootState) => state.makes)
   const dispatch = useDispatch<AppDispatch>();
@@ -35,14 +40,3 @@ const InventoryFilter = () => {
 }
 
 export default InventoryFilter
-
-//OLD CODE
-
-  // const createMakesSelector = () => {
-  //   useEffect(() => {
-  //     dispatch(getMakes());
-  //   }, [])
-
-  // }
-  
-  // console.log(createMakesSelector())
