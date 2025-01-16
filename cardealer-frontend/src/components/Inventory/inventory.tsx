@@ -29,9 +29,8 @@ const Inventory: React.FC = () => {
     />
 
     {vehicles.map((vehicle) => (
-      <div className="single-vehicle-inventory-container">
+      <div key={vehicle.id} className="single-vehicle-inventory-container">
         <VehiclePopover
-        key={vehicle.id} 
         id={vehicle.id}
         headline={vehicle.headline}
         description={vehicle.description}
