@@ -10,7 +10,10 @@ const Inventory: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<string>("")
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
-  console.log(vehicles);
+  const filteredVehiclesByModel = selectedModel
+    ? vehicles.filter((vehicle) => vehicle.modelName === selectedModel)
+    : vehicles;
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -28,7 +31,7 @@ const Inventory: React.FC = () => {
     setSelectedModel={setSelectedModel}
     />
 
-    {vehicles.map((vehicle) => (
+    {filteredVehiclesByModel.map((vehicle) => (
       <div key={vehicle.id} className="single-vehicle-inventory-container">
         <VehiclePopover
         id={vehicle.id}

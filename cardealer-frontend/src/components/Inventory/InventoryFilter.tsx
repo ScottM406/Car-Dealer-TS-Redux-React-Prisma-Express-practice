@@ -16,9 +16,6 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
   const dispatch = useDispatch<AppDispatch>();
   const fileteredModels = makes.find((make) => make.name === selectedMake)?.models || [];
 
-  console.log(selectedMake);
-  console.log(selectedModel)
-
   return (
     <form>
       <h4>Filter Vehicles</h4>
@@ -31,6 +28,7 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
       </select>
       <label>Model:</label>
       <select onChange={(e) => setSelectedModel(e.target.value)}>
+        <option>Select Model</option>
         {fileteredModels.map((model) => (
           <option key={model.name}>{model.name}</option>
         ))}
