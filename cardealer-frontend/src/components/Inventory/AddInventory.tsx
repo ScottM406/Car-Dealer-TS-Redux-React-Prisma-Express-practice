@@ -8,12 +8,10 @@ const AddInventory = () => {
   const dispatch = useDispatch<AppDispatch>();
   const addInventoryState = useSelector((state: RootState) => state.addInventory);
   const makes = useSelector((state: RootState) => state.makes)
-  console.log(makes)
-  console.log(addInventoryState);
 
-    useEffect(() => {
-      dispatch(getMakes());
-    }, [])
+  useEffect(() => {
+    dispatch(getMakes());
+  }, [])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
