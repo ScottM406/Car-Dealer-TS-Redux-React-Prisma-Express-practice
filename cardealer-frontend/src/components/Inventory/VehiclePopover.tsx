@@ -23,7 +23,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const popover = new Popover(popoverRef.current!, {
+    const popover = new Popover(popoverRef.current as Element, {
       trigger: 'manual',
       delay: { show: 750, hide: 0},
       html: true,
