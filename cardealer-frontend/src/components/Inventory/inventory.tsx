@@ -9,7 +9,7 @@ const Inventory: React.FC = () => {
   const [selectedMake, setSelectedMake] = useState<string>("")
   const [selectedModel, setSelectedModel] = useState<string>("")
   const [selectedMinPrice, setSelectedMinPrice] = useState<number>(0);
-  const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(0);
+  const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(99999999);
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
   const filteredVehiclesByModel = selectedModel
@@ -37,7 +37,8 @@ const Inventory: React.FC = () => {
     setSelectedMaxPrice={setSelectedMaxPrice}
     />
 
-    {filteredVehiclesByModel.map((vehicle) => (
+    {filteredVehiclesByModel.filter((vehicle) => ( 
+      vehicle.price >= selectedMinPrice && vehicle.price <= selectedMaxPrice)).map((vehicle) => (
       <div key={vehicle.id} className="single-vehicle-inventory-container">
         <VehiclePopover
         id={vehicle.id}
