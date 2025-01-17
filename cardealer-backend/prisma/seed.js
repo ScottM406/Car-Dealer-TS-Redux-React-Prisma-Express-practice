@@ -17,6 +17,7 @@ const seed = async () => {
     });
   }
 
+const allMakes = await prisma.make.findMany();  
 const allModels = await prisma.model.findMany();
 
 const testCars = [
@@ -31,6 +32,7 @@ const testCars = [
     color: "Black",
     MPG_city: 16,
     MPG_highway: 25,
+    makeName: allMakes[2].name,
     modelName: allModels[56].name,
     features: [
       "ZR1 Package",
@@ -74,7 +76,8 @@ const testCars = [
     color: "Red",
     MPG_city: 13,
     MPG_highway: 22,
-    modelName: allModels[118].name,
+    makeName: allMakes[4].name,
+    modelName: allModels[127].name,
     features: [
       "SRT Hellcat Package",
       "Advanced Infotainment System",
