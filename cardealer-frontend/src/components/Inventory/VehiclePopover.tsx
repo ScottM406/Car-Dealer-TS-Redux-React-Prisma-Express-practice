@@ -42,6 +42,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
             <p>Engine: ${engine}</p>
             <p>Color: ${color}</p>
             <p>MPG: ${MPG_city}/${MPG_highway}</p>
+            <p>Make: ${makeName}</p>
             <p>Model: ${modelName}</p>
             <p>Features: ${features}</p>
             <p>${description}</p>
