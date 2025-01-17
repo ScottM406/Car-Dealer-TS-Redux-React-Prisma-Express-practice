@@ -26,6 +26,7 @@ model Make {
   name String @id
   description String
   models Model[]
+  cars_on_lot CarsOnLot[]
 }
 
 model Model {
@@ -48,6 +49,8 @@ model CarsOnLot {
   color String
   MPG_city Int
   MPG_highway Int
+  make Make? @relation(fields: [makeName], references: [name])
+  makeName String?
   model Model? @relation(fields: [modelName], references: [name])
   modelName String?
   features String[]
