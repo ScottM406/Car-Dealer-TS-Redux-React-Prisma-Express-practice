@@ -13,16 +13,17 @@ interface VehicleProps {
   color: string
   MPG_city: number
   MPG_highway: number
+  makeName: string
   modelName: string
   features: any
   price: number
 }
 
-const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, modelName, features, price}) => {
+const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const popover = new Popover(popoverRef.current!, {
+    const popover = new Popover(popoverRef.current as Element, {
       trigger: 'manual',
       delay: { show: 750, hide: 0},
       html: true,
@@ -41,6 +42,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
             <p>Engine: ${engine}</p>
             <p>Color: ${color}</p>
             <p>MPG: ${MPG_city}/${MPG_highway}</p>
+            <p>Make: ${makeName}</p>
             <p>Model: ${modelName}</p>
             <p>Features: ${features}</p>
             <p>${description}</p>

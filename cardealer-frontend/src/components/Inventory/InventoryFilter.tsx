@@ -20,9 +20,6 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
   const dispatch = useDispatch<AppDispatch>();
   const fileteredModels = makes.find((make) => make.name === selectedMake)?.models || [];
 
-  console.log(selectedMinPrice);
-  console.log(selectedMaxPrice);
-
   return (
     <form>
       <h4>Filter Vehicles</h4>
