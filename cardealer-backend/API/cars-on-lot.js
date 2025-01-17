@@ -39,6 +39,7 @@ router.post("/", async (req, res, next) => {
         color,
         MPG_city: Number(MPG_city),
         MPG_highway: Number(MPG_highway),
+        makeName,
         modelName,
         features,
         price: Number(price)
