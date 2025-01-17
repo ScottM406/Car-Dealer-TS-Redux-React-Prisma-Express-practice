@@ -25,7 +25,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, modelName, features, price } = req.body;
+  const { headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price } = req.body;
   try {
     const newCar = await prisma.carsOnLot.create({
       data: {
