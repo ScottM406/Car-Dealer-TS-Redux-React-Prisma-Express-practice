@@ -11,7 +11,7 @@ interface AddInverntoryState {
   color: string;
   MPG_city: number;
   MPG_highway: number;
-  make: string
+  makeName: string
   modelName: string;
   features: string;
   price: number;
@@ -28,7 +28,7 @@ export const initialState: AddInverntoryState = {
   color: "",
   MPG_city: 0,
   MPG_highway: 0,
-  make: "",
+  makeName: "",
   modelName: "",
   features: "",
   price: 0

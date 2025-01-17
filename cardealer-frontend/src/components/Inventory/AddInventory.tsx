@@ -26,7 +26,7 @@ const AddInventory = () => {
     })
   };
 
-  const filteredModels = makes.find((make) => make.name === addInventoryState.make)?.models || [];
+  const filteredModels = makes.find((make) => make.name === addInventoryState.makeName)?.models || [];
 
   const addCartoInventory = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -151,7 +151,7 @@ const AddInventory = () => {
         onChange={handleInputChange}
         />
         <label>Make: </label>
-        <select name="make" onChange={handleInputChange} value={addInventoryState.make}>
+        <select name="makeName" onChange={handleInputChange} value={addInventoryState.makeName}>
           <option>Select Make</option>
           {makes.map((make) => (
             <option>{make.name}</option>
