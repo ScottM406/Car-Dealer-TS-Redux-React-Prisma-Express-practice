@@ -52,6 +52,7 @@ const Inventory: React.FC = () => {
         color={vehicle.color}
         MPG_city={vehicle.MPG_city}
         MPG_highway={vehicle.MPG_highway}
+        makeName={vehicle.makeName}
         modelName={vehicle.modelName}
         features={vehicle.features}
         price={vehicle.price}

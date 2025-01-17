@@ -13,12 +13,13 @@ interface VehicleProps {
   color: string
   MPG_city: number
   MPG_highway: number
+  makeName: string
   modelName: string
   features: any
   price: number
 }
 
-const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, modelName, features, price}) => {
+const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
