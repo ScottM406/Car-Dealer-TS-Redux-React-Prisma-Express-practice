@@ -8,13 +8,20 @@ interface InventoryFilterProps {
   setSelectedMake: Dispatch<SetStateAction<string>>
   selectedModel: string
   setSelectedModel: Dispatch<SetStateAction<string>>
+  selectedMinPrice: number
+  setSelectedMinPrice: Dispatch<SetStateAction<number>>
+  selectedMaxPrice: number
+  setSelectedMaxPrice: Dispatch<SetStateAction<number>>
   }
 
-const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSelectedMake, selectedModel, setSelectedModel }) => {
+const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSelectedMake, selectedModel, setSelectedModel, selectedMinPrice, selectedMaxPrice, setSelectedMinPrice, setSelectedMaxPrice }) => {
 
   const makes = useSelector((state: RootState) => state.makes)
   const dispatch = useDispatch<AppDispatch>();
   const fileteredModels = makes.find((make) => make.name === selectedMake)?.models || [];
+
+  console.log(selectedMinPrice);
+  console.log(selectedMaxPrice);
 
   return (
     <form>
@@ -33,6 +40,10 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
           <option key={model.name}>{model.name}</option>
         ))}
       </select>
+      <label>Price Range:</label>
+      <input type="number" value={selectedMinPrice} onChange={(e) => setSelectedMinPrice(Number(e.target.value))} />
+      <label>-</label>
+      <input type="number" value={selectedMaxPrice} onChange={(e) => setSelectedMaxPrice(Number(e.target.value))} />
     </form>
   )
 }

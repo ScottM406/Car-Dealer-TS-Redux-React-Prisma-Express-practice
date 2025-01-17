@@ -8,6 +8,8 @@ import InventoryFilter from "./InventoryFilter";
 const Inventory: React.FC = () => {
   const [selectedMake, setSelectedMake] = useState<string>("")
   const [selectedModel, setSelectedModel] = useState<string>("")
+  const [selectedMinPrice, setSelectedMinPrice] = useState<number>(0);
+  const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(0);
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
   const filteredVehiclesByModel = selectedModel
@@ -29,6 +31,10 @@ const Inventory: React.FC = () => {
     setSelectedMake={setSelectedMake}
     selectedModel={selectedModel}
     setSelectedModel={setSelectedModel}
+    selectedMinPrice={selectedMinPrice}
+    setSelectedMinPrice={setSelectedMinPrice}
+    selectedMaxPrice={selectedMaxPrice}
+    setSelectedMaxPrice={setSelectedMaxPrice}
     />
 
     {filteredVehiclesByModel.map((vehicle) => (
