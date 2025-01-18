@@ -12,6 +12,7 @@ import Account from "./components/Account";
 
 const App = () => {
   const [token, setToken] = useState<string>("");
+  const [userID, setUserID] = useState<number>(0)
   const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
 
   return (
@@ -21,9 +22,9 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/inventory" element={<Inventory/>} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login token={token} setToken={setToken} setIsSuperUser={setIsSuperUser}/>} />
+        <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser}/>} />
         <Route path="/addinventory" element={<ProtectedRoute component={AddInventory} isSuperUser={isSuperUser}/>} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/account" element={<Account userID={userID} token={token} />} />
       </Routes>
     </>
   )

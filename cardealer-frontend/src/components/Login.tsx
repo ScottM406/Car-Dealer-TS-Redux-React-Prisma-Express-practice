@@ -1,13 +1,14 @@
-import { FormEvent, useState, } from "react";
+import { Dispatch, FormEvent, SetStateAction, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
   token: string;
-  setToken: (value: string) => void;
+  setToken: Dispatch<SetStateAction<string>>
+  setUserID: Dispatch<SetStateAction<number>>
   setIsSuperUser: (value: boolean) => void;
 }
 
-const Login: React.FC<Props> = ({ token, setToken, setIsSuperUser }) => {
+const Login: React.FC<Props> = ({ token, setToken, setUserID, setIsSuperUser }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("")
 
@@ -35,6 +36,7 @@ const Login: React.FC<Props> = ({ token, setToken, setIsSuperUser }) => {
       const token = responseJSON.token;
       setIsSuperUser(responseJSON.isSuperUser);
       setToken(token);
+      setUserID(responseJSON.id)
 
     } catch(e: any) {
       alert(e.message || "Something has gone wrong. Please try again later.");
