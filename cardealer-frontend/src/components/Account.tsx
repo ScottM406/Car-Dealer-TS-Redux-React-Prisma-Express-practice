@@ -1,12 +1,22 @@
 import { useEffect } from "react"
 
-const Account: React.FC = () => {
+interface AccountProps {
+  userID: number
+  token: string
+}
+const Account: React.FC<AccountProps> = ({ userID, token }) => {
 
   useEffect(() => {
-   const getUserInfo = async () => {
-      const response = await fetch("https://localhost:3000/users:");
-      const userinfo = await response.json();
+    const getUserInfo = async () => {
+      const response = await fetch(`http://localhost:3000/users/${userID}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const userInfo = await response.json();
+      console.log(userInfo)
     }
+    getUserInfo();
   }, [])
 
   return (
