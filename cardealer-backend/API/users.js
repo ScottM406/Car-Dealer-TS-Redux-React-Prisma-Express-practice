@@ -1,5 +1,6 @@
 const express = require("express");
 const prisma = require("../prisma");
+const { authenticate } = require("./auth");
 
 const router = express.Router();
 
@@ -12,9 +13,12 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/id", async (req, res, next) => {
+router.get("/id", authenticate, async (req, res, next) => {
   const { id } = req.params;
   try {
+    if (req.user.id !== Number(id)) {
+      return res.status(403).json("You are forbidden from accessing this.")
+    }
     const user = await prisma.user.findUniqueOrThrow({
       where: { id: Number(id) }
     });
