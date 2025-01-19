@@ -18,7 +18,15 @@ model User {
   email String @unique
   password String
   isSuperUser Boolean @default(false)
-  watchlist CarsOnLot[]
+  watchlist Watchlist?
+}
+
+model Watchlist {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userID], references: [id])
+  userID Int @unique
+  cars CarsOnLot[]
+
 }
 
 model Make {
@@ -56,6 +64,6 @@ model CarsOnLot {
   features String[]
 
   price Int
-  watchlists User? @relation(fields: [userId], references: [id])
+  watchlists Watchlist? @relation(fields: [userId], references: [id])
   userId Int?
 }
