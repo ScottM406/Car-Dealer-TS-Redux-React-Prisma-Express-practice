@@ -13,6 +13,7 @@ app.use(require("./API/auth").router);
 app.use("/cars-on-lot", require("./API/cars-on-lot"));
 app.use("/makes", require("./API/makes"));
 app.use("/users", require("./API/users"));
+app.use("/watchlists", require("./API/watchlist"));
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
