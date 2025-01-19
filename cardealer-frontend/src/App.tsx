@@ -7,7 +7,7 @@ import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import AddInventory from "./components/Inventory/AddInventory";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Inventory from "./components/Inventory/Inventory";
+import Inventory from "./components/Inventory/Inventory.tsx";
 import Account from "./components/Account";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
     <NavBar token={token} isSuperUser={isSuperUser}/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/inventory" element={<Inventory/>} />
+        <Route path="/inventory" element={<Inventory token={token} userID={userID} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser}/>} />
         <Route path="/addinventory" element={<ProtectedRoute component={AddInventory} isSuperUser={isSuperUser}/>} />
