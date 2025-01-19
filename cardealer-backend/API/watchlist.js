@@ -6,12 +6,12 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
   const { userID, carID } = req.body;
   try {
-    console.log(prisma.watchlist);
+
     watchlist = await prisma.watchlist.create({
       data: {
         userID: userID,
         cars: {
-          connect: { id: carID }
+          connect: [{ id: carID }]
         }
       }
     });
