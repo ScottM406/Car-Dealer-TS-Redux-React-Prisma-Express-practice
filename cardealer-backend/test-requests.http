@@ -32,10 +32,8 @@ POST {{host}}/watchlists
 Content-Type: application/json
 
 {
-  "userID": 1,
-  "cars": {
-    "id": 1
-  }
+  "userID": 2,
+  "carID": 2
 }
 
 ### CREATE NEW CAR ON LOT
