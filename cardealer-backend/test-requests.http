@@ -27,6 +27,17 @@ GET {{host}}/cars-on-lot
 ### GET SPECIFIC CAR ON LOT
 GET {{host}}/cars-on-lot/1
 
+### CREATE WATCHLIST (ADD FIRST CAR TO WATCHLIST)
+POST {{host}}/watchlists
+Content-Type: application/json
+
+{
+  "userID": 1,
+  "cars": {
+    "id": 1
+  }
+}
+
 ### CREATE NEW CAR ON LOT
 POST {{host}}/cars-on-lot
 Content-Type: application/json
