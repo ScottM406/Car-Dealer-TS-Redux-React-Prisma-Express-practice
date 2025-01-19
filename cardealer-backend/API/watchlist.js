@@ -3,19 +3,19 @@ const prisma = require("../prisma");
 
 const router = express.Router();
 
-router.post("/", (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const { userID, carID } = req.body;
-  try{
-    watchlist = prisma.watchlist.create({
+  try {
+    console.log(prisma.watchlist);
+    watchlist = await prisma.watchlist.create({
       data: {
         userID: userID,
         cars: {
-          data: {
-            id: carID
-          }
+          connect: { id: carID }
         }
       }
-    })
+    });
+    res.status(201).json(watchlist);
   } catch(e) {
     next(e);
   }
