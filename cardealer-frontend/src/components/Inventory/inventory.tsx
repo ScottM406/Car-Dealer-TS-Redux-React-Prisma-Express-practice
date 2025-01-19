@@ -5,7 +5,12 @@ import { useEffect, useState } from "react";
 import VehiclePopover from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
 
-const Inventory: React.FC = () => {
+interface Props {
+  token: string
+  userID: number
+}
+
+const Inventory: React.FC<Props> = ({ token, userID }) => {
   const [selectedMake, setSelectedMake] = useState<string>("")
   const [selectedModel, setSelectedModel] = useState<string>("")
   const [selectedMinPrice, setSelectedMinPrice] = useState<number>(0);
@@ -57,6 +62,8 @@ const Inventory: React.FC = () => {
         modelName={vehicle.modelName}
         features={vehicle.features}
         price={vehicle.price}
+        token={token}
+        userID={userID}
         />
 
       </div>

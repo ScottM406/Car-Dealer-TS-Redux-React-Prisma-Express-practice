@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { Popover } from 'bootstrap';
 
+interface UserProps {
+  token: string
+  userID: number
+}
+
 interface VehicleProps {
   id: number;
   headline: string
@@ -19,7 +24,7 @@ interface VehicleProps {
   price: number
 }
 
-const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
+const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -71,6 +76,7 @@ const VehiclePopover: React.FC<VehicleProps> = ({ id, headline, description, ima
       <img src={image} style={{ width:"95%", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
+      <button>Add To Watchlist</button>
     </div>
   )
 
