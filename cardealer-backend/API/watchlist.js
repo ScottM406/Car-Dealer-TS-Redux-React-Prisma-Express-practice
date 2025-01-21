@@ -7,18 +7,37 @@ router.post("/", async (req, res, next) => {
   const { userID, carID } = req.body;
   try {
 
-    watchlist = await prisma.watchlist.create({
+    const watchlist = await prisma.watchlist.create({
       data: {
         userID: userID,
-        cars: {
-          connect: [{ id: carID }]
-        }
       }
     });
+
+    await prisma.watchlistCarsOnLot.create({
+      data: {
+        watchlistID: watchlist.id,
+        carsOnLotID: carID
+      }
+    })
     res.status(201).json(watchlist);
   } catch(e) {
     next(e);
   }
 });
 
+router.post("/:id", async (req,res,next) => {
+  const { id } = req.params;
+  const { carID } = req.body;
+  try {
+    const addedCar = await prisma.watchlistCarsOnLot.create({
+      data: {
+        watchlistID: Number(id),
+        carsOnLotID: carID
+      }
+    });
+    res.status(201).json(addedCar);
+  } catch(e) {
+    next(e);
+  }
+})
 module.exports = router;

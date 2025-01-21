@@ -25,7 +25,7 @@ model Watchlist {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userID], references: [id])
   userID Int @unique
-  cars CarsOnLot[]
+  cars WatchlistCarsOnLot[]
 
 }
 
@@ -62,8 +62,16 @@ model CarsOnLot {
   model Model? @relation(fields: [modelName], references: [name])
   modelName String?
   features String[]
-
   price Int
-  watchlists Watchlist? @relation(fields: [watchlistID], references: [id])
-  watchlistID Int?
+  watchlists WatchlistCarsOnLot[]
+  
+}
+
+model WatchlistCarsOnLot {
+  watchlistID Int
+  carsOnLotID Int
+  Watchlist Watchlist @relation(fields: [watchlistID], references: [id], onDelete: Cascade)
+  CarsOnLot CarsOnLot @relation(fields: [carsOnLotID], references: [id], onDelete: Cascade)
+
+  @@id([watchlistID, carsOnLotID])
 }

@@ -36,6 +36,14 @@ Content-Type: application/json
   "carID": 2
 }
 
+### ADD CAR TO WATCHLIST
+POST {{host}}/watchlists/5
+Content-Type: application/json
+
+{
+  "carID": 3
+}
+
 ### CREATE NEW CAR ON LOT
 POST {{host}}/cars-on-lot
 Content-Type: application/json
