@@ -44,6 +44,9 @@ Content-Type: application/json
   "carID": 3
 }
 
+### GET SPECIFIC WATCHLIST
+GET {{host}}/watchlists/5
+
 ### CREATE NEW CAR ON LOT
 POST {{host}}/cars-on-lot
 Content-Type: application/json
