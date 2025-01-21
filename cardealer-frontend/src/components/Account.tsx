@@ -36,8 +36,6 @@ const Account: React.FC<AccountProps> = ({ userID, token }) => {
     getWatchlist();
   }, [userInfo])
 
-  console.log(watchlist)
-
   return (
     <>
       <h2>{userInfo?.email}</h2>
