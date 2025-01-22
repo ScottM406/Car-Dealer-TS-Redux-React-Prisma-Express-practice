@@ -1,21 +1,73 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 $theme-colors: (
-  "primary": rgba(243, 243, 243, 0.87),
-  "popover": blanchedalmond,
-  "success": rgb(110, 206, 142),
+  "primary": rgb(240, 231, 218),
+  "secondary": rgba(181, 222, 223, 0.644),
+  "popover": rgb(238, 225, 205)
 );
 
 body {
   background-color: map-get($theme-colors, "primary");
+  font-family: 'Monaco'
 }
 
+#navbar {
+  display: flex;
+  justify-content: center;
+  background-color: map-get($map: $theme-colors, $key: "secondary");
+  height: 50px;
+  border-bottom: 2px black solid;
+  a {
+    margin: 0 5% 0 5%;
+    font-size: 28px;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+#inventory-body {
+  margin: 2% 2.5% 0 2.5%;
+  h2 {
+    margin-top: 2.5%;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+#inventory-filter {
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+.site-banner {
+  display: block;
+  width: 55%;
+  max-width: 1200px;
+  height: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+}
+
+.single-vehicle-inventory-container {
+  width: 500px;
+  background-color: map-get($map: $theme-colors, $key: "secondary");
+  float: left;
+  padding: 12px;
+  padding-left: 34px;
+  margin: 4px;
+  border: 2px solid black;
+  cursor: pointer;
+}
 
 .popover {
   background-color: map-get($theme-colors, "popover");
   border: 2px solid black;
   padding-left: 400px;
   padding-right: 420px;
+
   .vehicle-popover-container .vehicle-popover-header {
     display: flex;
     flex-direction: column;
@@ -23,6 +75,7 @@ body {
     white-space: nowrap;
     align-items: center;
   }
+
   .vehicle-popover-container {
     background-color: map-get($theme-colors, "popover");
     border-color: map-get($theme-colors, "popover");
@@ -30,18 +83,9 @@ body {
     flex-direction: column;
     align-items: center;
   }
+
   img {
     width: 750px;
     align-self: center;
   }
-}
-
-.single-vehicle-inventory-container {
-  width: 500px;
-  background-color: rgb(168, 166, 166);
-  float: left;
-  padding: 12px;
-  padding-left: 34px;
-  margin: 4px;
-  border: 2px solid black;
 }
