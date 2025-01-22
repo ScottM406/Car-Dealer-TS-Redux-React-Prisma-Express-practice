@@ -2,38 +2,13 @@
 
 $theme-colors: (
   "primary": rgb(240, 231, 218),
-  "secondary": rgb(181, 222, 223),
-  "popover": blanchedalmond,
+  "secondary": rgba(181, 222, 223, 0.644),
+  "popover": rgb(238, 225, 205)
 );
 
 body {
   background-color: map-get($theme-colors, "primary");
-}
-
-
-.popover {
-  background-color: map-get($theme-colors, "popover");
-  border: 2px solid black;
-  padding-left: 400px;
-  padding-right: 420px;
-  .vehicle-popover-container .vehicle-popover-header {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    white-space: nowrap;
-    align-items: center;
-  }
-  .vehicle-popover-container {
-    background-color: map-get($theme-colors, "popover");
-    border-color: map-get($theme-colors, "popover");
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  img {
-    width: 750px;
-    align-self: center;
-  }
+  font-family: 'Monaco'
 }
 
 #navbar {
@@ -50,6 +25,32 @@ body {
   }
 }
 
+#inventory-body {
+  margin: 2% 2.5% 0 2.5%;
+  h2 {
+    margin-top: 2.5%;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+#inventory-filter {
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+.site-banner {
+  display: block;
+  width: 55%;
+  max-width: 1200px;
+  height: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+}
+
 .single-vehicle-inventory-container {
   width: 500px;
   background-color: map-get($map: $theme-colors, $key: "secondary");
@@ -58,4 +59,33 @@ body {
   padding-left: 34px;
   margin: 4px;
   border: 2px solid black;
+  cursor: pointer;
+}
+
+.popover {
+  background-color: map-get($theme-colors, "popover");
+  border: 2px solid black;
+  padding-left: 400px;
+  padding-right: 420px;
+
+  .vehicle-popover-container .vehicle-popover-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    white-space: nowrap;
+    align-items: center;
+  }
+
+  .vehicle-popover-container {
+    background-color: map-get($theme-colors, "popover");
+    border-color: map-get($theme-colors, "popover");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    width: 750px;
+    align-self: center;
+  }
 }

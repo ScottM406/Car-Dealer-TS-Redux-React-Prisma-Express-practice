@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import VehiclePopover from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
+// import "../../assets/banner-full-image3.jpeg"
 
 interface Props {
   token: string
@@ -30,45 +31,48 @@ const Inventory: React.FC<Props> = ({ token, userID }) => {
   }, [])
 
   return (
-    <>
-    <h2>Vehicles for Sale</h2>
-    <p>Click on vehicle for more details.</p>
-    <InventoryFilter
-    selectedMake={selectedMake}
-    setSelectedMake={setSelectedMake}
-    selectedModel={selectedModel}
-    setSelectedModel={setSelectedModel}
-    selectedMinPrice={selectedMinPrice}
-    setSelectedMinPrice={setSelectedMinPrice}
-    selectedMaxPrice={selectedMaxPrice}
-    setSelectedMaxPrice={setSelectedMaxPrice}
-    />
-
-    {filteredVehicles.map((vehicle) => (
-      <div key={vehicle.id} className="single-vehicle-inventory-container">
-        <VehiclePopover
-        id={vehicle.id}
-        headline={vehicle.headline}
-        description={vehicle.description}
-        image={vehicle.image}
-        year={vehicle.year}
-        miles={vehicle.miles}
-        drivetrain={vehicle.drivetrain}
-        engine={vehicle.engine}
-        color={vehicle.color}
-        MPG_city={vehicle.MPG_city}
-        MPG_highway={vehicle.MPG_highway}
-        makeName={vehicle.makeName}
-        modelName={vehicle.modelName}
-        features={vehicle.features}
-        price={vehicle.price}
-        token={token}
-        userID={userID}
+    <div id="inventory-body">
+      <img className="site-banner" src=" src/assets/banner-full-image2.jpeg" alt="Grand Avenue Auto Gallery site banner" />
+      <h2>Vehicles for Sale</h2>
+      <p>Click on vehicle for more details.</p>
+      <div id="inventory-filter">
+        <InventoryFilter
+        selectedMake={selectedMake}
+        setSelectedMake={setSelectedMake}
+        selectedModel={selectedModel}
+        setSelectedModel={setSelectedModel}
+        selectedMinPrice={selectedMinPrice}
+        setSelectedMinPrice={setSelectedMinPrice}
+        selectedMaxPrice={selectedMaxPrice}
+        setSelectedMaxPrice={setSelectedMaxPrice}
         />
-
       </div>
+
+      {filteredVehicles.map((vehicle) => (
+        <div key={vehicle.id} className="single-vehicle-inventory-container">
+          <VehiclePopover
+          id={vehicle.id}
+          headline={vehicle.headline}
+          description={vehicle.description}
+          image={vehicle.image}
+          year={vehicle.year}
+          miles={vehicle.miles}
+          drivetrain={vehicle.drivetrain}
+          engine={vehicle.engine}
+          color={vehicle.color}
+          MPG_city={vehicle.MPG_city}
+          MPG_highway={vehicle.MPG_highway}
+          makeName={vehicle.makeName}
+          modelName={vehicle.modelName}
+          features={vehicle.features}
+          price={vehicle.price}
+          token={token}
+          userID={userID}
+          />
+
+        </div>
     ))}
-    </>
+    </div>
   )
 }
 
