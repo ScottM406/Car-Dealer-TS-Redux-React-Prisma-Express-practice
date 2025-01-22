@@ -8,7 +8,7 @@ interface Props {
 const NavBar: React.FC<Props> = ({ token, isSuperUser }) => {
 
   return (
-    <>
+    <div id="navbar">
       <Link to="/">Home</Link>
       <Link to="/inventory">View Inventory</Link>
       {token && <Link to="/account">My Account</Link>}
@@ -20,7 +20,7 @@ const NavBar: React.FC<Props> = ({ token, isSuperUser }) => {
         <Link to="/addinventory">Add Inventory</Link>
         </div>
       )}
-    </>
+    </div>
   )
 }
 
