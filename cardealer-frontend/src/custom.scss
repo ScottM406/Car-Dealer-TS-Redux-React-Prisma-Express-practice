@@ -49,15 +49,16 @@ body {
 #site-banner {
   background-image: url("./assets/banner-background.jpg");
   background-size: cover;
-  height: 282.22px;
+  height: 284px;
   z-index: 0;
 }
 
 #site-banner::before {
   content: "";
-  height: 282.22px;
+  height: 284px;
   width: 100%;
   background-color: rgb(170, 214, 212);
+  border-bottom: 3px black solid;
   opacity: 80%;
   position: absolute;
   z-index: 1;
