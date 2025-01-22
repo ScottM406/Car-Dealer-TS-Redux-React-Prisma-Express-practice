@@ -2,7 +2,7 @@
 
 $theme-colors: (
   "background": rgb(240, 231, 218),
-  "primary": rgba(151, 188, 189, 0.644),
+  "primary": rgba(99, 183, 185, 0.644),
   "secondary": rgba(201, 236, 236, 0.438),
   "popover": rgb(238, 225, 205)
 );
@@ -23,6 +23,10 @@ body {
     font-size: 20px;
     text-decoration: none;
     color: black;
+  }
+  #admin-toolkit-link {
+    color: firebrick;
+    font-weight: 900;
   }
 }
 
