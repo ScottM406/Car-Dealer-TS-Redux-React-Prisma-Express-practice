@@ -2,7 +2,7 @@
 
 $theme-colors: (
   "background": rgb(240, 231, 218),
-  "primary": rgba(99, 183, 185, 0.644),
+  "primary": rgba(74, 187, 189, 0.644),
   "secondary": rgba(201, 236, 236, 0.438),
   "popover": rgb(238, 225, 205)
 );
@@ -49,15 +49,16 @@ body {
 #site-banner {
   background-image: url("./assets/banner-background.jpg");
   background-size: cover;
-  height: 282.22px;
+  height: 284px;
   z-index: 0;
 }
 
 #site-banner::before {
   content: "";
-  height: 282.22px;
+  height: 284px;
   width: 100%;
   background-color: rgb(170, 214, 212);
+  border-bottom: 3px black solid;
   opacity: 80%;
   position: absolute;
   z-index: 1;
@@ -73,6 +74,39 @@ body {
   border: 2px solid black;
   position: relative;
   z-index: 2;
+}
+
+#add-inventory-block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 40px auto;
+  width: 800px;
+  border: 3px outset black;
+  padding-bottom: 40px;
+  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    #add-inventory-headline-input {
+      width: 400px;
+    }
+    #add-inventory-description-input {
+      width: 400px;
+      height: 150px;
+    }
+  }
+  form > * {
+    margin-top: 3px;
+    width: 200px;
+  }
+  form > button {
+    margin-top: 20px;
+    background-color: green;
+  }
 }
 
 .single-vehicle-inventory-container {

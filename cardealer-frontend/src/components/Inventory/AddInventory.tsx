@@ -55,25 +55,16 @@ const AddInventory = () => {
 };
 
   return (
-    <>
+    <div id="add-inventory-block">
       <h2>Add Vehicle to Inventory</h2>
       <form onSubmit={addCartoInventory}>
         <label htmlFor="headline">Headline: </label>
-        <input 
+        <input
+        id="add-inventory-headline-input" 
         type= "text"
         name= "headline"
-        placeholder= "headline"
         required
         value={addInventoryState.headline}
-        onChange={handleInputChange}
-        />
-        <label htmlFor="description">Description: </label>
-        <input
-        type= "text"
-        placeholder= "description"
-        name= "description"
-        required
-        value={addInventoryState.description}
         onChange={handleInputChange}
         />
         <label htmlFor="image">Image: </label>
@@ -159,8 +150,8 @@ const AddInventory = () => {
         <select name="modelName" onChange={handleInputChange} value={addInventoryState.modelName}>
           <option>Select Model</option>
           {filteredModels.map((model: any) => (
-              <option key={model.id}>{model.name}</option>
-            ))};
+            <option key={model.id}>{model.name}</option>
+          ))};
         </select>
         <label htmlFor="features">Features: </label>
         <input
@@ -180,9 +171,18 @@ const AddInventory = () => {
         value={addInventoryState.price}
         onChange={handleInputChange}
         />
+        <label htmlFor="description">Description: </label>
+        <input
+        id="add-inventory-description-input"
+        type= "text"
+        name= "description"
+        required
+        value={addInventoryState.description}
+        onChange={handleInputChange}
+        />
         <button type="submit">Add Vehicle</button>
       </form>
-    </>
+    </div>
   )
 }
 
