@@ -32,7 +32,6 @@ const Inventory: React.FC<Props> = ({ token, userID }) => {
 
   return (
     <div id="inventory-body">
-      <img className="site-banner" src=" src/assets/banner-full-image2.jpeg" alt="Grand Avenue Auto Gallery site banner" />
       <h2>Vehicles for Sale</h2>
       <p>Click on vehicle for more details.</p>
       <div id="inventory-filter">
