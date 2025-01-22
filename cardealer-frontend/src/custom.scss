@@ -1,25 +1,26 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 $theme-colors: (
-  "primary": rgb(240, 231, 218),
-  "secondary": rgba(181, 222, 223, 0.644),
+  "background": rgb(240, 231, 218),
+  "primary": rgba(151, 188, 189, 0.644),
+  "secondary": rgba(201, 236, 236, 0.438),
   "popover": rgb(238, 225, 205)
 );
 
 body {
-  background-color: map-get($theme-colors, "primary");
+  background-color: map-get($theme-colors, "background");
   font-family: 'Monaco'
 }
 
 #navbar {
   display: flex;
   justify-content: center;
-  background-color: map-get($map: $theme-colors, $key: "secondary");
-  height: 50px;
+  background-color: map-get($map: $theme-colors, $key: "primary");
+  height: 35px;
   border-bottom: 2px black solid;
   a {
     margin: 0 5% 0 5%;
-    font-size: 28px;
+    font-size: 20px;
     text-decoration: none;
     color: black;
   }
@@ -41,7 +42,24 @@ body {
   margin-bottom: 1%;
 }
 
-.site-banner {
+#site-banner {
+  background-image: url("./assets/banner-background.jpg");
+  background-size: cover;
+  height: 282.22px;
+  z-index: 0;
+}
+
+#site-banner::before {
+  content: "";
+  height: 282.22px;
+  width: 100%;
+  background-color: rgb(170, 214, 212);
+  opacity: 80%;
+  position: absolute;
+  z-index: 1;
+}
+
+#site-banner > img {
   display: block;
   width: 55%;
   max-width: 1200px;
@@ -49,6 +67,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   border: 2px solid black;
+  position: relative;
+  z-index: 2;
 }
 
 .single-vehicle-inventory-container {

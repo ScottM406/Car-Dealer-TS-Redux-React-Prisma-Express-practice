@@ -5,10 +5,11 @@ import NavBar from "./components/NavBar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
-import AddInventory from "./components/Inventory/AddInventory";
+import AddInventory from "./components/inventory/AddInventory.tsx";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Inventory from "./components/Inventory/Inventory.tsx";
+import Inventory from "./components/inventory/Inventory.tsx";
 import Account from "./components/Account";
+import Banner from "./components/Banner.tsx";
 
 const App = () => {
   const [token, setToken] = useState<string>("");
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <>
     <NavBar token={token} isSuperUser={isSuperUser}/>
+    <Banner />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/inventory" element={<Inventory token={token} userID={userID} />} />
