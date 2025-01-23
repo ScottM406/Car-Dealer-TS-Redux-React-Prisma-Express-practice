@@ -1,9 +1,10 @@
 const express = require("express");
 const prisma = require("../prisma");
+const { authenticate } = require("./auth")
 
 const router = express.Router();
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", authenticate, async (req, res, next) => {
   const { id } = req.params;
   try {
     const watchlist = await prisma.watchlist.findUniqueOrThrow({
@@ -44,7 +45,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.post("/:id", async (req,res,next) => {
+router.post("/:id", authenticate, async (req,res,next) => {
   const { id } = req.params;
   const { carID } = req.body;
   try {
