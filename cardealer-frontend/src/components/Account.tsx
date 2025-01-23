@@ -30,7 +30,11 @@ const Account: React.FC<AccountProps> = ({ userID, token }) => {
 
   useEffect(() => {
     const getWatchlist = async () => {
-      const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`)
+      const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       const responseJSON = await response.json();
       setWatchlist(responseJSON.cars)
     }
