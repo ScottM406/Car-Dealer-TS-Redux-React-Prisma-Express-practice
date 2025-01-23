@@ -11,8 +11,14 @@ import Inventory from "./components/inventory/Inventory.tsx";
 import Account from "./components/Account";
 import Banner from "./components/Banner.tsx";
 
+interface UserInfo {
+  email: string
+  watchlist:  { id: number, userID: number }
+}
+
 const App = () => {
   const [token, setToken] = useState<string>("");
+  const [userInfo, setUserInfo] =useState<UserInfo | null>(null)
   const [userID, setUserID] = useState<number>(0)
   const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
 
@@ -22,11 +28,11 @@ const App = () => {
     <Banner />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/inventory" element={<Inventory token={token} userID={userID} />} />
+        <Route path="/inventory" element={<Inventory userInfo={userInfo} token={token} userID={userID} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser}/>} />
         <Route path="/addinventory" element={<ProtectedRoute component={AddInventory} isSuperUser={isSuperUser}/>} />
-        <Route path="/account" element={<Account userID={userID} token={token} />} />
+        <Route path="/account" element={<Account userInfo={userInfo} setUserInfo={setUserInfo} userID={userID} token={token} />} />
       </Routes>
     </>
   )

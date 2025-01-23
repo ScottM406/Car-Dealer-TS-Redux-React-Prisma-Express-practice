@@ -1,7 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { Popover } from 'bootstrap';
 
+interface UserInfo {
+  email: string
+  watchlist:  { id: number, userID: number }
+}
+
 interface UserProps {
+  userInfo: UserInfo | null
   token: string
   userID: number
 }
@@ -70,6 +76,10 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ id, headline, desc
       }
     };
   }, []);
+
+  const addCartoWatchlist = async () => {
+    // response = await fetch("http://localhost:3000/watchlists")
+  }
 
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
