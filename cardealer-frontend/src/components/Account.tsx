@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import VehiclePopover from "./Inventory/VehiclePopover"
 
 interface AccountProps {
   userID: number
@@ -36,6 +37,8 @@ const Account: React.FC<AccountProps> = ({ userID, token }) => {
     getWatchlist();
   }, [userInfo])
 
+  console.log(watchlist)
+
   return (
     <>
     <section id="account-header-block">
@@ -44,10 +47,26 @@ const Account: React.FC<AccountProps> = ({ userID, token }) => {
     </section>
       <h2 id="watchlist-header">Watchlist</h2>
       {watchlist?.map((vehicle: any) => (
-        <div className="single-vehicle-inventory-container" key={vehicle.CarsOnLot.id}>
-          <img src={vehicle.CarsOnLot.image} style={{ width:"400px", height: "250px" }} />
-          <h5>{vehicle.CarsOnLot.headline}</h5>
-          <h4>${vehicle.CarsOnLot.price}</h4>
+        <div key={vehicle.CarsOnLot.id} className="single-vehicle-inventory-container">
+          <VehiclePopover
+          id={vehicle.CarsOnLot.id}
+          headline={vehicle.CarsOnLot.headline}
+          description={vehicle.CarsOnLot.description}
+          image={vehicle.CarsOnLot.image}
+          year={vehicle.CarsOnLot.year}
+          miles={vehicle.CarsOnLot.miles}
+          drivetrain={vehicle.CarsOnLot.drivetrain}
+          engine={vehicle.CarsOnLot.engine}
+          color={vehicle.CarsOnLot.color}
+          MPG_city={vehicle.CarsOnLot.MPG_city}
+          MPG_highway={vehicle.CarsOnLot.MPG_highway}
+          makeName={vehicle.CarsOnLot.makeName}
+          modelName={vehicle.CarsOnLot.modelName}
+          features={vehicle.CarsOnLot.features}
+          price={vehicle.CarsOnLot.price}
+          token={token}
+          userID={userID}
+          />
         </div>
       ))}
     </>
@@ -55,3 +74,4 @@ const Account: React.FC<AccountProps> = ({ userID, token }) => {
 }
 
 export default Account
+

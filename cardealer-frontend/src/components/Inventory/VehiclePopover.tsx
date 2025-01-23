@@ -8,7 +8,7 @@ interface UserProps {
 
 interface VehicleProps {
   id: number;
-  headline: string
+  headline: string;
   description: string
   image: string
   year: number
