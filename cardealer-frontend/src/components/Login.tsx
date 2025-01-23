@@ -50,7 +50,7 @@ const Login: React.FC<Props> = ({ token, setToken, setUserID, setIsSuperUser }) 
   }
 
   return (
-    <>
+    <div id="login-block">
     <h2>Please Login Below</h2>
       {token ? (
       <h3>Thank you for logging in, you will be redirected shortly.</h3>
@@ -73,7 +73,7 @@ const Login: React.FC<Props> = ({ token, setToken, setUserID, setIsSuperUser }) 
         <button type="submit">Log In</button>
       </form>
       )} 
-    </>
+    </div>
   )
 }
 
