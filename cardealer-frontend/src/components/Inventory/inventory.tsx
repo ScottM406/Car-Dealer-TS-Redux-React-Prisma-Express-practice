@@ -32,8 +32,10 @@ const Inventory: React.FC<Props> = ({ token, userID }) => {
 
   return (
     <div id="inventory-body">
-      <h2>Vehicles for Sale</h2>
-      <p>Click on vehicle for more details.</p>
+      <section id="inventory-header-block">
+        <h2>Vehicles for Sale</h2>
+        <p>Click on vehicle for more details.</p>
+      </section>
       <div id="inventory-filter">
         <InventoryFilter
         selectedMake={selectedMake}
