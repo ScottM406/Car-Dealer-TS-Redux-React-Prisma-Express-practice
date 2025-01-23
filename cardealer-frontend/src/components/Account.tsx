@@ -38,10 +38,13 @@ const Account: React.FC<AccountProps> = ({ userID, token }) => {
 
   return (
     <>
-      <h2>{userInfo?.email}</h2>
-      <h2>Watchlist</h2>
+    <section id="account-header-block">
+      <h2>Your Account</h2>
+      <p>{userInfo?.email}</p>
+    </section>
+      <h2 id="watchlist-header">Watchlist</h2>
       {watchlist?.map((vehicle: any) => (
-        <div key={vehicle.CarsOnLot.id}>
+        <div className="single-vehicle-inventory-container" key={vehicle.CarsOnLot.id}>
           <img src={vehicle.CarsOnLot.image} style={{ width:"400px", height: "250px" }} />
           <h5>{vehicle.CarsOnLot.headline}</h5>
           <h4>${vehicle.CarsOnLot.price}</h4>
