@@ -35,7 +35,7 @@ const Register = () => {
   };
 
   return (
-    <>
+    <div id="register-block">
       <h2>Please Register Below</h2>
       {token ? (
         <p>Thank you for registering. please click <Link to="/login">here</Link> to login.</p>
@@ -58,7 +58,7 @@ const Register = () => {
         <button type= "submit">Register</button>
       </form>
       )}
-    </>
+    </div>
   )
 }
 
