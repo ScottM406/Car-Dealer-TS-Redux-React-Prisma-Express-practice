@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, SetStateAction, Dispatch } from "react"
 import VehiclePopover from "./Inventory/VehiclePopover"
-
-interface AccountProps {
-  userID: number
-  token: string
-}
 
 interface UserInfo {
   email: string
   watchlist:  { id: number, userID: number }
 }
 
-const Account: React.FC<AccountProps> = ({ userID, token }) => {
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+interface AccountProps {
+  userInfo: UserInfo | null
+  setUserInfo: Dispatch<SetStateAction<UserInfo | null>>
+  userID: number
+  token: string
+}
+
+const Account: React.FC<AccountProps> = ({ userInfo, setUserInfo, userID, token }) => {
   const [watchlist, setWatchlist] = useState<Array<object> | null>(null);
 
   useEffect(() => {
@@ -70,6 +71,7 @@ const Account: React.FC<AccountProps> = ({ userID, token }) => {
           price={vehicle.CarsOnLot.price}
           token={token}
           userID={userID}
+          userInfo={userInfo}
           />
         </div>
       ))}

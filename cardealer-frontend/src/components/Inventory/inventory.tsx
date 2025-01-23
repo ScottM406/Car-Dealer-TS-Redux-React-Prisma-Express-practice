@@ -4,14 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import VehiclePopover from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
-// import "../../assets/banner-full-image3.jpeg"
+
+interface UserInfo {
+  email: string
+  watchlist: { id: number, userID: number }
+}
 
 interface Props {
   token: string
   userID: number
+  userInfo: UserInfo | null
 }
 
-const Inventory: React.FC<Props> = ({ token, userID }) => {
+const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const [selectedMake, setSelectedMake] = useState<string>("")
   const [selectedModel, setSelectedModel] = useState<string>("")
   const [selectedMinPrice, setSelectedMinPrice] = useState<number>(0);
@@ -69,6 +74,7 @@ const Inventory: React.FC<Props> = ({ token, userID }) => {
           price={vehicle.price}
           token={token}
           userID={userID}
+          userInfo={userInfo}
           />
 
         </div>
