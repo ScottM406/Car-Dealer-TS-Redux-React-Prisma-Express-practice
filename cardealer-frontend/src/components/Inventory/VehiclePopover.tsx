@@ -30,7 +30,7 @@ interface VehicleProps {
   price: number
 }
 
-const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
+const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,16 +77,36 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ id, headline, desc
     };
   }, []);
 
-  const addCartoWatchlist = async () => {
-    // response = await fetch("http://localhost:3000/watchlists")
+  const addCartoWatchlist = async (event: any) => {
+    try {
+      const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
+        method: "POST",
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          carID: id
+         })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+    } catch(e: any) {
+      alert(e.message || "Something has gone wrong. Please try again later");
   }
+  };
+
+  console.log(userInfo?.watchlist.id)
 
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
       <img src={image} style={{ width:"95%", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
-      <button>Add To Watchlist</button>
+      <button onClick={addCartoWatchlist}>Add To Watchlist</button>
     </div>
   )
 

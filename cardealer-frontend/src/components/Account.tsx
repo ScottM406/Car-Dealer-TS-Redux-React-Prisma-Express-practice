@@ -17,19 +17,6 @@ const Account: React.FC<AccountProps> = ({ userInfo, setUserInfo, userID, token 
   const [watchlist, setWatchlist] = useState<Array<object> | null>(null);
 
   useEffect(() => {
-    const getUserInfo = async () => {
-      const response = await fetch(`http://localhost:3000/users/${userID}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      const responseJSON = await response.json();
-      setUserInfo(responseJSON);
-    }
-    getUserInfo();
-  }, [])
-
-  useEffect(() => {
     const getWatchlist = async () => {
       const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
         headers: {

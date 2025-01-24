@@ -13,6 +13,7 @@ Content-Type: application/json
 }
 
 ### LOGIN
+# @name login
 POST {{host}}/login
 Content-Type: application/json
 
@@ -32,16 +33,18 @@ POST {{host}}/watchlists
 Content-Type: application/json
 
 {
-  "userID": 2,
+  "userID": 3,
   "carID": 2
 }
 
 ### ADD CAR TO WATCHLIST
-POST {{host}}/watchlists/5
+@token = {{login.response.body.token}}
+POST {{host}}/watchlists/8
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "carID": 3
+  "carID": 8
 }
 
 ### GET SPECIFIC WATCHLIST

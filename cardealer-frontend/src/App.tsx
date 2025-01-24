@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import 'bootstrap/dist/js/bootstrap.min.js';
 import NavBar from "./components/NavBar";
 import Register from "./components/Register";
@@ -21,6 +21,19 @@ const App = () => {
   const [userInfo, setUserInfo] =useState<UserInfo | null>(null)
   const [userID, setUserID] = useState<number>(0)
   const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      const response = await fetch(`http://localhost:3000/users/${userID}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const responseJSON = await response.json();
+      setUserInfo(responseJSON);
+    }
+    userID && getUserInfo();
+  }, [token, userID])
 
   return (
     <>
