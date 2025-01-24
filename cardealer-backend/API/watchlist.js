@@ -59,5 +59,6 @@ router.post("/:id", authenticate, async (req,res,next) => {
   } catch (e) {
     next(e);
   }
-})
+});
+
 module.exports = router;
