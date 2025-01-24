@@ -3,7 +3,7 @@ import { Popover } from 'bootstrap';
 
 interface UserInfo {
   email: string
-  watchlist:  { id: number, userID: number }
+  watchlist:  { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
 }
 
 interface UserProps {
@@ -32,6 +32,7 @@ interface VehicleProps {
 
 const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
   const popoverRef = useRef<HTMLDivElement>(null);
+  const watchlistCarIDs = new Set(userInfo?.watchlist.cars?.map(car => car.carsOnLotID));
 
   useEffect(() => {
     const popover = new Popover(popoverRef.current as Element, {
@@ -77,7 +78,7 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
     };
   }, []);
 
-  const addCartoWatchlist = async (event: any) => {
+  const addCartoWatchlist = async () => {
     try {
       const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
         method: "POST",
@@ -99,14 +100,16 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
   }
   };
 
-  console.log(userInfo?.watchlist.id)
-
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
       <img src={image} style={{ width:"95%", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
-      <button onClick={addCartoWatchlist}>Add To Watchlist</button>
+      {watchlistCarIDs.has(id) ?
+        <section className="watching-car-label">
+          <p>WATCHING</p> 
+        </section>
+        :<button onClick={addCartoWatchlist}>Add To Watchlist</button>}
     </div>
   )
 

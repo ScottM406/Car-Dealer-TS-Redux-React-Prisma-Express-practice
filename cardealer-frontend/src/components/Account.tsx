@@ -29,8 +29,6 @@ const Account: React.FC<AccountProps> = ({ userInfo, setUserInfo, userID, token 
     getWatchlist();
   }, [userInfo])
 
-  console.log(watchlist)
-
   return (
     <>
     <section id="account-header-block">

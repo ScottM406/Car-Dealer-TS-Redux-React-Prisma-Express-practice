@@ -33,7 +33,7 @@ const App = () => {
       setUserInfo(responseJSON);
     }
     userID && getUserInfo();
-  }, [token, userID])
+  }, [token, userID, userInfo])
 
   return (
     <>
