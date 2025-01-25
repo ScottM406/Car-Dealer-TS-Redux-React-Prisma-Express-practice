@@ -15,7 +15,7 @@ const NavBar: React.FC<Props> = ({ token, isSuperUser }) => {
       {!token && <Link to="/register">Register</Link>}
       {!token && <Link to="/login">Log In</Link>}
       {token && isSuperUser && (
-        <Link id="admin-toolkit-link" to="/addinventory">Admin Toolkit</Link>
+        <Link id="admin-toolkit-link" to="/admintoolkit">Admin Toolkit</Link>
       )}
     </div>
   )

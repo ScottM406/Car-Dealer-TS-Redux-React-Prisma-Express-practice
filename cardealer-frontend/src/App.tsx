@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
-import AddInventory from "./components/inventory/AddInventory.tsx";
+import AdminToolkit from "./components/admin-toolkit/AdminToolkit.tsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Inventory from "./components/inventory/Inventory.tsx";
 import Account from "./components/Account";
@@ -44,7 +44,7 @@ const App = () => {
         <Route path="/inventory" element={<Inventory userInfo={userInfo} token={token} userID={userID} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser}/>} />
-        <Route path="/addinventory" element={<ProtectedRoute component={AddInventory} isSuperUser={isSuperUser}/>} />
+        <Route path="/admintoolkit/*" element={<ProtectedRoute component={AdminToolkit} isSuperUser={isSuperUser}/>} />
         <Route path="/account" element={<Account userInfo={userInfo} setUserInfo={setUserInfo} userID={userID} token={token} />} />
       </Routes>
     </>
