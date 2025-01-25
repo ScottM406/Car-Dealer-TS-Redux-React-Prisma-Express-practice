@@ -30,6 +30,26 @@ body {
   }
 }
 
+#landing-page-main-block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  font-weight: 900;
+  > * {
+    margin: 20px 0 20px 0;
+  }
+  > img {
+    border: 2px solid black;
+  }
+  > p {
+    font-size: 18px;
+  }
+}
+
 #inventory-header-block {
   width: 800px;
   border: 3px outset black;
