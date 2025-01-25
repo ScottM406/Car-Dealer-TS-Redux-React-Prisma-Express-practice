@@ -10,7 +10,7 @@ const AdminToolkit = () => {
   return (
     <>
       <div id="admin-toolkit-block">
-        <h1>Admin Toolkit</h1>
+        <h1>Admin Tool Kit</h1>
         <Link to={`${basePath}/addinventory`}>Add Inventory</Link>
         <Link to={`${basePath}/addmake`}>Add Make</Link>
         <Link to={`${basePath}/addmodel`}>Add Model</Link>
