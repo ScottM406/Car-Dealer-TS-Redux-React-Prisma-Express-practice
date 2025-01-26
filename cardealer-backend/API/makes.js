@@ -14,4 +14,19 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.post("/", async (req, res, next) => {
+  const { name, description } = req.body;
+  try {
+    const newMake = await prisma.make.create({
+      data: {
+        name,
+        description 
+      },
+    });
+    res.status(201).json(newMake);
+  } catch(e) {
+    next(e);
+  }
+});
+
 module.exports = router
