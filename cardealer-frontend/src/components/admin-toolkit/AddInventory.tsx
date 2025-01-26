@@ -55,7 +55,7 @@ const AddInventory = () => {
 };
 
   return (
-    <div id="add-inventory-block">
+    <div className="add-inventory-block">
       <h2>Add Vehicle to Inventory</h2>
       <form onSubmit={addCartoInventory}>
         <label htmlFor="headline">Headline: </label>
@@ -173,7 +173,7 @@ const AddInventory = () => {
         />
         <label htmlFor="description">Description: </label>
         <input
-        id="add-inventory-description-input"
+        className="add-inventory-description-input"
         type= "text"
         name= "description"
         required

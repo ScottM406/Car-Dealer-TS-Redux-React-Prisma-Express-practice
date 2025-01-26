@@ -35,7 +35,7 @@ const AddMake = () => {
   };
 
   return (
-    <div id="add-inventory-block">
+    <div className="add-inventory-block">
       <h2>Add New Make to Database</h2>
       <form onSubmit={addMakeToDatabase}>
         <label>Make Name:</label>
@@ -45,7 +45,8 @@ const AddMake = () => {
         required
         />
         <label>Make Description:</label>
-        <input 
+        <input
+        className= "add-inventory-description-input"
         value={newMakeDescription}
         onChange={(event) => setNewMakeDescription(event.target.value)}
         required
