@@ -1,11 +1,14 @@
 import { Routes, Route, Link, useLocation } from "react-router-dom";
+import React, { useMemo } from "react";
 import AddInventory from "./AddInventory";
 import AddMake from "./AddMake";
 import AddModel from "./AddModel";
 
 const AdminToolkit = () => {
   const location = useLocation();
-  const basePath = location.pathname.split('/').slice(0, 2).join('/');
+  const basePath =  useMemo(() => {
+    return location.pathname.split('/').slice(0, 2).join('/');
+  }, [location.pathname]);
 
   return (
     <>
@@ -25,4 +28,4 @@ const AdminToolkit = () => {
   );
 };
 
-export default AdminToolkit;
+export default React.memo(AdminToolkit);
