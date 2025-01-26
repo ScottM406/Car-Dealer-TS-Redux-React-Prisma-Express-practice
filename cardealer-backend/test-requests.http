@@ -50,6 +50,15 @@ Content-Type: application/json
 ### GET SPECIFIC WATCHLIST
 GET {{host}}/watchlists/5
 
+### GREATE NEW MAKE
+POST {{host}}/makes
+Content-Type: application/json
+
+{
+  "name": "Porsche",
+  "description": "Porsche is a renowned German automobile brand celebrated for its high-performance sports cars, SUVs, and sedans all known for their engineering excellence, sleek designs, and unparalleled driving experiences. The brand has cultivated a reputation for merging luxury with cutting-edge technology, making it a favorite among car enthusiasts. Models like the iconic 911, the versatile Cayenne, and the dynamic Taycan showcase Porsche's commitment to innovation and automotive artistry."
+}
+
 ### CREATE NEW CAR ON LOT
 POST {{host}}/cars-on-lot
 Content-Type: application/json
