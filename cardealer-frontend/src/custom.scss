@@ -187,12 +187,38 @@ body {
   background-color: map-get($map: $theme-colors, $key: "secondary" );
   text-align: center;
   padding-bottom: 9px;
-  > a {
+  > a, div > a {
     margin: 0 5% 0 5%;
     font-size: 20px;
     color: firebrick;
     font-weight: 900;
     text-decoration: none;
+  }
+}
+
+#database-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  border: 3px outset black;
+  width: 800px;
+  margin: 40px auto;
+  h1 {
+    text-align: center;
+  }
+  section {
+    background-color: map-get($map: $theme-colors, $key: "primary");
+    width: 50%;
+    margin-top: 20px;
+    text-align: center;
+    border: 2px solid black;
+  }
+  h2 {
+    color: firebrick;
+  }
+  h3 {
+    font-size: 18px;
   }
 }
 
