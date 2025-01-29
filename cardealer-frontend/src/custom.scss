@@ -4,7 +4,10 @@ $theme-colors: (
   "background": rgba(214, 186, 147, 0.76),
   "primary": rgba(74, 187, 189, 0.644),
   "secondary": rgba(201, 236, 236, 0.438),
-  "popover": rgb(238, 225, 205)
+  "admin-text": firebrick,
+  "gold-text": goldenrod,
+  "popover": rgb(238, 225, 205),
+  "submit-button": rgb(4, 190, 4)
 );
 
 body {
@@ -25,7 +28,7 @@ body {
     color: black;
   }
   #admin-toolkit-link {
-    color: firebrick;
+    color: map-get($map: $theme-colors, $key: "admin-text" );
     font-weight: 900;
   }
 }
@@ -81,7 +84,7 @@ body {
   > h1 {
     text-align: center;
     font-family: 'Brush Script MT', 'Brush Script Std', cursive;
-    color: goldenrod;
+    color: map-get($map: $theme-colors, $key: "gold-text" );
     text-shadow: 
     -2px -2px 0 #000000,   
      2px -2px 0 #000000,
@@ -138,7 +141,7 @@ body {
   }
   form > button {
     margin-top: 20px;
-    background-color: rgb(4, 190, 4)
+    background-color: map-get($map: $theme-colors, $key: "submit-button" )
   }
 }
 
@@ -164,7 +167,7 @@ body {
   }
   form > button {
     margin-top: 20px;
-    background-color: rgb(4, 190, 4)
+    background-color: map-get($map: $theme-colors, $key: "submit-button" )
   }
 }
 
@@ -190,7 +193,7 @@ body {
   > a, div > a {
     margin: 0 5% 0 5%;
     font-size: 20px;
-    color: firebrick;
+    color: map-get($map: $theme-colors, $key: "admin-text" );
     font-weight: 900;
     text-decoration: none;
   }
@@ -215,10 +218,14 @@ body {
     border: 2px solid black;
   }
   h2 {
-    color: firebrick;
+    color: map-get($map: $theme-colors, $key: "admin-text" );
   }
   h3 {
     font-size: 18px;
+  }
+  h4 {
+    font-size: 16px;
+    color: map-get($map: $theme-colors, $key: "admin-text" );
   }
 }
 
@@ -251,7 +258,7 @@ body {
   }
   form > button {
     margin-top: 20px;
-    background-color: rgb(4, 190, 4)
+    background-color: map-get($map: $theme-colors, $key: "submit-button" );
   }
 }
 
