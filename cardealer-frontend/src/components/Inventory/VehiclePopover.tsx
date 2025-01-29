@@ -79,26 +79,31 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
   }, []);
 
   const addCarToWatchlist = async () => {
-    try {
-      const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
-        method: "POST",
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          carID: id
-         })
-      });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message);
+    if (token) {
+      try {
+        const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
+          method: "POST",
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            carID: id
+          })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message);
+        }
+
+      } catch(e: any) {
+        alert(e.message || "Something has gone wrong. Please try again later");
       }
-
-    } catch(e: any) {
-      alert(e.message || "Something has gone wrong. Please try again later");
-  }
+    } else {
+    alert("Please log in to add cars to your watchlist")
+    };
   };
 
   const removeCarFromWatchlist = async () => {
