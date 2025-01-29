@@ -32,7 +32,7 @@ interface VehicleProps {
 
 const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
   const popoverRef = useRef<HTMLDivElement>(null);
-  const watchlistCarIDs = new Set(userInfo?.watchlist.cars?.map(car => car.carsOnLotID));
+  const watchlistCarIDs = new Set(userInfo?.watchlist?.cars?.map(car => car.carsOnLotID));
 
   useEffect(() => {
     const popover = new Popover(popoverRef.current as Element, {
