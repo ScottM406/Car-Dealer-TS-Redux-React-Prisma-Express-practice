@@ -44,7 +44,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "carID": 8
+  "carID": 12
 }
 
 ### DELETE CAR FROM WATCHLIST
@@ -52,6 +52,10 @@ Content-Type: application/json
 DELETE {{host}}/watchlists/8
 Authorization: Bearer {{token}}
 Content-Type: application/json
+
+{
+  "carID": 12
+}
 
 ### GET SPECIFIC WATCHLIST
 GET {{host}}/watchlists/5
