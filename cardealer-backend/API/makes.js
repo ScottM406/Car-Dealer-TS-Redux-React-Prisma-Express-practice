@@ -6,7 +6,10 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
   const makes = await prisma.make.findMany({
-    include: { models: true }
+    include: { models: {
+      include: { cars_on_lot: true }
+    } 
+    }
   });
   res.json(makes);
   } catch(e) {
