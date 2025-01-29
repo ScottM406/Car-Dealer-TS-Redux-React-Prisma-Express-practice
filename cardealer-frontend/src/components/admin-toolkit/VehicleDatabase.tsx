@@ -12,15 +12,18 @@ const VehicleDatabase = () => {
     dispatch(getMakes());
   }, [])
 
-  console.log(makes);
+  const makesInAlphabeticalOrder = makes.slice().sort((a, b) => a.name.localeCompare(b.name))
 
   return (
     <div id="database-block">
     <h1>Database - Makes, Models, and Current Inventory</h1>
-    {makes.map((make) =>  (
+    {makesInAlphabeticalOrder.map((make) =>  {
+    const modelsInAlphabeticalOrder = make.models.slice().sort((a,b) => a.name.localeCompare(b.name));
+
+    return (
       <section key={make.name}>
         <h2>{make.name}</h2>
-        {make.models.map((model) => (
+        {modelsInAlphabeticalOrder.map((model) => (
           <div>
           <h3>{model.name}</h3>
           {model.cars_on_lot.map((car) => (
@@ -29,7 +32,8 @@ const VehicleDatabase = () => {
           </div>
         ))}
       </section>
-      ))}
+    )
+    })}
     </div>
   )
 }
