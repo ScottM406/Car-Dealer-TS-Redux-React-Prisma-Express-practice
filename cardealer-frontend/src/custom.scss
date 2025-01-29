@@ -7,7 +7,8 @@ $theme-colors: (
   "admin-text": firebrick,
   "gold-text": goldenrod,
   "popover": rgb(238, 225, 205),
-  "submit-button": rgb(4, 190, 4)
+  "submit-button": rgb(4, 190, 4),
+  "remove-button": red
 );
 
 body {
@@ -270,7 +271,7 @@ body {
   padding-left: 34px;
   margin: 4px;
   border: 2px solid black;
-  cursor: pointer;
+  max-height: 382px;
 }
 
 .popover {
@@ -302,9 +303,18 @@ body {
 }
 
 .watching-car-label {
+  display: flex;
   float: left;
+  > p {
   border: 1px solid black;
   padding: 0 5px 0 5px;
   height: 29px;
   background-color: rgb(4, 190, 4);
+  }
+  > button {
+    margin-left: 4px;
+    height: 29px;
+    color: map-get($map: $theme-colors , $key: "remove-button" );
+    background-color: map-get($map: $theme-colors, $key: "secondary" );
+  }
 }

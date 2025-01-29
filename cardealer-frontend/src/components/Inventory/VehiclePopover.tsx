@@ -78,7 +78,7 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
     };
   }, []);
 
-  const addCartoWatchlist = async () => {
+  const addCarToWatchlist = async () => {
     try {
       const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
         method: "POST",
@@ -95,9 +95,33 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
         const errorData = await response.json();
         throw new Error(errorData.message);
       }
+
     } catch(e: any) {
       alert(e.message || "Something has gone wrong. Please try again later");
   }
+  };
+
+  const removeCarFromWatchlist = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
+        method: "DELETE",
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          carID: id
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+    } catch (e:any) {
+      alert(e.message || "Something has gone wrong. Please try again later");
+    }
   };
 
   return (
@@ -108,8 +132,9 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
       {watchlistCarIDs.has(id) ?
         <section className="watching-car-label">
           <p>WATCHING</p> 
+          <button className='remove-from-watchlist-button' onClick={removeCarFromWatchlist}>X</button>
         </section>
-        :<button onClick={addCartoWatchlist}>Add To Watchlist</button>}
+        :<button onClick={addCarToWatchlist}>Add To Watchlist</button>}
     </div>
   )
 
