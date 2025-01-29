@@ -21,7 +21,12 @@ const VehicleDatabase = () => {
       <section key={make.name}>
         <h2>{make.name}</h2>
         {make.models.map((model) => (
+          <div>
           <h3>{model.name}</h3>
+          {model.cars_on_lot.map((car) => (
+            <h4>Stock #{car.id}: {car.year} {car.modelName} with {car.miles} miles</h4>
+          ))}
+          </div>
         ))}
       </section>
       ))}

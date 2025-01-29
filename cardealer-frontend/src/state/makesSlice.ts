@@ -2,7 +2,26 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface Model {
  name: string;
+ cars_on_lot: Car[]
 }
+
+interface Car {
+  id: number;
+  headline: string;
+  description: string;
+  image: string;
+  year: number;
+  miles: number;
+  drivetrain: string;
+  engine: string;
+  color: string;
+  MPG_city: number;
+  MPG_highway: number;
+  makeName: string;
+  modelName: string;
+  features: string;
+  price: number;
+};
 
 interface MakeState {
   name: string
