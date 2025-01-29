@@ -61,4 +61,22 @@ router.post("/:id", authenticate, async (req,res,next) => {
   }
 });
 
+router.delete("/:id", authenticate, async (req,res,next) => {
+  const {id } = req.params;
+  const { carID } = req.body;
+  try {
+    const deletedCar = await prisma.watchlistCarsOnLot.delete({
+      where: {
+        watchlistID_carsOnLotID: {
+          watchlistID: Number(id),
+          carsOnLotID: carID
+        }
+      }
+    });
+    res.status(204).json(deletedCar);
+  } catch(e) {
+    next(e);
+  }
+})
+
 module.exports = router;

@@ -47,6 +47,12 @@ Content-Type: application/json
   "carID": 8
 }
 
+### DELETE CAR FROM WATCHLIST
+@token ={{login.response.body.token}}
+DELETE {{host}}/watchlists/8
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
 ### GET SPECIFIC WATCHLIST
 GET {{host}}/watchlists/5
 
