@@ -53,7 +53,7 @@ const AddModel = () => {
         <label>Make:</label>
         <select value={makeOfNewModel} onChange={(e) => setMakeofNewModel(e.target.value)}>
           <option>Select Make</option>
-          {makes.map((make) => <option>{make.name}</option>)}
+          {makes.map((make) => <option key={make.name}>{make.name}</option>)}
         </select>
         <label>Model Name:</label>
         <input

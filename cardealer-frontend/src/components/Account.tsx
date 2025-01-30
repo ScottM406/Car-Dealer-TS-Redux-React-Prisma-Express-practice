@@ -8,15 +8,14 @@ interface UserInfo {
 
 interface AccountProps {
   userInfo: UserInfo | null
-  setUserInfo: Dispatch<SetStateAction<UserInfo | null>>
   userID: number
   token: string
 }
 
-const Account: React.FC<AccountProps> = ({ userInfo, setUserInfo, userID, token }) => {
+const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
   const [watchlist, setWatchlist] = useState<Array<object> | null>(null);
 
-  useEffect(() => {
+  userInfo?.watchlist && useEffect(() => {
     const getWatchlist = async () => {
       const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
         headers: {
