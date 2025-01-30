@@ -23,24 +23,36 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
   return (
     <form>
       <h4>Filter Vehicles</h4>
-      <label>Make:</label>
-      <select onChange={(e) => setSelectedMake(e.target.value)} onClick={() => dispatch(getMakes())}>
+      <label htmlFor="make">Make:</label>
+      <select id ="make" name="make" onChange={(e) => setSelectedMake(e.target.value)} onClick={() => dispatch(getMakes())}>
         <option>Select Make</option>
         {makes.map((make) => (
           <option key={make.name}>{make.name}</option>
         ))}
       </select>
-      <label>Model:</label>
-      <select onChange={(e) => setSelectedModel(e.target.value)}>
+      <label htmlFor="model">Model:</label>
+      <select id="model" name="model" onChange={(e) => setSelectedModel(e.target.value)}>
         <option>Select Model</option>
         {fileteredModels.map((model) => (
           <option key={model.name}>{model.name}</option>
         ))}
       </select>
-      <label>Price Range:</label>
-      <input type="number" value={selectedMinPrice} onChange={(e) => setSelectedMinPrice(Number(e.target.value))} />
-      <label>-</label>
-      <input type="number" value={selectedMaxPrice} onChange={(e) => setSelectedMaxPrice(Number(e.target.value))} />
+      <label htmlFor="lowest-price">Price Range:</label>
+      <input
+      id="lowest-price"
+      name="lowest-price" 
+      type="number" 
+      value={selectedMinPrice} 
+      onChange={(e) => setSelectedMinPrice(Number(e.target.value))} 
+      />
+      <label htmlFor="highest-price">-</label>
+      <input
+      id="highest-price"
+      name="highest-price" 
+      type="number" 
+      value={selectedMaxPrice} 
+      onChange={(e) => setSelectedMaxPrice(Number(e.target.value))} 
+      />
     </form>
   )
 }
