@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Popover } from 'bootstrap';
 
 interface UserInfo {
+  id: number,
   email: string
   watchlist:  { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
 }
@@ -81,25 +82,47 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
   const addCarToWatchlist = async () => {
 
     if (token) {
-      try {
-        const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
-          method: "POST",
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            carID: id
-          })
-        });
+      if (userInfo?.watchlist?.id) {
+        try {
+          const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
+            method: "POST",
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              carID: id
+            })
+          });
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message);
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+          }
+
+        } catch(e: any) {
+          alert(e.message || "Something has gone wrong. Please try again later");
         }
+      } else {
+        try {
+          const response = await fetch(`http://localhost:3000/watchlists`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              userID: userInfo?.id,
+              carID: id
+            })
+          });
 
-      } catch(e: any) {
-        alert(e.message || "Something has gone wrong. Please try again later");
+          if (!response.ok) {
+            const errorData = await response.json()
+            throw new Error(errorData.message)
+          }
+        } catch(e: any) {
+          alert(e.message || "Somthing has gone wrong. Please try again later.")
+        }
       }
     } else {
     alert("Please log in to add cars to your watchlist")
