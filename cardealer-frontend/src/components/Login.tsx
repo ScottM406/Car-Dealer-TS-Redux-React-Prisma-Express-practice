@@ -56,7 +56,7 @@ const Login: React.FC<Props> = ({ token, setToken, setUserID, setIsSuperUser }) 
     <div id="login-block">
     <h2>Please Login Below</h2>
       {token ? (
-      <h3>Thank you for logging in, you will be redirected shortly.</h3>
+      <p>Thank you for logging in, you will be redirected shortly.</p>
       ) : (
       <form onSubmit={logInUser}>
         <input 
