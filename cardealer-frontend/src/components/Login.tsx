@@ -1,4 +1,4 @@
-import { Dispatch, FormEvent, SetStateAction, useState, } from "react";
+import { Dispatch, FormEvent, SetStateAction, useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -43,11 +43,14 @@ const Login: React.FC<Props> = ({ token, setToken, setUserID, setIsSuperUser }) 
     }
   };
 
-  if (token) {
-    setTimeout(() => {
-      navigate("/");
-    }, 2500);
-  }
+  useEffect(() => {
+    if (token) {
+      const timer = setTimeout(() => {
+        navigate("/");
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [token])
 
   return (
     <div id="login-block">
