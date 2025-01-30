@@ -59,16 +59,20 @@ const Login: React.FC<Props> = ({ token, setToken, setUserID, setIsSuperUser }) 
       <p>Thank you for logging in, you will be redirected shortly.</p>
       ) : (
       <form onSubmit={logInUser}>
-        <input 
+        <input
+        name="email" 
         type="email"
         placeholder="Enter email address"
+        autoComplete="email"
         required
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         />
-        <input 
+        <input
+        name="password" 
         type="password"
         placeholder="Enter password"
+        autoComplete="current-password"
         required
         value={password}
         onChange={(event) => setPassword(event.target.value)}
