@@ -143,7 +143,7 @@ const AddInventory = () => {
         <select name="makeName" onChange={handleInputChange} value={addInventoryState.makeName}>
           <option>Select Make</option>
           {makes.map((make) => (
-            <option>{make.name}</option>
+            <option key={make.name}>{make.name}</option>
           ))}
         </select>
         <label htmlFor="modelName">Model: </label>
