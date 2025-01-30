@@ -38,14 +38,18 @@ const AddMake = () => {
     <div className="add-inventory-block">
       <h2>Add New Make to Database</h2>
       <form onSubmit={addMakeToDatabase}>
-        <label>Make Name:</label>
+        <label htmlFor="add-make-makeName-input">Make Name:</label>
         <input 
+        name="makeName"
+        id="add-make-makeName-input"
         value={newMakeName}
         onChange={(event) => setNewMakeName(event.target.value)}
         required
         />
-        <label>Make Description:</label>
+        <label htmlFor="add-make-makeDescription-input">Make Description:</label>
         <input
+        name="makeDescription"
+        id="add-make-makeDescription-input"
         className= "add-inventory-description-input"
         value={newMakeDescription}
         onChange={(event) => setNewMakeDescription(event.target.value)}

@@ -58,122 +58,133 @@ const AddInventory = () => {
     <div className="add-inventory-block">
       <h2>Add Vehicle to Inventory</h2>
       <form onSubmit={addCartoInventory}>
-        <label htmlFor="headline">Headline: </label>
+        <label htmlFor="add-inventory-headline-input">Headline: </label>
         <input
-        id="add-inventory-headline-input" 
         type= "text"
         name= "headline"
+        id="add-inventory-headline-input" 
         required
         value={addInventoryState.headline}
         onChange={handleInputChange}
         />
-        <label htmlFor="image">Image: </label>
+        <label htmlFor="add-inventory-image-input">Image: </label>
         <input 
         type= "text"
         name= "image"
+        id="add-inventory-image-input"
         placeholder= "image url"
         required
         value={addInventoryState.image}
         onChange={handleInputChange}
         />
-        <label htmlFor="year">Model Year: </label>
+        <label htmlFor="add-inventory-year-input">Model Year: </label>
         <input
         type= "text"
         name= "year"
+        id="add-inventory-year-input"
         placeholder= "model year"
         required
         value={addInventoryState.year}
         onChange={handleInputChange}
         />
-        <label htmlFor="miles">Odometer Reading: </label>
+        <label htmlFor="add-inventory-miles-input">Odometer Reading: </label>
         <input 
         type= "text"
         name= "miles"
+        id="add-inventory-miles-input"
         placeholder= "odometer reading"
         required
         value={addInventoryState.miles}
         onChange={handleInputChange}
         />
-        <label htmlFor="drivetrain">Drivetrain: </label>
+        <label htmlFor="add-inventory-drivetrain-input">Drivetrain: </label>
         <input
         type= "text"
         name= "drivetrain"
+        id="add-inventory-drivetrain-input"
         placeholder= "drivetrain"
         required
         value={addInventoryState.drivetrain}
         onChange={handleInputChange}
         />
-        <label htmlFor="engine">Engine: </label>
+        <label htmlFor="add-inventory-engine-input">Engine: </label>
         <input 
         type= "text"
         name= "engine"
+        id="add-inventory-engine-input"
         placeholder= "engine"
         required
         value={addInventoryState.engine}
         onChange={handleInputChange}
         />
-        <label htmlFor="color">Color: </label>
+        <label htmlFor="add-inventory-color-input">Color: </label>
         <input
         type= "text"
         name= "color"
+        id="add-inventory-color-input"
         placeholder= "color"
         required
         value={addInventoryState.color}
         onChange={handleInputChange}
         />
-        <label>MPG City: </label>
+        <label htmlFor="add-inventory-MPG-city-input">MPG City: </label>
         <input 
         type= "text"
         name= "MPG_city"
+        id="add-inventory-MPG-city-input"
         placeholder= "MPG city"
         required
         value={addInventoryState.MPG_city}
         onChange={handleInputChange}
         />
-        <label>MPG Highway: </label>
+        <label htmlFor="add-inventory-MPG-highway-input">MPG Highway: </label>
         <input
         type= "text"
         name= "MPG_highway"
+        id="add-inventory-MPG-highway-input"
         placeholder= "MPG highway"
         required
         value={addInventoryState.MPG_highway}
         onChange={handleInputChange}
         />
-        <label>Make: </label>
-        <select name="makeName" onChange={handleInputChange} value={addInventoryState.makeName}>
+        <label htmlFor="add-inventory-makeName-input">Make: </label>
+        <select  id="add-inventory-makeName-input" name="makeName" onChange={handleInputChange} value={addInventoryState.makeName}>
           <option>Select Make</option>
           {makes.map((make) => (
             <option key={make.name}>{make.name}</option>
           ))}
         </select>
-        <label htmlFor="modelName">Model: </label>
-        <select name="modelName" onChange={handleInputChange} value={addInventoryState.modelName}>
+        <label htmlFor="add-inventory-modelName-input">Model: </label>
+        <select id="add-inventory-modelName-input" name="modelName" onChange={handleInputChange} value={addInventoryState.modelName}>
           <option>Select Model</option>
           {filteredModels.map((model: any) => (
             <option key={model.id}>{model.name}</option>
           ))};
         </select>
-        <label htmlFor="features">Features: </label>
+        <label htmlFor="add-inventory-features-input">Features: </label>
         <input
         type= "text"
         name= "features"
+        id="add-inventory-features-input"
         placeholder= "features"
         required
         value={addInventoryState.features}
         onChange={handleInputChange}
         />
-        <label htmlFor="price">Price: </label>
+        <label htmlFor="add-inventory-price-input">Price: </label>
         <input
         type= "text"
         name= "price"
+        id="add-inventory-price-input"
         placeholder= "price"
         required
         value={addInventoryState.price}
         onChange={handleInputChange}
         />
-        <label htmlFor="description">Description: </label>
+        <label htmlFor="add-inventory-description-input-1">Description: </label>
         <input
         className="add-inventory-description-input"
+        id="add-inventory-description-input-1"
         type= "text"
         name= "description"
         required
