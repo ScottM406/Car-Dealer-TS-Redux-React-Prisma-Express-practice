@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { getVehicles } from "../../state/vehiclesSlice";
 import { AppDispatch, RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import VehiclePopover from "./VehiclePopover";
+import { useEffect, useRef, useState } from "react";
+import VehiclePopover, { VehiclePopoverHandle } from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
+
 
 interface UserInfo {
   email: string
@@ -23,17 +25,24 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(99999999);
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate()
+  const VehiclePopoverRefs = useRef<{[key: number]: VehiclePopoverHandle | null}>({});
 
   const filteredVehicles = vehicles
     .filter((vehicle) => selectedMake ? selectedMake === vehicle.makeName : true)
     .filter((vehcile) => selectedModel ? selectedModel === vehcile.modelName : true)
     .filter((vehicle) => vehicle.price ? vehicle.price >= selectedMinPrice &&  vehicle.price <= selectedMaxPrice : true);
 
-  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(getVehicles());
   }, [])
+
+  const navigateToSingleVehicle = (id: number) => {
+    VehiclePopoverRefs.current[id]?.hidePopover();
+    navigate(`${id}`);
+  }
 
   return (
     <div id="inventory-body">
@@ -55,7 +64,11 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
       </div>
 
       {filteredVehicles.map((vehicle) => (
-        <div key={vehicle.id} className="single-vehicle-inventory-container">
+        <div 
+        key={vehicle.id} 
+        className="single-vehicle-inventory-container" 
+        onClick={() => navigateToSingleVehicle(vehicle.id)}
+        >
           <VehiclePopover
           id={vehicle.id}
           headline={vehicle.headline}
@@ -75,6 +88,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
           token={token}
           userID={userID}
           userInfo={userInfo}
+          ref={el => VehiclePopoverRefs.current[vehicle.id] = el}
           />
 
         </div>
