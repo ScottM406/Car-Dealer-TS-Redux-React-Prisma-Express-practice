@@ -13,7 +13,7 @@ $theme-colors: (
 
 body {
   background-color: map-get($theme-colors, "background");
-  font-family: 'Monaco'
+  font-family: 'Monaco';
 }
 
 #navbar {
@@ -272,6 +272,7 @@ body {
   margin: 4px;
   border: 2px solid black;
   max-height: 382px;
+  cursor: pointer;
 }
 
 .popover {
