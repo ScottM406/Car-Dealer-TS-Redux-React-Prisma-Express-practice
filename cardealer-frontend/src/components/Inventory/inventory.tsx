@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { getVehicles } from "../../state/vehiclesSlice";
 import { AppDispatch, RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import VehiclePopover from "./VehiclePopover";
+import { useEffect, useRef, useState } from "react";
+import VehiclePopover, { VehiclePopoverHandle } from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
 
 
@@ -27,6 +27,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const vehicles = useSelector((state: RootState) => state.vehicles)
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate()
+  const VehiclePopoverRefs = useRef<{[key: number]: VehiclePopoverHandle | null}>({});
 
   const filteredVehicles = vehicles
     .filter((vehicle) => selectedMake ? selectedMake === vehicle.makeName : true)
@@ -39,6 +40,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   }, [])
 
   const navigateToSingleVehicle = (id: number) => {
+    VehiclePopoverRefs.current[id]?.hidePopover();
     navigate(`${id}`);
   }
 
@@ -86,6 +88,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
           token={token}
           userID={userID}
           userInfo={userInfo}
+          ref={el => VehiclePopoverRefs.current[vehicle.id] = el}
           />
 
         </div>

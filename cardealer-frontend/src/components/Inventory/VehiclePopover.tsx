@@ -1,44 +1,58 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useImperativeHandle, useRef, forwardRef } from 'react';
 import { Popover } from 'bootstrap';
 
+export interface VehiclePopoverHandle {
+  hidePopover: () => void;
+}
 interface UserInfo {
   id: number,
-  email: string
-  watchlist:  { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
+  email: string,
+  watchlist: { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
 }
 
 interface UserProps {
-  userInfo: UserInfo | null
-  token: string
-  userID: number
+  userInfo: UserInfo | null;
+  token: string;
+  userID: number;
 }
 
 interface VehicleProps {
   id: number;
   headline: string;
-  description: string
-  image: string
-  year: number
-  miles: number
-  drivetrain: string
-  engine: string
-  color: string
-  MPG_city: number
-  MPG_highway: number
-  makeName: string
-  modelName: string
-  features: any
-  price: number
+  description: string;
+  image: string;
+  year: number;
+  miles: number;
+  drivetrain: string;
+  engine: string;
+  color: string;
+  MPG_city: number;
+  MPG_highway: number;
+  makeName: string;
+  modelName: string;
+  features: any;
+  price: number;
 }
 
-const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
+const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps>(({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price }, ref) => {
   const popoverRef = useRef<HTMLDivElement>(null);
   const watchlistCarIDs = new Set(userInfo?.watchlist?.cars?.map(car => car.carsOnLotID));
+
+  useImperativeHandle(ref, () => ({
+    hidePopover() {
+      if (popoverRef.current) {
+        const popoverInstance = Popover.getInstance(popoverRef.current);
+        if (popoverInstance) {
+          popoverInstance.hide();
+        }
+      }
+    }
+  }));
 
   useEffect(() => {
     const popover = new Popover(popoverRef.current as Element, {
       trigger: 'manual',
-      delay: { show: 750, hide: 0},
+      delay: { show: 750, hide: 0 },
       html: true,
       content: `
         <div class="vehicle-popover-container">
@@ -67,20 +81,19 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
     const showPopover = () => popover.show();
     const hidePopover = () => popover.hide();
 
-    popoverRef.current!.addEventListener('mouseenter', showPopover);
-    popoverRef.current!.addEventListener('mouseleave', hidePopover);
+    popoverRef.current?.addEventListener('mouseenter', showPopover);
+    popoverRef.current?.addEventListener('mouseleave', hidePopover);
 
     return () => {
       if (popoverRef.current) {
-        popoverRef.current!.removeEventListener('mouseover', showPopover);
-        popoverRef.current!.removeEventListener('mouseleave', hidePopover);
+        popoverRef.current?.removeEventListener('mouseenter', showPopover);
+        popoverRef.current?.removeEventListener('mouseleave', hidePopover);
         popover.dispose();
       }
     };
-  }, []);
+  }, [headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price]);
 
   const addCarToWatchlist = async () => {
-
     if (token) {
       if (userInfo?.watchlist?.id) {
         try {
@@ -99,8 +112,7 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
             const errorData = await response.json();
             throw new Error(errorData.message);
           }
-
-        } catch(e: any) {
+        } catch (e: any) {
           alert(e.message || "Something has gone wrong. Please try again later");
         }
       } else {
@@ -117,16 +129,16 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
           });
 
           if (!response.ok) {
-            const errorData = await response.json()
-            throw new Error(errorData.message)
+            const errorData = await response.json();
+            throw new Error(errorData.message);
           }
-        } catch(e: any) {
-          alert(e.message || "Somthing has gone wrong. Please try again later.")
+        } catch (e: any) {
+          alert(e.message || "Something has gone wrong. Please try again later.");
         }
       }
     } else {
-    alert("Please log in to add cars to your watchlist")
-    };
+      alert("Please log in to add cars to your watchlist");
+    }
   };
 
   const removeCarFromWatchlist = async () => {
@@ -146,26 +158,24 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
         const errorData = await response.json();
         throw new Error(errorData.message);
       }
-
-    } catch (e:any) {
+    } catch (e: any) {
       alert(e.message || "Something has gone wrong. Please try again later");
     }
   };
 
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
-      <img src={image} style={{ width:"95%", height: "250px" }} alt={headline} />
+      <img src={image} style={{ width: "95%", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
       {watchlistCarIDs.has(id) ?
         <section className="watching-car-label">
-          <p>WATCHING</p> 
+          <p>WATCHING</p>
           <button className='remove-from-watchlist-button' onClick={removeCarFromWatchlist}>X</button>
         </section>
-        :<button onClick={addCarToWatchlist}>Add To Watchlist</button>}
+        : <button onClick={addCarToWatchlist}>Add To Watchlist</button>}
     </div>
-  )
-
-}
+  );
+});
 
 export default VehiclePopover;
