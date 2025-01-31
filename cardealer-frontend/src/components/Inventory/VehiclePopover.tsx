@@ -93,7 +93,9 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
     };
   }, [headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price]);
 
-  const addCarToWatchlist = async () => {
+  const addCarToWatchlist = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+
     if (token) {
       if (userInfo?.watchlist?.id) {
         try {
@@ -141,7 +143,9 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
     }
   };
 
-  const removeCarFromWatchlist = async () => {
+  const removeCarFromWatchlist = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+
     try {
       const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
         method: "DELETE",
