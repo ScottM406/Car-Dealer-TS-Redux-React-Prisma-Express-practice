@@ -28,16 +28,15 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const VehiclePopoverRefs = useRef<{[key: number]: VehiclePopoverHandle | null}>({});
+  
+  useEffect(() => {
+    dispatch(getVehicles());
+  }, [])
 
   const filteredVehicles = vehicles
     .filter((vehicle) => selectedMake ? selectedMake === vehicle.makeName : true)
     .filter((vehcile) => selectedModel ? selectedModel === vehcile.modelName : true)
     .filter((vehicle) => vehicle.price ? vehicle.price >= selectedMinPrice &&  vehicle.price <= selectedMaxPrice : true);
-
-
-  useEffect(() => {
-    dispatch(getVehicles());
-  }, [])
 
   const navigateToSingleVehicle = (id: number) => {
     VehiclePopoverRefs.current[id]?.hidePopover();

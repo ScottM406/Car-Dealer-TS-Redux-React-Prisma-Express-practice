@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-
 interface VehicleState {
   id: number;
   headline: string;
@@ -21,7 +20,7 @@ interface VehicleState {
 
 const initialState: VehicleState[] = [];
 
-const vehicleSlice = createSlice({
+const vehiclesSlice = createSlice({
   name: "vehicles",
   initialState,
   reducers: {
@@ -31,7 +30,6 @@ const vehicleSlice = createSlice({
       return action.payload
     })
   }
-
 });
 
 export const getVehicles = createAsyncThunk(
@@ -43,4 +41,4 @@ export const getVehicles = createAsyncThunk(
     }
 )
 
-export default vehicleSlice.reducer
+export default vehiclesSlice.reducer
