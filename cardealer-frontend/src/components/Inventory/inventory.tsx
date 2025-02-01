@@ -41,7 +41,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
 
   const navigateToSingleVehicle = (id: number) => {
     VehiclePopoverRefs.current[id]?.hidePopover();
-    navigate(`../inventory/${id}`);
+    navigate(`${id}`);
   };
 
   return (
