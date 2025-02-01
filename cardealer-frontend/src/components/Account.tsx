@@ -1,5 +1,6 @@
-import { useState, useEffect, SetStateAction, Dispatch } from "react"
-import VehiclePopover from "./Inventory/VehiclePopover"
+import { useState, useEffect, useRef } from "react"
+import VehiclePopover, {VehiclePopoverHandle} from "./inventory/VehiclePopover"
+import { useNavigate } from "react-router-dom"
 
 interface UserInfo {
   email: string
@@ -14,6 +15,8 @@ interface AccountProps {
 
 const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
   const [watchlist, setWatchlist] = useState<Array<object> | null>(null);
+  const VehiclePopoverRefs = useRef<{[key: number]: VehiclePopoverHandle | null}>({});
+  const navigate = useNavigate();
 
   userInfo?.watchlist && useEffect(() => {
     const getWatchlist = async () => {
@@ -28,6 +31,11 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
     getWatchlist();
   }, [userInfo])
 
+  const navigateToSingleVehicle = (id: number) => {
+    VehiclePopoverRefs.current[id]?.hidePopover();
+    navigate(`../inventory/${id}`);
+  }
+
   return (
     <>
     <section id="account-header-block">
@@ -36,7 +44,7 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
     </section>
       <h2 id="watchlist-header">Watchlist</h2>
       {watchlist?.map((vehicle: any) => (
-        <div key={vehicle.CarsOnLot.id} className="single-vehicle-inventory-container">
+        <div key={vehicle.CarsOnLot.id} className="single-vehicle-inventory-container" onClick={() => navigateToSingleVehicle(vehicle.CarsOnLot.id)}>
           <VehiclePopover
           id={vehicle.CarsOnLot.id}
           headline={vehicle.CarsOnLot.headline}
@@ -56,6 +64,7 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
           token={token}
           userID={userID}
           userInfo={userInfo}
+          ref={el => VehiclePopoverRefs.current[vehicle.id] = el}
           />
         </div>
       ))}
