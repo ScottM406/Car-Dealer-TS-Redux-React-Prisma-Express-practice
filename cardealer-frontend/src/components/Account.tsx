@@ -29,7 +29,7 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
       setWatchlist(responseJSON.cars)
     }
     getWatchlist();
-  }, [userInfo])
+  }, [userInfo.email])
 
   const navigateToSingleVehicle = (id: number) => {
     VehiclePopoverRefs.current[id]?.hidePopover();
@@ -64,7 +64,7 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
           token={token}
           userID={userID}
           userInfo={userInfo}
-          ref={el => VehiclePopoverRefs.current[vehicle.id] = el}
+          ref={el => VehiclePopoverRefs.current[vehicle.CarsOnLot.id] = el}
           />
         </div>
       ))}
@@ -73,4 +73,3 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
 }
 
 export default Account
-
