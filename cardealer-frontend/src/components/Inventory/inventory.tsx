@@ -26,7 +26,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const VehiclePopoverRefs = useRef<{[key: number]: VehiclePopoverHandle | null}>({});
 
   const filteredVehicles = vehicles
@@ -42,7 +42,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const navigateToSingleVehicle = (id: number) => {
     VehiclePopoverRefs.current[id]?.hidePopover();
     navigate(`${id}`);
-  }
+  };
 
   return (
     <div id="inventory-body">
