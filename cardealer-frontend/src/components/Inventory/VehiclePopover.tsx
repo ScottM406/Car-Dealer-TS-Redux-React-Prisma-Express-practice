@@ -57,22 +57,16 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
       content: `
         <div class="vehicle-popover-container">
           <div class="vehicle-popover-header">
-            <strong>${headline}</strong>
+            <strong>${year} ${makeName} ${modelName}</strong>
             <p>Stock Number: ${id}</p>
           </div>
           <div class="vehicle-popover-body">
-            <img src=${image} />
             <p><strong>$${price}</strong></p>
-            <p>Year: ${year}</p>
-            <p>Odometer: ${miles} miles</p>
-            <p>Drivetrain: ${drivetrain}</p>
-            <p>Engine: ${engine}</p>
-            <p>Color: ${color}</p>
-            <p>MPG: ${MPG_city}/${MPG_highway}</p>
-            <p>Make: ${makeName}</p>
-            <p>Model: ${modelName}</p>
-            <p>Features: ${features}</p>
-            <p>${description}</p>
+            <strong>Odometer:</strong> <p>${miles} miles</p>
+            <strong>Drivetrain:</strong> <p>${drivetrain}</p>
+            <strong>Engine:</strong> <p>${engine}</p>
+            <strong>Color:</strong> <p>${color}</p>
+            <strong>MPG:</strong> <p>${MPG_city}/${MPG_highway}</p>
           </div>
         </div>
       `

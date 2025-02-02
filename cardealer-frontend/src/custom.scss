@@ -315,9 +315,8 @@ body {
 .popover {
   background-color: map-get($theme-colors, "popover");
   border: 2px solid black;
-  padding-left: 400px;
-  padding-right: 420px;
-
+  padding-left: 150px;
+  padding-right: 150px;
   .vehicle-popover-container .vehicle-popover-header {
     display: flex;
     flex-direction: column;
@@ -325,18 +324,12 @@ body {
     white-space: nowrap;
     align-items: center;
   }
-
   .vehicle-popover-container {
     background-color: map-get($theme-colors, "popover");
     border-color: map-get($theme-colors, "popover");
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  img {
-    width: 750px;
-    align-self: center;
   }
 }
 
