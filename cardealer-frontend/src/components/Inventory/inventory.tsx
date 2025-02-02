@@ -23,6 +23,9 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const [selectedModel, setSelectedModel] = useState<string>("")
   const [selectedMinPrice, setSelectedMinPrice] = useState<number>(0);
   const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(99999999);
+  const [selectedMinMiles, setSelectedMinMiles] = useState<number>(0)
+  const [selectedMaxMiles, setSelectedMaxMiles] = useState<number>(99999999)
+  const [selectedDrivetrain, setSelectedDriveTrain] = useState<string>("")
 
   const vehicles = useSelector((state: RootState) => state.vehicles)
   const dispatch = useDispatch<AppDispatch>();
@@ -36,7 +39,9 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const filteredVehicles = vehicles
     .filter((vehicle) => selectedMake ? selectedMake === vehicle.makeName : true)
     .filter((vehcile) => selectedModel ? selectedModel === vehcile.modelName : true)
-    .filter((vehicle) => vehicle.price ? vehicle.price >= selectedMinPrice &&  vehicle.price <= selectedMaxPrice : true);
+    .filter((vehicle) => vehicle.price ? vehicle.price >= selectedMinPrice &&  vehicle.price <= selectedMaxPrice : true)
+    .filter((vehicle) => vehicle.miles ? vehicle.miles >= selectedMinMiles && vehicle.miles <= selectedMaxMiles : true)
+    .filter((vehicle) => selectedDrivetrain ? vehicle.drivetrain === selectedDrivetrain : true);
 
   const navigateToSingleVehicle = (id: number) => {
     VehiclePopoverRefs.current[id]?.hidePopover();
@@ -53,12 +58,16 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
         <InventoryFilter
         selectedMake={selectedMake}
         setSelectedMake={setSelectedMake}
-        selectedModel={selectedModel}
         setSelectedModel={setSelectedModel}
         selectedMinPrice={selectedMinPrice}
         setSelectedMinPrice={setSelectedMinPrice}
         selectedMaxPrice={selectedMaxPrice}
         setSelectedMaxPrice={setSelectedMaxPrice}
+        setSelectedMinMiles={setSelectedMinMiles}
+        selectedMinMiles={selectedMinMiles}
+        setSelectedMaxMiles={setSelectedMaxMiles}
+        selectedMaxMiles={selectedMaxMiles}
+        setSelectedDrivetrain={setSelectedDriveTrain}
         />
       </div>
 
