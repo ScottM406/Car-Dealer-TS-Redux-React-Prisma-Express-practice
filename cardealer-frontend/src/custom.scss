@@ -77,6 +77,43 @@ body {
   margin-bottom: 1%;
 }
 
+#single-vehicle-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  border: 3px solid black;
+  align-items: center;
+  margin: 40px auto;
+  width: 90%;
+  > * {
+    margin-top: 10px;
+  }
+  img {
+    width:1000px;
+    height: 600px;
+    border: 2px solid black;
+  }
+  #single-vehicle-stats {
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    > div {
+      display: flex;
+      padding: 0px 160px;
+      width: 500px;
+      flex-direction: column;
+      > * {
+        float: left;
+      }
+    }
+  }
+  #single-vehicle-block-features {
+    width: 1000px;
+    text-align: center;
+  }
+}
+
 #site-banner {
   background-image: url("./assets/banner-background.jpg");
   background-size: cover;
