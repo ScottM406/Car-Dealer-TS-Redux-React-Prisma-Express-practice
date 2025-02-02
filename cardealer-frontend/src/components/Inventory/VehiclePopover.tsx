@@ -62,7 +62,7 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
           </div>
           <div class="vehicle-popover-body">
             <p><strong>$${price}</strong></p>
-            <strong>Odometer:</strong> <p>${miles} miles</p>
+            <strong>Odometer:</strong> <p>${miles} mi</p>
             <strong>Drivetrain:</strong> <p>${drivetrain}</p>
             <strong>Engine:</strong> <p>${engine}</p>
             <strong>Color:</strong> <p>${color}</p>

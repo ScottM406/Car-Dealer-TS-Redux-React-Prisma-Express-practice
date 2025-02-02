@@ -315,7 +315,7 @@ body {
 .popover {
   background-color: map-get($theme-colors, "popover");
   border: 2px solid black;
-  padding-left: 150px;
+  padding-left: 125px;
   padding-right: 150px;
   .vehicle-popover-container .vehicle-popover-header {
     display: flex;
