@@ -70,37 +70,37 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
         setSelectedDrivetrain={setSelectedDriveTrain}
         />
       </div>
-
-      {filteredVehicles.map((vehicle) => (
-        <div 
-        key={vehicle.id} 
-        className="single-vehicle-inventory-container" 
-        onClick={() => navigateToSingleVehicle(vehicle.id)}
-        >
-          <VehiclePopover
-          id={vehicle.id}
-          headline={vehicle.headline}
-          description={vehicle.description}
-          image={vehicle.image}
-          year={vehicle.year}
-          miles={vehicle.miles}
-          drivetrain={vehicle.drivetrain}
-          engine={vehicle.engine}
-          color={vehicle.color}
-          MPG_city={vehicle.MPG_city}
-          MPG_highway={vehicle.MPG_highway}
-          makeName={vehicle.makeName}
-          modelName={vehicle.modelName}
-          features={vehicle.features}
-          price={vehicle.price}
-          token={token}
-          userID={userID}
-          userInfo={userInfo}
-          ref={el => VehiclePopoverRefs.current[vehicle.id] = el}
-          />
-
-        </div>
-    ))}
+      <div id="inventory-list">
+        {filteredVehicles.map((vehicle) => (
+          <div
+          key={vehicle.id} 
+          className="single-vehicle-inventory-container" 
+          onClick={() => navigateToSingleVehicle(vehicle.id)}
+          >
+            <VehiclePopover
+            id={vehicle.id}
+            headline={vehicle.headline}
+            description={vehicle.description}
+            image={vehicle.image}
+            year={vehicle.year}
+            miles={vehicle.miles}
+            drivetrain={vehicle.drivetrain}
+            engine={vehicle.engine}
+            color={vehicle.color}
+            MPG_city={vehicle.MPG_city}
+            MPG_highway={vehicle.MPG_highway}
+            makeName={vehicle.makeName}
+            modelName={vehicle.modelName}
+            features={vehicle.features}
+            price={vehicle.price}
+            token={token}
+            userID={userID}
+            userInfo={userInfo}
+            ref={el => VehiclePopoverRefs.current[vehicle.id] = el}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
