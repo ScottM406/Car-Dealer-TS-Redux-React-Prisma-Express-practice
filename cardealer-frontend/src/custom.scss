@@ -1,19 +1,33 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 $theme-colors: (
-  "background": rgba(214, 186, 147, 0.76),
+  "background": rgba(228, 214, 196, 0.76),
   "primary": rgba(74, 187, 189, 0.644),
-  "secondary": rgba(192, 192, 192, 0.486),
+  "secondary": #c0c0c0d8,
   "admin-text": firebrick,
   "gold-text": goldenrod,
-  "popover": rgb(238, 225, 205),
+  "popover": rgba(58, 57, 55, 0.938),
   "submit-button": rgb(4, 190, 4),
   "remove-button": red
 );
 
 body {
-  background-color: map-get($theme-colors, "background");
+  background-image: url('./assets/body-background.jpg');
   font-family: 'Monaco';
+  z-index: -2;
+  position: relative;
+  height: 100vh;
+  min-height: fit-content
+}
+
+body::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: map-get($theme-colors, "background");
+  opacity: 95%;
+  z-index: -1;
+  position: absolute;
 }
 
 #navbar {
@@ -48,6 +62,7 @@ body {
   }
   > img {
     border: 2px solid black;
+    border-radius: 7.5%;
   }
   > p {
     font-size: 18px;
@@ -70,6 +85,9 @@ body {
   p {
     text-align: center;
   }
+  #inventory-list {
+    overflow-y: auto;
+  }
 }
 
 #inventory-filter {
@@ -82,8 +100,8 @@ body {
   flex-direction: column;
   justify-content: center;
   background-color: map-get($map: $theme-colors, $key: "secondary" );
-  border: 3px solid black;
   align-items: center;
+  border: 3px solid black;
   margin: 40px auto;
   width: 90%;
   > * {
@@ -138,9 +156,9 @@ body {
   content: "";
   height: 284px;
   width: 100%;
-  background-color: blanchedalmond;
+  background-color: map-get($map: $theme-colors, $key: "secondary" );
   border-bottom: 1px black solid;
-  opacity: 80%;
+  opacity: 98%;
   position: absolute;
   z-index: 1;
 }
@@ -219,6 +237,10 @@ body {
 
 #watchlist-header {
   text-align: center;
+}
+
+#account-watchlist {
+  overflow-y: auto;
 }
 
 #admin-toolkit-block {
@@ -317,6 +339,8 @@ body {
   border: 2px solid black;
   padding-left: 125px;
   padding-right: 150px;
+  border: 2px solid whitesmoke;
+  color: whitesmoke;
   .vehicle-popover-container .vehicle-popover-header {
     display: flex;
     flex-direction: column;
@@ -325,8 +349,8 @@ body {
     align-items: center;
   }
   .vehicle-popover-container {
-    background-color: map-get($theme-colors, "popover");
-    border-color: map-get($theme-colors, "popover");
+    // background-color: map-get($theme-colors, "popover");
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;

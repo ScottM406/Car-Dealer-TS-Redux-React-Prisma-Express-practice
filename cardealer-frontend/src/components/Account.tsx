@@ -43,31 +43,33 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
       <p>{userInfo?.email}</p>
     </section>
       <h2 id="watchlist-header">Watchlist</h2>
-      {watchlist?.map((vehicle: any) => (
-        <div key={vehicle.CarsOnLot.id} className="single-vehicle-inventory-container" onClick={() => navigateToSingleVehicle(vehicle.CarsOnLot.id)}>
-          <VehiclePopover
-          id={vehicle.CarsOnLot.id}
-          headline={vehicle.CarsOnLot.headline}
-          description={vehicle.CarsOnLot.description}
-          image={vehicle.CarsOnLot.image}
-          year={vehicle.CarsOnLot.year}
-          miles={vehicle.CarsOnLot.miles}
-          drivetrain={vehicle.CarsOnLot.drivetrain}
-          engine={vehicle.CarsOnLot.engine}
-          color={vehicle.CarsOnLot.color}
-          MPG_city={vehicle.CarsOnLot.MPG_city}
-          MPG_highway={vehicle.CarsOnLot.MPG_highway}
-          makeName={vehicle.CarsOnLot.makeName}
-          modelName={vehicle.CarsOnLot.modelName}
-          features={vehicle.CarsOnLot.features}
-          price={vehicle.CarsOnLot.price}
-          token={token}
-          userID={userID}
-          userInfo={userInfo}
-          ref={el => VehiclePopoverRefs.current[vehicle.CarsOnLot.id] = el}
-          />
-        </div>
-      ))}
+      <div id="account-watchlist">
+        {watchlist?.map((vehicle: any) => (
+          <div key={vehicle.CarsOnLot.id} className="single-vehicle-inventory-container" onClick={() => navigateToSingleVehicle(vehicle.CarsOnLot.id)}>
+            <VehiclePopover
+            id={vehicle.CarsOnLot.id}
+            headline={vehicle.CarsOnLot.headline}
+            description={vehicle.CarsOnLot.description}
+            image={vehicle.CarsOnLot.image}
+            year={vehicle.CarsOnLot.year}
+            miles={vehicle.CarsOnLot.miles}
+            drivetrain={vehicle.CarsOnLot.drivetrain}
+            engine={vehicle.CarsOnLot.engine}
+            color={vehicle.CarsOnLot.color}
+            MPG_city={vehicle.CarsOnLot.MPG_city}
+            MPG_highway={vehicle.CarsOnLot.MPG_highway}
+            makeName={vehicle.CarsOnLot.makeName}
+            modelName={vehicle.CarsOnLot.modelName}
+            features={vehicle.CarsOnLot.features}
+            price={vehicle.CarsOnLot.price}
+            token={token}
+            userID={userID}
+            userInfo={userInfo}
+            ref={el => VehiclePopoverRefs.current[vehicle.CarsOnLot.id] = el}
+            />
+          </div>
+        ))}
+      </div>
     </>
   )
 }
