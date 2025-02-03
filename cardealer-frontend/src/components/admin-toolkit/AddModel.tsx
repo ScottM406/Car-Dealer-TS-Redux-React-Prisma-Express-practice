@@ -50,13 +50,15 @@ const AddModel = () => {
     <div className="add-inventory-block">
       <h1>Add New Model to Database</h1>
       <form onSubmit={addModelToDatabase}>
-        <label>Make:</label>
-        <select value={makeOfNewModel} onChange={(e) => setMakeofNewModel(e.target.value)}>
+        <label htmlFor="add-model-makeName-input">Make:</label>
+        <select id="add-model-makeName-input" name="makeName" value={makeOfNewModel} onChange={(e) => setMakeofNewModel(e.target.value)}>
           <option>Select Make</option>
-          {makes.map((make) => <option>{make.name}</option>)}
+          {makes.map((make) => <option key={make.name}>{make.name}</option>)}
         </select>
-        <label>Model Name:</label>
+        <label htmlFor="add-model-modelName-input">Model Name:</label>
         <input
+        name="modelName"
+        id="add-model-modelName-input"
         required 
         value={newModelName}
         onChange={(e) => setNewModelName(e.target.value)}

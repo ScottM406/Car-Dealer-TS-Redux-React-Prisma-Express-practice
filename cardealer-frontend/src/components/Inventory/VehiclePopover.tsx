@@ -1,63 +1,72 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useImperativeHandle, useRef, forwardRef } from 'react';
 import { Popover } from 'bootstrap';
 
+export interface VehiclePopoverHandle {
+  hidePopover: () => void;
+}
 interface UserInfo {
-  email: string
-  watchlist:  { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
+  id: number,
+  email: string,
+  watchlist: { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
 }
 
 interface UserProps {
-  userInfo: UserInfo | null
-  token: string
-  userID: number
+  userInfo: UserInfo | null;
+  token: string;
+  userID: number;
 }
 
 interface VehicleProps {
   id: number;
   headline: string;
-  description: string
-  image: string
-  year: number
-  miles: number
-  drivetrain: string
-  engine: string
-  color: string
-  MPG_city: number
-  MPG_highway: number
-  makeName: string
-  modelName: string
-  features: any
-  price: number
+  description: string;
+  image: string;
+  year: number;
+  miles: number;
+  drivetrain: string;
+  engine: string;
+  color: string;
+  MPG_city: number;
+  MPG_highway: number;
+  makeName: string;
+  modelName: string;
+  features: any;
+  price: number;
 }
 
-const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price}) => {
+const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps>(({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price }, ref) => {
   const popoverRef = useRef<HTMLDivElement>(null);
-  const watchlistCarIDs = new Set(userInfo?.watchlist.cars?.map(car => car.carsOnLotID));
+  const watchlistCarIDs = new Set(userInfo?.watchlist?.cars?.map(car => car.carsOnLotID));
+
+  useImperativeHandle(ref, () => ({
+    hidePopover() {
+      if (popoverRef.current) {
+        const popoverInstance = Popover.getInstance(popoverRef.current);
+        if (popoverInstance) {
+          popoverInstance.hide();
+        }
+      }
+    }
+  }));
 
   useEffect(() => {
     const popover = new Popover(popoverRef.current as Element, {
       trigger: 'manual',
-      delay: { show: 750, hide: 0},
+      delay: { show: 750, hide: 0 },
       html: true,
       content: `
         <div class="vehicle-popover-container">
           <div class="vehicle-popover-header">
-            <strong>${headline}</strong>
+            <strong>${year} ${makeName} ${modelName}</strong>
             <p>Stock Number: ${id}</p>
           </div>
           <div class="vehicle-popover-body">
-            <img src=${image} />
             <p><strong>$${price}</strong></p>
-            <p>Year: ${year}</p>
-            <p>Odometer: ${miles} miles</p>
-            <p>Drivetrain: ${drivetrain}</p>
-            <p>Engine: ${engine}</p>
-            <p>Color: ${color}</p>
-            <p>MPG: ${MPG_city}/${MPG_highway}</p>
-            <p>Make: ${makeName}</p>
-            <p>Model: ${modelName}</p>
-            <p>Features: ${features}</p>
-            <p>${description}</p>
+            <strong>Odometer:</strong> <p>${miles} mi</p>
+            <strong>Drivetrain:</strong> <p>${drivetrain}</p>
+            <strong>Engine:</strong> <p>${engine}</p>
+            <strong>Color:</strong> <p>${color}</p>
+            <strong>MPG:</strong> <p>${MPG_city}/${MPG_highway}</p>
           </div>
         </div>
       `
@@ -66,53 +75,105 @@ const VehiclePopover: React.FC<VehicleProps & UserProps> = ({ userInfo, token, i
     const showPopover = () => popover.show();
     const hidePopover = () => popover.hide();
 
-    popoverRef.current!.addEventListener('mouseenter', showPopover);
-    popoverRef.current!.addEventListener('mouseleave', hidePopover);
+    popoverRef.current?.addEventListener('mouseenter', showPopover);
+    popoverRef.current?.addEventListener('mouseleave', hidePopover);
 
     return () => {
       if (popoverRef.current) {
-        popoverRef.current!.removeEventListener('mouseover', showPopover);
-        popoverRef.current!.removeEventListener('mouseleave', hidePopover);
+        popoverRef.current?.removeEventListener('mouseenter', showPopover);
+        popoverRef.current?.removeEventListener('mouseleave', hidePopover);
         popover.dispose();
       }
     };
-  }, []);
+  }, [headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price]);
 
-  const addCartoWatchlist = async () => {
+  const addCarToWatchlist = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+
+    if (token) {
+      if (userInfo?.watchlist?.id) {
+        try {
+          const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
+            method: "POST",
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              carID: id
+            })
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+          }
+        } catch (e: any) {
+          alert(e.message || "Something has gone wrong. Please try again later");
+        }
+      } else {
+        try {
+          const response = await fetch(`http://localhost:3000/watchlists`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              userID: userInfo?.id,
+              carID: id
+            })
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+          }
+        } catch (e: any) {
+          alert(e.message || "Something has gone wrong. Please try again later.");
+        }
+      }
+    } else {
+      alert("Please log in to add cars to your watchlist");
+    }
+  };
+
+  const removeCarFromWatchlist = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+
     try {
       const response = await fetch(`http://localhost:3000/watchlists/${userInfo?.watchlist.id}`, {
-        method: "POST",
+        method: "DELETE",
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           carID: id
-         })
+        })
       });
 
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message);
       }
-    } catch(e: any) {
+    } catch (e: any) {
       alert(e.message || "Something has gone wrong. Please try again later");
-  }
+    }
   };
 
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
-      <img src={image} style={{ width:"95%", height: "250px" }} alt={headline} />
+      <img src={image} style={{ width: "95%", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
       {watchlistCarIDs.has(id) ?
         <section className="watching-car-label">
-          <p>WATCHING</p> 
+          <p>WATCHING</p>
+          <button className='remove-from-watchlist-button' onClick={removeCarFromWatchlist}>X</button>
         </section>
-        :<button onClick={addCartoWatchlist}>Add To Watchlist</button>}
+        : <button onClick={addCarToWatchlist}>Add To Watchlist</button>}
     </div>
-  )
-
-}
+  );
+});
 
 export default VehiclePopover;

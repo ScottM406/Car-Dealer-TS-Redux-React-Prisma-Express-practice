@@ -1,18 +1,33 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 $theme-colors: (
-  "background": rgba(214, 186, 147, 0.76),
+  "background": rgba(228, 214, 196, 0.76),
   "primary": rgba(74, 187, 189, 0.644),
-  "secondary": rgba(201, 236, 236, 0.438),
+  "secondary": #c0c0c0d8,
   "admin-text": firebrick,
   "gold-text": goldenrod,
-  "popover": rgb(238, 225, 205),
-  "submit-button": rgb(4, 190, 4)
+  "popover": rgba(58, 57, 55, 0.938),
+  "submit-button": rgb(4, 190, 4),
+  "remove-button": red
 );
 
 body {
+  background-image: url('./assets/body-background.jpg');
+  font-family: 'Monaco';
+  z-index: -2;
+  position: relative;
+  height: 100vh;
+  min-height: fit-content
+}
+
+body::before {
+  content: "";
+  height: 100%;
+  width: 100%;
   background-color: map-get($theme-colors, "background");
-  font-family: 'Monaco'
+  opacity: 95%;
+  z-index: -1;
+  position: absolute;
 }
 
 #navbar {
@@ -47,6 +62,7 @@ body {
   }
   > img {
     border: 2px solid black;
+    border-radius: 7.5%;
   }
   > p {
     font-size: 18px;
@@ -69,11 +85,51 @@ body {
   p {
     text-align: center;
   }
+  #inventory-list {
+    overflow-y: auto;
+  }
 }
 
 #inventory-filter {
   margin-left: 5%;
   margin-bottom: 1%;
+}
+
+#single-vehicle-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  align-items: center;
+  border: 3px solid black;
+  margin: 40px auto;
+  width: 90%;
+  > * {
+    margin-top: 10px;
+  }
+  img {
+    width:1000px;
+    height: 600px;
+    border: 2px solid black;
+  }
+  #single-vehicle-stats {
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    > div {
+      display: flex;
+      padding: 0px 160px;
+      width: 500px;
+      flex-direction: column;
+      > * {
+        float: left;
+      }
+    }
+  }
+  #single-vehicle-block-features {
+    width: 1000px;
+    text-align: center;
+  }
 }
 
 #site-banner {
@@ -100,9 +156,9 @@ body {
   content: "";
   height: 284px;
   width: 100%;
-  background-color: blanchedalmond;
+  background-color: map-get($map: $theme-colors, $key: "secondary" );
   border-bottom: 1px black solid;
-  opacity: 80%;
+  opacity: 98%;
   position: absolute;
   z-index: 1;
 }
@@ -181,6 +237,10 @@ body {
 
 #watchlist-header {
   text-align: center;
+}
+
+#account-watchlist {
+  overflow-y: auto;
 }
 
 #admin-toolkit-block {
@@ -270,15 +330,17 @@ body {
   padding-left: 34px;
   margin: 4px;
   border: 2px solid black;
+  max-height: 382px;
   cursor: pointer;
 }
 
 .popover {
   background-color: map-get($theme-colors, "popover");
   border: 2px solid black;
-  padding-left: 400px;
-  padding-right: 420px;
-
+  padding-left: 125px;
+  padding-right: 150px;
+  border: 2px solid whitesmoke;
+  color: whitesmoke;
   .vehicle-popover-container .vehicle-popover-header {
     display: flex;
     flex-direction: column;
@@ -286,25 +348,28 @@ body {
     white-space: nowrap;
     align-items: center;
   }
-
   .vehicle-popover-container {
-    background-color: map-get($theme-colors, "popover");
-    border-color: map-get($theme-colors, "popover");
+    // background-color: map-get($theme-colors, "popover");
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
-  img {
-    width: 750px;
-    align-self: center;
-  }
 }
 
 .watching-car-label {
+  display: flex;
   float: left;
+  > p {
   border: 1px solid black;
   padding: 0 5px 0 5px;
   height: 29px;
   background-color: rgb(4, 190, 4);
+  }
+  > button {
+    margin-left: 4px;
+    height: 29px;
+    color: map-get($map: $theme-colors , $key: "remove-button" );
+    background-color: map-get($map: $theme-colors, $key: "secondary" );
+  }
 }

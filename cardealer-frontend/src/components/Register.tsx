@@ -42,15 +42,19 @@ const Register = () => {
       ) : (
       <form onSubmit={registerUser}>
         <input
+        name= "email"
         type= "email"
         placeholder= "Enter email address"
+        autoComplete="email"
         required
         value = {email}
         onChange={(event) => setEmail(event.target.value)}
         />
         <input 
+        name= "password"
         type= "password"
         placeholder= "Enter password"
+        autoComplete="new-password"
         required
         value = {password}
         onChange={(event) => setPassword(event.target.value)}
