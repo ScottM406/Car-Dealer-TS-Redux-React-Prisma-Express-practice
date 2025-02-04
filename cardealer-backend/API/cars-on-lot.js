@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require('multer');
 const prisma = require("../prisma");
 const router = express.Router();
 module.exports = router;
@@ -24,14 +25,26 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
-  const { headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price } = req.body;
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`)
+  },
+});
+
+const upload = multer({ storage });
+
+router.post("/", upload.array('images', 12), async (req, res, next) => {
+  const { headline, description, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price } = req.body;
+  const images = req.files.map(file => file.path);
   try {
     const newCar = await prisma.carsOnLot.create({
       data: {
         headline,
         description,
-        image,
+        images,
         year: Number(year),
         miles: Number(miles),
         drivetrain,
@@ -41,7 +54,7 @@ router.post("/", async (req, res, next) => {
         MPG_highway: Number(MPG_highway),
         makeName,
         modelName,
-        features,
+        features: features.split(",").map(feature => feature.trim()),
         price: Number(price)
       }
     });

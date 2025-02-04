@@ -14,9 +14,18 @@ const AddInventory = () => {
   }, [])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const target = event.target as HTMLInputElement | HTMLSelectElement;
     const { name, value } = event.target;
-    dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value }))
-  }
+
+    if (target instanceof HTMLInputElement && target.files) {
+      const existingFiles = addInventoryState.images || []
+      const newFiles = Array.from(target.files)
+      const allFiles = [...existingFiles, ...newFiles]
+      dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value: allFiles }));
+    } else {
+      dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value }));
+    }
+  };
 
   const resetForm = () => {
     Object.keys(initialState).forEach((key, _value) => {
@@ -26,20 +35,33 @@ const AddInventory = () => {
 
   const filteredModels = makes.find((make) => make.name === addInventoryState.makeName)?.models || [];
 
-  const addCartoInventory = async (event: React.FormEvent<HTMLFormElement>) => {
+  const addCarToInventory = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const carData = {
-      ...addInventoryState,
-      features: addInventoryState.features.split(",").map((feature) => feature.trim()) 
+    const carData: FormData = new FormData();
+    carData.append("headline", addInventoryState.headline);
+    carData.append("year", addInventoryState.year.toString());
+    carData.append("miles", addInventoryState.miles.toString());
+    carData.append("drivetrain", addInventoryState.drivetrain);
+    carData.append("engine", addInventoryState.engine);
+    carData.append("color", addInventoryState.color);
+    carData.append("MPG_city", addInventoryState.MPG_city.toString());
+    carData.append("MPG_highway", addInventoryState.MPG_highway.toString());
+    carData.append("makeName", addInventoryState.makeName);
+    carData.append("modelName", addInventoryState.modelName);
+    carData.append("features", addInventoryState.features);
+    carData.append("price", addInventoryState.price.toString());
+    carData.append("description", addInventoryState.description);
+
+    for (let i = 0; i < addInventoryState.images.length; i++) {
+      carData.append("images", addInventoryState.images[i]);
     }
 
     try {
       const response = await fetch("http://localhost:3000/cars-on-lot", {
         method: "POST",
-        headers: { "Content-Type" : "application/json" },
-        body: JSON.stringify(carData),
-        })
+        body: carData,
+        });
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -57,7 +79,7 @@ const AddInventory = () => {
   return (
     <div className="add-inventory-block">
       <h2>Add Vehicle to Inventory</h2>
-      <form onSubmit={addCartoInventory}>
+      <form action="/upload" onSubmit={addCarToInventory} encType="multipart/form-data">
         <label htmlFor="add-inventory-headline-input">Headline: </label>
         <input
         type= "text"
@@ -67,14 +89,14 @@ const AddInventory = () => {
         value={addInventoryState.headline}
         onChange={handleInputChange}
         />
-        <label htmlFor="add-inventory-image-input">Image: </label>
+        <label htmlFor="add-inventory-images-input">Images: </label>
         <input 
-        type= "text"
-        name= "image"
-        id="add-inventory-image-input"
-        placeholder= "image url"
+        type= "file"
+        name= "images"
+        id="add-inventory-images-input"
+        multiple
         required
-        value={addInventoryState.image}
+        accept="image/*"
         onChange={handleInputChange}
         />
         <label htmlFor="add-inventory-year-input">Model Year: </label>

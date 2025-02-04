@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface AddInverntoryState {
   headline: string;
   description: string;
-  image: string;
+  images: File[];
   year: number;
   miles: number;
   drivetrain: string;
@@ -20,7 +20,7 @@ interface AddInverntoryState {
 export const initialState: AddInverntoryState = {
   headline: "",
   description: "",
-  image: "",
+  images: [],
   year: 0,
   miles: 0,
   drivetrain: "",

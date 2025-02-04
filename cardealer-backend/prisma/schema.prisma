@@ -49,7 +49,7 @@ model CarsOnLot {
   id Int @id @default(autoincrement())
   headline String
   description String
-  image String
+  images String[]
   year Int
   miles Int
   drivetrain String
