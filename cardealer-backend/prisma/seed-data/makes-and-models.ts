@@ -743,6 +743,8 @@ const makes = [
   }  
 ];
 
+//The function below finds duplicate models and logs them in the console.
+
 const findDuplicateModelNames = (makes) => {
   const modelNames = new Map();
   const duplicates = new Set();

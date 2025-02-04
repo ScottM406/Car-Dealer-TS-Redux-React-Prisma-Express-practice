@@ -19,7 +19,7 @@ const SingleVehiclePage = () => {
     <div id="single-vehicle-block">
       <h1>{vehicle.headline}</h1>
       <p>Stock Number: {vehicle.id}</p>
-      <img src={`${backendURL}/${vehicle.images[1]}`} alt={`a photo of ${vehicle.headline}`} />
+      <img src={`${backendURL}/${vehicle.images[0]}`} alt={`a photo of ${vehicle.headline}`} />
       <h2>Price: ${vehicle.price}</h2>
       <h3>Odometer: {vehicle.miles} miles</h3>
       <div id="single-vehicle-stats">
