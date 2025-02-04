@@ -5,7 +5,7 @@ interface VehicleState {
   id: number;
   headline: string;
   description: string;
-  image: string;
+  images: string[];
   year: number;
   miles: number;
   drivetrain: string;
@@ -23,7 +23,7 @@ const initialState: VehicleState = {
   id: 0,
   headline: "",
   description: "",
-  image: "",
+  images: [],
   year: 0,
   miles: 0,
   drivetrain: "",

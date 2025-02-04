@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSpecificVehicle } from "../../state/singleVehicleSlice";
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 const SingleVehiclePage = () => {
   const { id } = useParams();
   const vehicle = useSelector((state: RootState) => state.singleVehicle)
@@ -13,15 +15,11 @@ const SingleVehiclePage = () => {
     dispatch(getSpecificVehicle(id));
   }, [])
   
-  useEffect(() => {
-    console.log(vehicle)
-  }, [])
-  
   return (
     <div id="single-vehicle-block">
       <h1>{vehicle.headline}</h1>
       <p>Stock Number: {vehicle.id}</p>
-      <img src={vehicle.image} alt="a photo of the vehcile"/>
+      <img src={`${backendURL}/${vehicle.images[1]}`} alt={`a photo of ${vehicle.headline}`} />
       <h2>Price: ${vehicle.price}</h2>
       <h3>Odometer: {vehicle.miles} miles</h3>
       <div id="single-vehicle-stats">
