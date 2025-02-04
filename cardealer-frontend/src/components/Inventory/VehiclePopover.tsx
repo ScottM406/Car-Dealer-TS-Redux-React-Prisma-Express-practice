@@ -1,6 +1,9 @@
 import { useEffect, useImperativeHandle, useRef, forwardRef } from 'react';
 import { Popover } from 'bootstrap';
 
+const backendURL = import.meta.env.VITE_BACKEND_URL
+console.log(backendURL)
+
 export interface VehiclePopoverHandle {
   hidePopover: () => void;
 }
@@ -20,7 +23,7 @@ interface VehicleProps {
   id: number;
   headline: string;
   description: string;
-  image: string;
+  images: string[];
   year: number;
   miles: number;
   drivetrain: string;
@@ -34,7 +37,7 @@ interface VehicleProps {
   price: number;
 }
 
-const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps>(({ userInfo, token, id, headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price }, ref) => {
+const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps>(({ userInfo, token, id, headline, description, images, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price }, ref) => {
   const popoverRef = useRef<HTMLDivElement>(null);
   const watchlistCarIDs = new Set(userInfo?.watchlist?.cars?.map(car => car.carsOnLotID));
 
@@ -85,7 +88,7 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
         popover.dispose();
       }
     };
-  }, [headline, description, image, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price]);
+  }, [headline, description, images, year, miles, drivetrain, engine, color, MPG_city, MPG_highway, makeName, modelName, features, price]);
 
   const addCarToWatchlist = async (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -163,7 +166,7 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
 
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
-      <img src={image} style={{ width: "95%", height: "250px" }} alt={headline} />
+      <img src={`${backendURL}/${images[0]}`} style={{ width: "95%", height: "250px" }} alt={headline} />
       <h3>{headline}</h3>
       <h4>${price}</h4>
       {watchlistCarIDs.has(id) ?
