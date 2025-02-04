@@ -14,9 +14,14 @@ const AddInventory = () => {
   }, [])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, files } = event.target;
-    if (files) {
-      dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value: Array.from(files) }));
+    const target = event.target as HTMLInputElement | HTMLSelectElement;
+    const { name, value } = event.target;
+
+    if (target instanceof HTMLInputElement && target.files) {
+      const existingFiles = addInventoryState.images || []
+      const newFiles = Array.from(target.files)
+      const allFiles = [...existingFiles, ...newFiles]
+      dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value: allFiles }));
     } else {
       dispatch(setAddInventoryInputValue({ field: name as keyof typeof addInventoryState, value }));
     }
@@ -74,7 +79,7 @@ const AddInventory = () => {
   return (
     <div className="add-inventory-block">
       <h2>Add Vehicle to Inventory</h2>
-      <form onSubmit={addCarToInventory} encType="multipart/form-data">
+      <form action="/upload" onSubmit={addCarToInventory} encType="multipart/form-data">
         <label htmlFor="add-inventory-headline-input">Headline: </label>
         <input
         type= "text"

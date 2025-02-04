@@ -12,7 +12,14 @@ export const store = configureStore({
     vehicles: vehiclesReducer,
     singleVehicle: singleVehicleReducer,
     makes: makesReducer
-  }
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["addInventory/setAddInventoryInputValue"],
+        ignoredPaths: ["addInventory.images"]
+      }
+  })
 });
 
 export type RootState = ReturnType<typeof store.getState>;
