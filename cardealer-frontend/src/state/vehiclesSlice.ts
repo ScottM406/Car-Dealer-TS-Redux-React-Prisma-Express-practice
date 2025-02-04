@@ -4,7 +4,7 @@ interface VehicleState {
   id: number;
   headline: string;
   description: string;
-  image: string;
+  images: string[];
   year: number;
   miles: number;
   drivetrain: string;
