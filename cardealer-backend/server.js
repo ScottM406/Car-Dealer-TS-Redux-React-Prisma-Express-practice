@@ -3,11 +3,14 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+const path = require('path')
 const PORT = 3000;
 
 app.use(express.json());
 
 app.use(cors({ origin: "http://localhost:5173" }));
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(require("./API/auth").router);
 app.use("/cars-on-lot", require("./API/cars-on-lot"));
