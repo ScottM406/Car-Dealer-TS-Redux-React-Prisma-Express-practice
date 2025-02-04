@@ -81,7 +81,7 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
             id={vehicle.id}
             headline={vehicle.headline}
             description={vehicle.description}
-            image={vehicle.image}
+            images={vehicle.images}
             year={vehicle.year}
             miles={vehicle.miles}
             drivetrain={vehicle.drivetrain}
