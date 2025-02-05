@@ -6,7 +6,7 @@
     {
       headline: "Brand New ZR1 Corvette",
       description: "This is a test car for use in site development.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/25ZR1_1.jpeg", "uploads/25ZR1_2.jpg", "uploads/25ZR1_3.jpg"],
       year: 2025,
       miles: 4,
       drivetrain: "RWD",
@@ -48,9 +48,9 @@
       price: 194999 
     },
     {
-      headline: "Classic 1967 Corvette Sting Ray",
+      headline: "Classic 1967 Corvette Stingray",
       description: "A classic Corvette from the 1960s.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/67vette_1.jpg", "uploads/67vette_2.jpg", "uploads/67vette_3.jpeg"],
       year: 1967,
       miles: 78000,
       drivetrain: "RWD",
@@ -70,7 +70,7 @@
     {
       headline: "2014 Corvette Stingray",
       description: "A modern Corvette with advanced technology.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/14vette_1.jpg", "uploads/14vette_2.jpg", "uploads/14vette_3.jpg", "uploads/14vette_4.jpg"],
       year: 2014,
       miles: 32000,
       drivetrain: "RWD",
@@ -96,7 +96,7 @@
     {
       headline: "2018 Chevrolet Camaro SS",
       description: "A powerful modern Camaro with advanced features.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/18camaro_2.jpg", "uploads/18camaro_1.jpg"],
       year: 2018,
       miles: 25000,
       drivetrain: "RWD",
@@ -129,7 +129,7 @@
     {
       headline: "1970 Chevrolet Camaro Z28",
       description: "A classic Camaro from the golden era of muscle cars.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/70camaro_1.jpg", "uploads/70camaro_2.jpg", "uploads/70camaro_3.jpg", "uploads/70camaro_4.jpg"],
       year: 1970,
       miles: 65000,
       drivetrain: "RWD",
@@ -153,7 +153,7 @@
     {
       headline: "2022 Acura NSX Type S",
       description: "A high-performance hybrid supercar with advanced technology.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/22nsx_1.jpg", "uploads/22nsx_2.jpg", "uploads/22nsx_3.jpg",],
       year: 2022,
       miles: 5000,
       drivetrain: "AWD",
@@ -187,7 +187,7 @@
     {
       headline: "1995 Acura NSX-T",
       description: "A classic NSX with timeless design and performance.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/95nsx_1.jpg", "uploads/95nsx_2.jpg", "uploads/95nsx_3.jpg",],
       year: 1995,
       miles: 45000,
       drivetrain: "RWD",
@@ -213,12 +213,12 @@
     {
       headline: "2017 Acura NSX",
       description: "A modern hybrid supercar with cutting-edge technology.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/17nsx_1.jpg", "uploads/17nsx_2.jpg", "uploads/17nsx_3.jpg",],
       year: 2017,
       miles: 18000,
       drivetrain: "AWD",
       engine: "3.5L V6 Twin-Turbo Hybrid",
-      color: "Nouvelle Blue Pearl",
+      color: "Yellow",
       MPG_city: 21,
       MPG_highway: 22,
       makeName: "Acura",
@@ -247,7 +247,7 @@
     {
       headline: "2023 Acura Integra A-Spec",
       description: "A modern compact luxury sedan with sporty features.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/23integra_1.jpg", "uploads/23integra_2.jpg", "uploads/23integra_3.jpg", "uploads/23integra_4.jpg",],
       year: 2023,
       miles: 1500,
       drivetrain: "FWD",
@@ -277,7 +277,7 @@
     {
       headline: "2001 Acura Integra Type R",
       description: "A legendary high-performance hatchback with a cult following.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/01integra_1.jpg", "uploads/01integra_2.jpg", "uploads/01integra_3.jpg",],
       year: 2001,
       miles: 85000,
       drivetrain: "FWD",
@@ -302,7 +302,7 @@
     {
       headline: "1996 Acura Integra GS-R",
       description: "A popular sports coupe with a balance of performance and comfort.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/96integra_1.jpg", "uploads/96integra_2.jpg", "uploads/96integra_3.jpg"],
       year: 1996,
       miles: 97000,
       drivetrain: "FWD",
@@ -328,7 +328,7 @@
     {
       headline: "2021 Audi A8 L",
       description: "A luxurious full-size sedan with advanced technology.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/21a8_1.jpg", "uploads/21a8_2.jpg", "uploads/21a8_3.jpg", "uploads/21a8_4.jpg"],
       year: 2021,
       miles: 15000,
       drivetrain: "AWD",
@@ -363,7 +363,7 @@
     {
       headline: "2018 Audi A8 L",
       description: "A previous generation of the luxurious full-size sedan.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/18a8_3.jpg", "uploads/18a8_1.jpg", "uploads/18a8_2.jpg", "uploads/18a8_4.jpg", "uploads/18a8_5.jpg"],
       year: 2018,
       miles: 45000,
       drivetrain: "AWD",
@@ -398,7 +398,7 @@
     {
       headline: "2022 Toyota Tundra TRD Pro",
       description: "A rugged full-size pickup truck with off-road capabilities.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/22tundra_1.jpg", "uploads/22tundra_2.jpg"],
       year: 2022,
       miles: 12000,
       drivetrain: "4WD",
@@ -433,7 +433,7 @@
     {
       headline: "2018 Toyota Tundra Limited",
       description: "A reliable full-size pickup truck with luxurious features.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/18tundra_1.jpg", "uploads/18tundra_1.jpg", "uploads/18tundra_1.jpg"],
       year: 2018,
       miles: 45000,
       drivetrain: "4WD",
@@ -466,7 +466,7 @@
     {
       headline: "Late Model Challenger Hellcat",
       description: "This is a test car for use in site development.",
-      images: ["uploads/1738638158288-Honda_Civic_SI1.jpeg"],
+      images: ["uploads/23challenger_1.jpeg", "23challenger_2.jpg"],
       year: 2023,
       miles: 12588,
       drivetrain: "RWD",
