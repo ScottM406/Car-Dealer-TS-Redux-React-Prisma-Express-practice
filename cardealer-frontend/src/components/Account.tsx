@@ -50,7 +50,7 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
             id={vehicle.CarsOnLot.id}
             headline={vehicle.CarsOnLot.headline}
             description={vehicle.CarsOnLot.description}
-            image={vehicle.CarsOnLot.image}
+            images={vehicle.CarsOnLot.images}
             year={vehicle.CarsOnLot.year}
             miles={vehicle.CarsOnLot.miles}
             drivetrain={vehicle.CarsOnLot.drivetrain}
