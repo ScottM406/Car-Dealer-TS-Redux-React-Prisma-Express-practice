@@ -86,7 +86,13 @@ body::before {
     text-align: center;
   }
   #inventory-list {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
     overflow-y: auto;
+    margin: auto;
+    width: 100%;
+
   }
 }
 
