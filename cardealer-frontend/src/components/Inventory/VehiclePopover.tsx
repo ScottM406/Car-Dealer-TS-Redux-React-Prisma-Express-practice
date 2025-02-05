@@ -1,5 +1,5 @@
 import { useEffect, useImperativeHandle, useRef, forwardRef } from 'react';
-import { Popover } from 'bootstrap';
+import { Popover, Carousel } from 'bootstrap';
 
 const backendURL = import.meta.env.VITE_BACKEND_URL
 console.log(backendURL)
@@ -164,9 +164,32 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
     }
   };
 
+  const stopPropagation = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  }
+  
   return (
     <div ref={popoverRef} data-bs-toggle="popover">
-      <img src={`${backendURL}/${images[0]}`} style={{ width: "95%", height: "250px" }} alt={headline} />
+      <div id={`carouselIndicatorFor${id}`} className="carousel slide" data-ride="carousel">
+        <ol className="carousel-indicators">
+          {images.map((_image, index: any) => (
+            <li key={index} data-target={`carouselIndicatorFor${id}`} data-slide-to={index} className={index === 0 ? "active" : ""}></li>
+          ))}
+        </ol>
+        <div className ="carousel-inner">
+          {images.map((image, index) => (
+            <div key={index} className={index === 0 ? "carousel-item active" : "carousel-item"}>
+              <img className="d-block w-100"src={`${backendURL}/${image}`} style={{ width: "95%", height: "250px" }} alt={headline} />
+            </div>
+          ))}
+        </div>
+        <a className="carousel-control-prev" href={`#carouselIndicatorFor${id}`} role="button" data-bs-slide="prev" onClick={stopPropagation}>
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a className="carousel-control-next" href={`#carouselIndicatorFor${id}`} role="button" data-bs-slide="next" onClick={stopPropagation}>
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
       <h3>{headline}</h3>
       <h4>${price}</h4>
       {watchlistCarIDs.has(id) ?
