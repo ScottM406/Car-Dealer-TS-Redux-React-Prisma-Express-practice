@@ -186,7 +186,7 @@ const VehiclePopover = forwardRef<VehiclePopoverHandle, VehicleProps & UserProps
         <div className ="carousel-inner">
           {images.map((image: string, index: number) => (
             <div key={index} className={index === 0 ? "carousel-item active" : "carousel-item"}>
-              <img className="d-block w-80" src={`${backendURL}/${image}`} style={{ width: "95%", height: "250px" }} alt={headline} />
+              <img className="d-block w-100" src={`${backendURL}/${image}`} style={{ width: "95%", height: "250px" }} alt={headline} />
             </div>
           ))}
         </div>
