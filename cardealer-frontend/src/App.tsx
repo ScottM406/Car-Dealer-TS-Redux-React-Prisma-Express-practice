@@ -12,6 +12,7 @@ import Inventory from "./components/inventory/Inventory.tsx";
 import SingleVehiclePage from "./components/inventory/SingleVehiclePage";
 import Account from "./components/user/Account";
 import Banner from "./components/Banner.tsx";
+import ChatBot from "./components/ChatBot.tsx";
 
 interface UserInfo {
   email: string
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/admintoolkit/*" element={<ProtectedRoute component={AdminToolkit} isSuperUser={isSuperUser}/>} />
         <Route path="/account" element={<Account userInfo={userInfo} userID={userID} token={token} />} />
       </Routes>
+    {/* <ChatBot /> */}
     </>
   )
 }
