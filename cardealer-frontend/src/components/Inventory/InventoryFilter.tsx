@@ -27,22 +27,22 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
 
   return (
     <form>
-      <h4>Filter Vehicles</h4>
-      <label htmlFor="make">Make:</label>
+      <h4 className="whitesmoke-text">Filter Vehicles</h4>
+      <label htmlFor="make" className="whitesmoke-text">Make:</label>
       <select id ="make" name="make" onChange={(e) => setSelectedMake(e.target.value)} onClick={() => dispatch(getMakes())}>
         <option value="">All Makes</option>
         {alphabeticalMakes.map((make) => (
           <option key={make.name} value={make.name}>{make.name}</option>
         ))}
       </select>
-      <label htmlFor="model">Model:</label>
+      <label htmlFor="model" className="whitesmoke-text">Model:</label>
       <select id="model" name="model" onChange={(e) => setSelectedModel(e.target.value)}>
         <option value="">All Models</option>
         {fileteredAlphabeticalModels.map((model) => (
           <option key={model.name} value={model.name}>{model.name}</option>
         ))}
       </select>
-      <label htmlFor="drivetrain">Model:</label>
+      <label htmlFor="drivetrain" className="whitesmoke-text">Model:</label>
       <select id="drivetrain" name="drivetrain" onChange={(e) => setSelectedDrivetrain(e.target.value)}>
         <option value="">All Drivetrains</option>
         <option value="FWD">FWD</option>
@@ -50,7 +50,7 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
         <option value="AWD">AWD</option>
         <option value="Four-Wheel Drive">Four-Wheel Drive</option>
       </select>
-      <label htmlFor="lowest-price">Price Range:</label>
+      <label htmlFor="lowest-price" className="whitesmoke-text">Price Range:</label>
       <input
       id="lowest-price"
       name="lowest-price" 
@@ -58,7 +58,7 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
       value={selectedMinPrice} 
       onChange={(e) => setSelectedMinPrice(Number(e.target.value))} 
       />
-      <label htmlFor="highest-price">-</label>
+      <label htmlFor="highest-price" className="whitesmoke-text">-</label>
       <input
       id="highest-price"
       name="highest-price" 
@@ -66,7 +66,7 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
       value={selectedMaxPrice} 
       onChange={(e) => setSelectedMaxPrice(Number(e.target.value))} 
       />
-      <label htmlFor="lowest-miles">Odometer:</label>
+      <label htmlFor="lowest-miles" className="whitesmoke-text">Odometer:</label>
       <input
       id="lowest-miles"
       name="lowest-miles"
@@ -74,7 +74,7 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
       value={selectedMinMiles}
       onChange={(e) => setSelectedMinMiles(Number(e.target.value))} 
       />
-      <label htmlFor="highest-miles">-</label>
+      <label htmlFor="highest-miles" className="whitesmoke-text">-</label>
       <input
       id="highest-miles"
       name="highest-miles"
