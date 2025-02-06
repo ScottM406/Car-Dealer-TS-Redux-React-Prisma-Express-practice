@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import NavBar from "./components/NavBar";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/user/Register.tsx";
+import Login from "./components/user/Login.tsx";
 import LandingPage from "./components/LandingPage";
 import AdminToolkit from "./components/admin-toolkit/AdminToolkit.tsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Inventory from "./components/inventory/Inventory.tsx";
 import SingleVehiclePage from "./components/inventory/SingleVehiclePage";
-import Account from "./components/Account";
+import Account from "./components/user/Account";
 import Banner from "./components/Banner.tsx";
 
 interface UserInfo {

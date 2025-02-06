@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import VehiclePopover, {VehiclePopoverHandle} from "./inventory/VehiclePopover"
+import VehiclePopover, {VehiclePopoverHandle} from "../inventory/VehiclePopover"
 import { useNavigate } from "react-router-dom"
 
 interface UserInfo {
