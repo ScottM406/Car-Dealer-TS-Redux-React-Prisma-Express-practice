@@ -19,7 +19,28 @@ const SingleVehiclePage = () => {
     <div id="single-vehicle-block">
       <h1>{vehicle.headline}</h1>
       <p>Stock Number: {vehicle.id}</p>
-      <img src={`${backendURL}/${vehicle.images[0]}`} alt={`a photo of ${vehicle.headline}`} />
+      <div id="carouselIndicator" className="carousel slide" data-ride="carousel">
+        <ol className="carousel-indicators" style={{ listStyle: 'none' }}>
+          {vehicle.images.map((_image: string, index: number) => (
+            <li key={index} data-bs-target="#carouselIndicator" data-bs-slide-to={index} className={index === 0 ? "active" : ""}></li>
+          ))}
+        </ol>
+        <div className ="carousel-inner">
+          {vehicle.images.map((image: string, index: number) => (
+            <div key={index} className={index === 0 ? "carousel-item active" : "carousel-item"}>
+              <img src={`${backendURL}/${image}`} alt={vehicle.headline} />
+            </div>
+          ))}
+        </div>
+        <a className="carousel-control-prev" href="#carouselIndicator" role="button" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </a>
+        <a className="carousel-control-next" href="#carouselIndicator" role="button" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </a>
+    </div>
       <h2>Price: ${vehicle.price}</h2>
       <h3>Odometer: {vehicle.miles} miles</h3>
       <div id="single-vehicle-stats">
