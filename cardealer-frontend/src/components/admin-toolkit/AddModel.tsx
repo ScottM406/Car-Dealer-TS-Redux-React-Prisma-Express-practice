@@ -3,13 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../state/store";
 import { getMakes } from "../../state/makesSlice";
 
-
 const AddModel = () => {
   const [newModelName, setNewModelName] = useState<string>("");
   const [makeOfNewModel, setMakeofNewModel] = useState<string>("");
   
   const makes = useSelector((state: RootState) => state.makes)
-  const alphabeticalMakes = makes.slice().sort((a,b) => a.name.localeCompare(b.name));
+  const alphabeticalMakes = makes.slice().sort((a,b) => a.name.localeCompare(b.name)); 
 
   const dispatch = useDispatch<AppDispatch>();
 
