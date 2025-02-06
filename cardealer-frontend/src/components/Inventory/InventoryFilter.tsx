@@ -22,7 +22,8 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
 
   const makes = useSelector((state: RootState) => state.makes)
   const dispatch = useDispatch<AppDispatch>();
-  const fileteredModels = makes.find((make) => make.name === selectedMake)?.models || [];
+  const alphabeticalMakes = makes.slice().sort((a, b) => a.name.localeCompare(b.name));
+  const fileteredAlphabeticalModels = [...(makes.find((make) => make.name === selectedMake)?.models  || [])].sort((a,b) => a.name.localeCompare(b.name));
 
   return (
     <form>
@@ -30,14 +31,14 @@ const InventoryFilter: React.FC<InventoryFilterProps> = ({ selectedMake, setSele
       <label htmlFor="make">Make:</label>
       <select id ="make" name="make" onChange={(e) => setSelectedMake(e.target.value)} onClick={() => dispatch(getMakes())}>
         <option value="">All Makes</option>
-        {makes.map((make) => (
+        {alphabeticalMakes.map((make) => (
           <option key={make.name} value={make.name}>{make.name}</option>
         ))}
       </select>
       <label htmlFor="model">Model:</label>
       <select id="model" name="model" onChange={(e) => setSelectedModel(e.target.value)}>
         <option value="">All Models</option>
-        {fileteredModels.map((model) => (
+        {fileteredAlphabeticalModels.map((model) => (
           <option key={model.name} value={model.name}>{model.name}</option>
         ))}
       </select>
