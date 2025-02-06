@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../state/store";
 import { getMakes } from "../../state/makesSlice";
 
-
 const AddModel = () => {
   const [newModelName, setNewModelName] = useState<string>("");
   const [makeOfNewModel, setMakeofNewModel] = useState<string>("");
   
   const makes = useSelector((state: RootState) => state.makes)
+  const alphabeticalMakes = makes.slice().sort((a,b) => a.name.localeCompare(b.name)); 
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -53,7 +53,7 @@ const AddModel = () => {
         <label htmlFor="add-model-makeName-input">Make:</label>
         <select id="add-model-makeName-input" name="makeName" value={makeOfNewModel} onChange={(e) => setMakeofNewModel(e.target.value)}>
           <option>Select Make</option>
-          {makes.map((make) => <option key={make.name}>{make.name}</option>)}
+          {alphabeticalMakes.map((make) => <option key={make.name}>{make.name}</option>)}
         </select>
         <label htmlFor="add-model-modelName-input">Model Name:</label>
         <input
