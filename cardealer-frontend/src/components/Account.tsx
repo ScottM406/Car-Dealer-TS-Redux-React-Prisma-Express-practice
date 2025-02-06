@@ -42,7 +42,7 @@ const Account: React.FC<AccountProps> = ({ userInfo, userID, token }) => {
       <h2>Your Account</h2>
       <p>{userInfo?.email}</p>
     </section>
-      <h2 id="watchlist-header">Watchlist</h2>
+      <h2 id="watchlist-header" className="whitesmoke-text">Watchlist</h2>
       <div id="account-watchlist">
         {watchlist?.map((vehicle: any) => (
           <div key={vehicle.CarsOnLot.id} className="single-vehicle-inventory-container" onClick={() => navigateToSingleVehicle(vehicle.CarsOnLot.id)}>
