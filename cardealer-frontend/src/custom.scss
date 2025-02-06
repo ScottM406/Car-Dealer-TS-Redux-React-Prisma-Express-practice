@@ -1,9 +1,9 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 $theme-colors: (
-  "background": rgba(209, 182, 125, 0.767),
-  "primary": rgba(106, 112, 119, 0.705),
-  "secondary": #d1c8a2d8,
+  "background": rgba(19, 18, 18, 0.925),
+  "primary": rgba(177, 150, 91, 0.966),
+  "secondary": whitesmoke,
   "admin-text": firebrick,
   "gold-text": goldenrod,
   "popover": rgba(58, 57, 55, 0.938),
@@ -35,7 +35,7 @@ body::before {
   justify-content: center;
   background-color: map-get($map: $theme-colors, $key: "primary");
   height: 35px;
-  border-bottom: 1px black solid;
+  border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
   a {
     margin: 0 5% 0 5%;
     font-size: 20px;
@@ -71,9 +71,9 @@ body::before {
 
 #inventory-header-block {
   width: 800px;
-  border: 3px outset black;
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   margin: 0px auto;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: map-get($map: $theme-colors, $key: "primary" );
 }
 
 #inventory-body {
@@ -105,9 +105,9 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: map-get($map: $theme-colors, $key: "primary" );
   align-items: center;
-  border: 3px solid black;
+  border: 3px solid map-get($map: $theme-colors, $key: "secondary");
   margin: 40px auto;
   width: 90%;
   > * {
@@ -162,8 +162,8 @@ body::before {
   content: "";
   height: 284px;
   width: 100%;
-  background-color: #8b8463a6;
-  border-bottom: 1px black solid;
+  background-color: #000000c2;
+  border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
   opacity: 98%;
   position: absolute;
   z-index: 1;
@@ -174,11 +174,13 @@ body::before {
   width: 55%;
   max-width: 1200px;
   height: 100%;
+  opacity: 80%;
   margin-left: auto;
   margin-right: auto;
   border: 2px solid black;
   position: relative;
   z-index: 2;
+  border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
 }
 
 #register-block {
@@ -187,9 +189,9 @@ body::before {
   text-align: center;
   margin: 40px auto;
   width: 800px;
-  border: 3px outset black;
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   padding-bottom: 40px;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: map-get($map: $theme-colors, $key: "primary" );
   form {
     display: flex;
     flex-direction: column;
@@ -213,9 +215,9 @@ body::before {
   text-align: center;
   margin: 40px auto;
   width: 800px;
-  border: 3px outset black;
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   padding-bottom: 40px;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: map-get($map: $theme-colors, $key: "primary" );
   form {
     display: flex;
     flex-direction: column;
@@ -235,10 +237,10 @@ body::before {
 
 #account-header-block {
   width: 800px;
-  border: 3px outset black;
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   margin: 40px auto;
   text-align: center;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: map-get($map: $theme-colors, $key: "primary" );
 }
 
 #watchlist-header {
@@ -246,14 +248,21 @@ body::before {
 }
 
 #account-watchlist {
-  overflow-y: auto;
+  display: flex;
+  flex-direction:row-reverse;
+  white-space: nowrap;
+  overflow-x: auto;
+  height: 430px;
+  > .single-vehicle-inventory-container {
+    flex: 0 0 auto;
+  }
 }
 
 #admin-toolkit-block {
   width: 800px;
-  border: 3px outset black;
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   margin: 40px auto;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: map-get($map: $theme-colors, $key: "primary" );
   text-align: center;
   padding-bottom: 9px;
   > a, div > a {
@@ -269,8 +278,8 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
-  border: 3px outset black;
+  background-color: map-get($map: $theme-colors, $key: "primary" );
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   width: 800px;
   margin: 40px auto;
   h1 {
@@ -281,7 +290,7 @@ body::before {
     width: 50%;
     margin-top: 20px;
     text-align: center;
-    border: 2px solid black;
+    border: 2px solid map-get($map: $theme-colors, $key: "secondary");
   }
   h2 {
     color: map-get($map: $theme-colors, $key: "admin-text" );
@@ -295,15 +304,19 @@ body::before {
   }
 }
 
+.whitesmoke-text {
+  color: map-get($map: $theme-colors, $key: "secondary" )
+}
+
 .add-inventory-block {
   display: flex;
   flex-direction: column;
   text-align: center;
   margin: 40px auto;
   width: 800px;
-  border: 3px outset black;
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   padding-bottom: 40px;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: map-get($map: $theme-colors, $key: "primary" );
   form {
     display: flex;
     flex-direction: column;
@@ -330,22 +343,27 @@ body::before {
 
 .single-vehicle-inventory-container {
   width: 500px;
-  background-color: map-get($map: $theme-colors, $key: "secondary");
+  background-color: map-get($map: $theme-colors, $key: "primary");
   float: left;
   padding: 12px;
   padding-left: 34px;
   margin: 4px;
-  border: 2px solid black;
+  border: 2px solid map-get($map: $theme-colors, $key: "secondary");
   max-height: 382px;
   cursor: pointer;
+  .vehicle-slideshow-shadowbox {
+    width: 100%;
+  }
+  img {
+    border: 3px black solid;
+  }
 }
 
 .popover {
   background-color: map-get($theme-colors, "popover");
-  border: 2px solid black;
   padding-left: 125px;
   padding-right: 150px;
-  border: 2px solid whitesmoke;
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   color: whitesmoke;
   .vehicle-popover-container .vehicle-popover-header {
     display: flex;
@@ -355,7 +373,6 @@ body::before {
     align-items: center;
   }
   .vehicle-popover-container {
-    // background-color: map-get($theme-colors, "popover");
     color: whitesmoke;
     display: flex;
     flex-direction: column;
@@ -376,6 +393,6 @@ body::before {
     margin-left: 4px;
     height: 29px;
     color: map-get($map: $theme-colors , $key: "remove-button" );
-    background-color: map-get($map: $theme-colors, $key: "secondary" );
+    background-color: map-get($map: $theme-colors, $key: "secondary")
   }
 }
