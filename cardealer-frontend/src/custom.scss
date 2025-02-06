@@ -69,6 +69,46 @@ body::before {
   }
 }
 
+#chatbot-block {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 300px;
+  height: 500px;
+  background-color: map-get($map: $theme-colors, $key: "popover");
+  color: map-get($map: $theme-colors, $key: "secondary");
+  border: 3px solid map-get($map: $theme-colors, $key: "secondary");
+  h1 {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 5px;
+  }
+  #chatbot-response {
+    width: 100%;
+    height: 250px;
+    // border-top: 2px solid map-get($map: $theme-colors, $key: "secondary");
+    border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
+  }
+  #chatbot-prompt {
+    width: 100%;
+    height: 170px;
+    border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
+  }
+  form {
+    height: 100%;
+    width: 100%;
+  }
+  textarea {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 5px;
+  }
+  button {
+    float:right;
+  }
+}
+
 #inventory-header-block {
   width: 800px;
   border: 3px outset map-get($map: $theme-colors, $key: "secondary");
