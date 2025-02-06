@@ -1,9 +1,9 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 $theme-colors: (
-  "background": rgba(228, 214, 196, 0.76),
-  "primary": rgba(74, 187, 189, 0.644),
-  "secondary": #c0c0c0d8,
+  "background": rgba(209, 182, 125, 0.767),
+  "primary": rgba(106, 112, 119, 0.705),
+  "secondary": #d1c8a2d8,
   "admin-text": firebrick,
   "gold-text": goldenrod,
   "popover": rgba(58, 57, 55, 0.938),
@@ -25,7 +25,7 @@ body::before {
   height: 100%;
   width: 100%;
   background-color: map-get($theme-colors, "background");
-  opacity: 95%;
+  opacity: 85%;
   z-index: -1;
   position: absolute;
 }
@@ -162,7 +162,7 @@ body::before {
   content: "";
   height: 284px;
   width: 100%;
-  background-color: map-get($map: $theme-colors, $key: "secondary" );
+  background-color: #8b8463a6;
   border-bottom: 1px black solid;
   opacity: 98%;
   position: absolute;
