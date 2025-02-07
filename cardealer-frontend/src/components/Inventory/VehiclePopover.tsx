@@ -1,8 +1,7 @@
 import { useEffect, useImperativeHandle, useRef, forwardRef } from 'react';
-import { Popover, Carousel } from 'bootstrap';
+import { Popover } from 'bootstrap';
 
 const backendURL = import.meta.env.VITE_BACKEND_URL
-console.log(backendURL)
 
 export interface VehiclePopoverHandle {
   hidePopover: () => void;

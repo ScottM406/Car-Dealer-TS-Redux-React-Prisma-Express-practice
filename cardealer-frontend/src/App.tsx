@@ -51,7 +51,7 @@ const App = () => {
         <Route path="/admintoolkit/*" element={<ProtectedRoute component={AdminToolkit} isSuperUser={isSuperUser}/>} />
         <Route path="/account" element={<Account userInfo={userInfo} userID={userID} token={token} />} />
       </Routes>
-    {/* <ChatBot /> */}
+    <ChatBot />
     </>
   )
 }
