@@ -32,6 +32,9 @@ body::before {
 
 #navbar {
   display: flex;
+  position: fixed;
+  z-index: 4;
+  width: 100%;
   justify-content: center;
   background-color: map-get($map: $theme-colors, $key: "primary");
   height: 35px;
@@ -136,7 +139,7 @@ body::before {
 #inventory-header-block {
   width: 800px;
   border: 3px outset map-get($map: $theme-colors, $key: "secondary");
-  margin: 0px auto;
+  margin: 80px auto 0 auto;
   background-color: map-get($map: $theme-colors, $key: "primary" );
 }
 
@@ -206,6 +209,8 @@ body::before {
   background-image: url("./assets/banner-background.jpg");
   background-size: cover;
   height: 284px;
+  position: relative;
+  top: 35px;
   z-index: 0;
   > h1 {
     text-align: center;
@@ -251,7 +256,7 @@ body::before {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 40px auto;
+  margin: 80px auto;
   width: 800px;
   border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   padding-bottom: 40px;
@@ -277,7 +282,7 @@ body::before {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 40px auto;
+  margin: 80px auto;
   width: 800px;
   border: 3px outset map-get($map: $theme-colors, $key: "secondary");
   padding-bottom: 40px;
@@ -302,7 +307,7 @@ body::before {
 #account-header-block {
   width: 800px;
   border: 3px outset map-get($map: $theme-colors, $key: "secondary");
-  margin: 40px auto;
+  margin: 80px auto;
   text-align: center;
   background-color: map-get($map: $theme-colors, $key: "primary" );
 }
@@ -325,7 +330,7 @@ body::before {
 #admin-toolkit-block {
   width: 800px;
   border: 3px outset map-get($map: $theme-colors, $key: "secondary");
-  margin: 40px auto;
+  margin: 80px auto;
   background-color: map-get($map: $theme-colors, $key: "primary" );
   text-align: center;
   padding-bottom: 9px;
