@@ -42,7 +42,7 @@ const ChatBot: React.FunctionComponent = () => {
     chatbot and tell the user that you are ready to help with their questions. I have noticed that oftentimes, your response also includes \n\{original prompt}\n\; 
     Please do not return that. The sentance after this one is the user's prompt.` + message;
     const result = await model.generateContent(prompt);
-    const resultText = await result.response.text();
+    const resultText = result.response.text();
     messageLog.push("Chatbot: " + resultText);
   };
 
