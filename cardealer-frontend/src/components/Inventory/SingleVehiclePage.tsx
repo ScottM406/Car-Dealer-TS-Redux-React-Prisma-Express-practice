@@ -59,6 +59,7 @@ const SingleVehiclePage = () => {
       <div id="single-vehicle-block-features">
         <strong>Features:</strong> <p>{vehicle.features}</p>
       </div>
+      <button id="request-showing-button" className="btn btn-primary">Request a showing or test drive!</button>
     </div>
   )
 }

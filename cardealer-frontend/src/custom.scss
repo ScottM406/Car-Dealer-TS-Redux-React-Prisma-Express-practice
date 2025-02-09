@@ -112,7 +112,6 @@ body::before {
     word-wrap: break-word;
     border-top: 1px solid map-get($map: $theme-colors, $key: "primary");;
     border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
-    // scrollbar-width: thin; /* Width of the scrollbar */
     scrollbar-color: map-get($map: $theme-colors, $key: "secondary") map-get($map: $theme-colors, $key: "primary");
   }
   #chatbot-prompt {
@@ -175,14 +174,17 @@ body::before {
   background-color: map-get($map: $theme-colors, $key: "primary" );
   align-items: center;
   border: 3px solid map-get($map: $theme-colors, $key: "secondary");
-  margin: 40px auto;
+  margin: 80px auto;
   width: 90%;
-  > * {
-    margin-top: 10px;
+  h1 {
+    margin-bottom: 0px;
+  }
+  h3 {
+    margin-top: 0px;
   }
   img {
-    width:1000px;
-    height: 600px;
+    width:750px;
+    height: 450px;
     border: 2px solid black;
   }
   #single-vehicle-stats {
@@ -202,6 +204,14 @@ body::before {
   #single-vehicle-block-features {
     width: 1000px;
     text-align: center;
+  }
+  #request-showing-button {
+    position: absolute;
+    bottom: 9%;
+    left: 75%;
+    height: 60px;
+    font-size: 24px;
+    border: 3px solid cyan;
   }
 }
 
