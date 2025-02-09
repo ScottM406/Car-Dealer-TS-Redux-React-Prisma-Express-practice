@@ -29,6 +29,18 @@ model Watchlist {
 
 }
 
+model ShowingRequest {
+  id Int @id @default(autoincrement())
+  car ShowingRequestsCarsOnLot?
+  firstName String
+  lastName String
+  phoneNumber String
+  emailAddress String
+  desiredTime String
+  actualTime String?
+  testDriveRequested Boolean
+}
+
 model Make {
   id Int @default(autoincrement())
   name String @id
@@ -64,7 +76,7 @@ model CarsOnLot {
   features String[]
   price Int
   watchlists WatchlistCarsOnLot[]
-  
+  showingRequests ShowingRequestsCarsOnLot[]
 }
 
 model WatchlistCarsOnLot {
@@ -74,4 +86,13 @@ model WatchlistCarsOnLot {
   CarsOnLot CarsOnLot @relation(fields: [carsOnLotID], references: [id], onDelete: Cascade)
 
   @@id([watchlistID, carsOnLotID])
+}
+
+model ShowingRequestsCarsOnLot {
+  showingRequestID Int @unique
+  carsOnLotID Int
+  ShowingRequest ShowingRequest @relation(fields: [showingRequestID], references: [id])
+  CarOnLot CarsOnLot @relation(fields: [carsOnLotID], references: [id], onDelete: Cascade)
+
+  @@id([showingRequestID, carsOnLotID])
 }
