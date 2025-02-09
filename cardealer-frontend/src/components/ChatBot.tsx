@@ -15,7 +15,7 @@ const ChatBot: React.FunctionComponent = () => {
   const vehciles = useSelector((state: RootState) => state.vehicles)
   
   useEffect(() => {
-    dispatch(getVehicles)
+    dispatch(getVehicles())
   }, [vehciles])
 
   const sendMessage = async (e: any) => {
