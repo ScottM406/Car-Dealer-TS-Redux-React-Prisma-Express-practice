@@ -3,6 +3,7 @@ import { RootState, AppDispatch } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSpecificVehicle } from "../../state/singleVehicleSlice";
+import RequestShowingWidget from "./RequestShowingWidget";
 
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -59,7 +60,7 @@ const SingleVehiclePage = () => {
       <div id="single-vehicle-block-features">
         <strong>Features:</strong> <p>{vehicle.features}</p>
       </div>
-      <button id="request-showing-button" className="btn btn-primary">Request a showing or test drive!</button>
+      <RequestShowingWidget />
     </div>
   )
 }
