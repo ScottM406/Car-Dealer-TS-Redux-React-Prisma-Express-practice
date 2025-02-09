@@ -60,7 +60,7 @@ const SingleVehiclePage = () => {
       <div id="single-vehicle-block-features">
         <strong>Features:</strong> <p>{vehicle.features}</p>
       </div>
-      <RequestShowingWidget />
+      <RequestShowingWidget vehicleID={vehicle.id} vehicleYear={vehicle.year} vehicleMake={vehicle.makeName} vehicleModel={vehicle.modelName} />
     </div>
   )
 }
