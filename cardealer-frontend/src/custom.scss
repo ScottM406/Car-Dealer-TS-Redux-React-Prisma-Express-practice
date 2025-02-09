@@ -211,18 +211,26 @@ body::before {
   position: absolute;
   bottom: 9%;
   left: 75%;
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
   #request-showing-button {
     height: 60px;
     font-size: 24px;
     border: 3px solid cyan;
   }
   #request-showing-widget-block {
-    // display: flex;
-    // flex-direction: column;
     width: 337px;
     background-color: map-get($map: $theme-colors, $key: "popover");
     color: map-get($map: $theme-colors, $key: "secondary");
     border: 3px solid map-get($map: $theme-colors, $key: "secondary");
+    form {
+      display: flex;
+      flex-direction: column;
+      margin: 0px auto;
+    }
   }
   input {
     background-color: map-get($map: $theme-colors, $key: "secondary")
