@@ -31,7 +31,7 @@ model Watchlist {
 
 model ShowingRequest {
   id Int @id @default(autoincrement())
-  car ShowingRequestsCarsOnLot?
+  car ShowingRequestCarsOnLot?
   firstName String
   lastName String
   phoneNumber String
@@ -76,7 +76,7 @@ model CarsOnLot {
   features String[]
   price Int
   watchlists WatchlistCarsOnLot[]
-  showingRequests ShowingRequestsCarsOnLot[]
+  showingRequests ShowingRequestCarsOnLot[]
 }
 
 model WatchlistCarsOnLot {
@@ -88,7 +88,7 @@ model WatchlistCarsOnLot {
   @@id([watchlistID, carsOnLotID])
 }
 
-model ShowingRequestsCarsOnLot {
+model ShowingRequestCarsOnLot {
   showingRequestID Int @unique
   carsOnLotID Int
   ShowingRequest ShowingRequest @relation(fields: [showingRequestID], references: [id])
