@@ -103,3 +103,23 @@ Content-Type: application/json
   ],
   "price": 72000
 }
+
+### CREATE NEW SHOWING REQUEST
+POST {{host}}/showing-requests
+Content-Type: application/json
+
+{
+  "firstName": "Bob",
+  "lastName": "Smith",
+  "phoneNumber": "5098203956",
+  "emailAddress": "bobsmith@test.com",
+  "desiredTime": "2025-06-15T13:45:30",
+  "testDriveRequested": true,
+  "carsOnLotID": 3
+
+}
+
+### GET SHOWING REQUESTS 
+@token = {{login.response.body.token}}
+GET {{host}}/showing-requests
+Authorization: Bearer {{token}}
