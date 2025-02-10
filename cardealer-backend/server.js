@@ -18,6 +18,7 @@ app.use("/makes", require("./API/makes"));
 app.use("/users", require("./API/users"));
 app.use("/watchlists", require("./API/watchlist"));
 app.use("/models", require("./API/models"));
+app.use("/showing-requests", require("./API/showing-requests"));
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
