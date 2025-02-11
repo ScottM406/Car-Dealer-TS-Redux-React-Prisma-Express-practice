@@ -30,14 +30,15 @@ router.post("/", async (req, res, next) => {
         testDriveRequested
       },
     });
-    res.status(201).json(showingRequest);
     
-    await prisma.showingRequestCarsOnLot.create({
+    const showingRequestCarsOnLot = await prisma.showingRequestCarsOnLot.create({
       data: {
         showingRequestID: showingRequest.id,
         carsOnLotID
       }
-    })
+    });
+
+    res.status(201).json({ showingRequest, showingRequestCarsOnLot });
   } catch (e) {
     next (e);
   }
