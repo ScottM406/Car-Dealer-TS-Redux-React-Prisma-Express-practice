@@ -49,7 +49,7 @@ const singleVehicleSlice = createSlice({
 
 export const getSpecificVehicle = createAsyncThunk(
   "vehicles/getSpecificVehicle",
-  async (id) => {
+  async (id: string | undefined) => {
     const response = await fetch(`http://localhost:3000/cars-on-lot/${id}`)
     const vehicle = await response.json();
     return vehicle
