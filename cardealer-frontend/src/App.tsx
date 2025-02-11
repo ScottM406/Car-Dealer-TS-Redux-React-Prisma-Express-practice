@@ -8,15 +8,16 @@ import Login from "./components/user/Login.tsx";
 import LandingPage from "./components/LandingPage";
 import AdminToolkit from "./components/admin-toolkit/AdminToolkit.tsx";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Inventory from "./components/inventory/Inventory.tsx";
+import Inventory from "./components/inventory/inventory.tsx";
 import SingleVehiclePage from "./components/inventory/SingleVehiclePage";
 import Account from "./components/user/Account";
 import Banner from "./components/Banner.tsx";
 import ChatBot from "./components/ChatBot.tsx";
 
 interface UserInfo {
+  id: number
   email: string
-  watchlist:  { id: number, userID: number }
+  watchlist: { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
 }
 
 const App = () => {
