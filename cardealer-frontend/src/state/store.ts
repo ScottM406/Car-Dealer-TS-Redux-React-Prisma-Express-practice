@@ -3,15 +3,15 @@ import addInventoryReducer from './addInventorySlice'
 import vehiclesReducer from './vehiclesSlice';
 import makesReducer from './makesSlice';
 import singleVehicleReducer from './singleVehicleSlice'
-
-
+import newShowingRequestReducer from './newShowingRequestSlice';
 
 export const store = configureStore({
   reducer: {
     addInventory: addInventoryReducer,
     vehicles: vehiclesReducer,
     singleVehicle: singleVehicleReducer,
-    makes: makesReducer
+    makes: makesReducer,
+    newShowingRequest: newShowingRequestReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
