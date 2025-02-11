@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import VehiclePopover, { VehiclePopoverHandle } from "./VehiclePopover";
 import InventoryFilter from "./InventoryFilter";
 
-
 interface UserInfo {
+  id: number
   email: string
-  watchlist: { id: number, userID: number }
+  watchlist: { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
 }
 
 interface Props {
@@ -26,7 +26,6 @@ const Inventory: React.FC<Props> = ({ userInfo, token, userID }) => {
   const [selectedMinMiles, setSelectedMinMiles] = useState<number>(0)
   const [selectedMaxMiles, setSelectedMaxMiles] = useState<number>(99999999)
   const [selectedDrivetrain, setSelectedDriveTrain] = useState<string>("")
-
   const vehicles = useSelector((state: RootState) => state.vehicles)
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
