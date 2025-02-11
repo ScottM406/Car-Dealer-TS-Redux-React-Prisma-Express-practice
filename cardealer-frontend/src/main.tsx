@@ -5,7 +5,6 @@ import { store } from './state/store.ts';
 import App from './App.tsx'
 import './custom.scss';
 
-
 createRoot(document.getElementById('root')!).render(
 	<Provider store={store}>
 		<BrowserRouter>
