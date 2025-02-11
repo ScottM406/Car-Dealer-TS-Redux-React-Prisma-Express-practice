@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../state/store";
 import { postNewShowingRequest, setNewShowingRequestInputValue } from "../../state/newShowingRequestSlice";
 
-
 interface Props {
   vehicleID: number
   vehicleYear: number
