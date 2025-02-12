@@ -353,7 +353,9 @@ body::before {
   flex-direction:row-reverse;
   white-space: nowrap;
   overflow-x: auto;
+  margin: 0px auto;
   height: 430px;
+  width:80%;
   > .single-vehicle-inventory-container {
     flex: 0 0 auto;
   }
@@ -387,7 +389,7 @@ body::before {
     text-align: center;
   }
   section {
-    background-color: map-get($map: $theme-colors, $key: "primary");
+    background-color: map-get($map: $theme-colors, $key: "popover");
     width: 50%;
     margin-top: 20px;
     text-align: center;
@@ -397,11 +399,31 @@ body::before {
     color: map-get($map: $theme-colors, $key: "admin-text" );
   }
   h3 {
+    color: map-get($map: $theme-colors, $key: "secondary" );
     font-size: 18px;
   }
   h4 {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 900;
     color: map-get($map: $theme-colors, $key: "admin-text" );
+  }
+}
+
+#view-showing-requests-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: map-get($map: $theme-colors, $key: "primary" );
+  border: 3px outset map-get($map: $theme-colors, $key: "secondary");
+  width: 800px;
+  margin: 40px auto;
+  section {
+    background-color: map-get($map: $theme-colors, $key: "popover");
+    width: 50%;
+    margin-top: 20px;
+    text-align: center;
+    border: 2px solid map-get($map: $theme-colors, $key: "secondary");
+    color: map-get($map: $theme-colors, $key: "secondary")
   }
 }
 

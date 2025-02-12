@@ -4,12 +4,19 @@ import AddInventory from "./AddInventory";
 import AddMake from "./AddMake";
 import AddModel from "./AddModel";
 import VehicleDatabase from "./VehicleDatabase";
+import ShowingRequests from "./ShowingRequests";
 
-const AdminToolkit = () => {
+interface Props {
+  token: string
+}
+
+const AdminToolkit: React.FC<Props> = ({ token }) => {
   const location = useLocation();
   const basePath =  useMemo(() => {
     return location.pathname.split('/').slice(0, 2).join('/');
   }, [location.pathname]);
+
+  console.log(token)
 
   return (
     <>
@@ -20,6 +27,7 @@ const AdminToolkit = () => {
         <Link to={`${basePath}/addmodel`}>Add Model</Link>
         <div>
           <Link to={`${basePath}/vehicledatabase`}>View Vehicle Database</Link>
+          <Link to={`${basePath}/showingrequests`}>View Showing Requests</Link>
         </div>
       </div>
 
@@ -28,6 +36,7 @@ const AdminToolkit = () => {
         <Route path="addmake" element={<AddMake />} />
         <Route path="addmodel" element={<AddModel />} />
         <Route path="vehicledatabase" element={<VehicleDatabase />} />
+        <Route path="showingrequests" element={<ShowingRequests token={token}/>}/>
       </Routes>
     </>
   );

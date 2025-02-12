@@ -49,7 +49,7 @@ const App = () => {
         <Route path="inventory/:id" element={<SingleVehiclePage />}/>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser}/>} />
-        <Route path="/admintoolkit/*" element={<ProtectedRoute component={AdminToolkit} isSuperUser={isSuperUser}/>} />
+        <Route path="/admintoolkit/*" element={<ProtectedRoute component={AdminToolkit} isSuperUser={isSuperUser} token={token}/>}  />
         <Route path="/account" element={<Account userInfo={userInfo} userID={userID} token={token} />} />
       </Routes>
     <ChatBot />
