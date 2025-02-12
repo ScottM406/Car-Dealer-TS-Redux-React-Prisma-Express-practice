@@ -1,12 +1,13 @@
 import { Navigate } from "react-router-dom";
 
 interface Props {
-  component: React.FC;
+  component: React.FC<any>;
   isSuperUser: boolean;
+  [key: string]: any; //This allows additional props to be passed to protected routes.
 }
 
-const ProtectedRoute: React.FC<Props> = ({ component: Component, isSuperUser }) => {
-  return isSuperUser ? <Component /> : <Navigate to="/login" />;
+const ProtectedRoute: React.FC<Props> = ({ component: Component, isSuperUser, ...props }) => {
+  return isSuperUser ? <Component {...props}/> : <Navigate to="/login" />;
 }
 
 export default ProtectedRoute;
