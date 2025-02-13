@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 interface Props {
-  token: string
+  token: string;
+  isSuperUser: boolean;
 }
 
 interface showingRequest {
@@ -19,6 +20,22 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
   const [showingRequestList, setShowingRequestList] = useState<Array<showingRequest>>([])
 
   useEffect( () => {
+    const getEmployees = async () => {
+      try {
+        const response =  await fetch("http://localhost:3000/users/", {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        });
+        const employeeArray = await response.json();
+      } catch (e: any) {
+        throw new Error(e.message || "Could not fetch employees. Please try again later or contact webmaster." )
+      }
+    }
+    getEmployees();
+  }, [])
+
+  useEffect( () => {
     const getShowingRequests = async () => {
       const response = await fetch("http://localhost:3000/showing-requests", {
         headers: {
@@ -26,7 +43,6 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
         }
       });
       const showingRequestArray = await response.json();
-      console.log(showingRequestArray)
       setShowingRequestList(showingRequestArray);
     }
     getShowingRequests();
@@ -35,7 +51,7 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
   return (
     <div id="view-showing-requests-block">
       {showingRequestList.map((showingRequest) => (
-        <section>
+        <section key={showingRequest.id}>
         <h2>ID: {showingRequest.id}</h2>
         <h2>Customer: {showingRequest.firstName} {showingRequest.lastName}</h2>
         <p>Vehicle: {showingRequest.car.carsOnLotID}</p>

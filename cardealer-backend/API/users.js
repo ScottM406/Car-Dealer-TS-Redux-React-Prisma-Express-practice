@@ -22,4 +22,20 @@ router.get("/:id", authenticate, async (req, res, next) => {
   }
 });
 
+//The route below gets all employees.
+router.get("/", authenticate, async (req, res, next) => {
+  try {
+    if (req.user.isSuperUser !== true) {
+      return res.status(403).json("This is only available to Admins.")
+    }
+    const employees = await prisma.user.findMany({
+      where:  { isEmployee: true },
+    });
+    console.log(employees)
+    res.json(employees)
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;
