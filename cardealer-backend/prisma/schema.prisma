@@ -19,7 +19,7 @@ model User {
   password String
   firstName String
   lastName String
-  phoneNumber Int?
+  phoneNumber String?
   watchlist Watchlist?
   isEmployee Boolean @default(false)
   isSuperUser Boolean @default(false)
