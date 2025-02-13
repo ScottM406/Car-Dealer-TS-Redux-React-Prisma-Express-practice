@@ -17,8 +17,15 @@ model User {
   id Int @id @default(autoincrement())
   email String @unique
   password String
-  isSuperUser Boolean @default(false)
+  firstName String
+  lastName String
+  phoneNumber String?
   watchlist Watchlist?
+  isEmployee Boolean @default(false)
+  isSuperUser Boolean @default(false)
+  employeeHireDate Int?
+  employeeAddress String?
+  employeeAppointments ShowingRequest[]
 }
 
 model Watchlist {
@@ -39,6 +46,8 @@ model ShowingRequest {
   desiredTime String
   actualTime String?
   testDriveRequested Boolean
+  assignedEmployee User? @relation(fields: [userID], references: [id])
+  userID Int?
 }
 
 model Make {

@@ -4,10 +4,21 @@ const bcrypt = require("bcrypt");
 const prisma = new PrismaClient().$extends({
   model: {
     user: {
-      async register(email, password) {
+      async register(email, password, firstName, lastName, phoneNumber) {
         const hashedPassword = await bcrypt.hash(password, 10);
+        const userData = {
+          email,
+          password: hashedPassword,
+          firstName,
+          lastName,
+        }
+
+        if (phoneNumber) {
+          userData.phoneNumber = phoneNumber
+        }
+
         const user = await prisma.user.create({
-          data: { email, password: hashedPassword },
+          data: userData,
         });
         return user;
       },
