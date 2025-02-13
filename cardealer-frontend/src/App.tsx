@@ -6,8 +6,10 @@ import NavBar from "./components/NavBar";
 import Register from "./components/user/Register.tsx";
 import Login from "./components/user/Login.tsx";
 import LandingPage from "./components/LandingPage";
+import ProtectedEmployeeRoute from "./components/ProtectedEmplyeeRoute.tsx";
+import ProtectedAdminRoute from "./components/ProtectedAdminRoute.tsx";
+import EmployeeDashboard from "./components/employee/EmployeeDashboard.tsx";
 import AdminToolkit from "./components/admin-toolkit/AdminToolkit.tsx";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Inventory from "./components/inventory/inventory.tsx";
 import SingleVehiclePage from "./components/inventory/SingleVehiclePage";
 import Account from "./components/user/Account";
@@ -17,6 +19,7 @@ import ChatBot from "./components/ChatBot.tsx";
 interface UserInfo {
   id: number
   email: string
+  isEmployee: boolean
   watchlist: { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
 }
 
@@ -25,6 +28,7 @@ const App = () => {
   const [userInfo, setUserInfo] =useState<UserInfo | null>(null)
   const [userID, setUserID] = useState<number>(0)
   const [isSuperUser, setIsSuperUser] = useState<boolean>(false)
+  const [isEmployee, setIsEmployee] = useState<boolean>(false)
 
   useEffect(() => {
     const getUserInfo = async () => {
@@ -35,21 +39,23 @@ const App = () => {
       });
       const responseJSON = await response.json();
       setUserInfo(responseJSON);
+      userInfo?.isEmployee && setIsEmployee(true)
     }
     userID && getUserInfo();
   }, [token, userID, userInfo])
 
   return (
     <>
-    <NavBar token={token} isSuperUser={isSuperUser}/>
+    <NavBar token={token} isSuperUser={isSuperUser} isEmployee={isEmployee}/>
     <Banner />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/inventory/" element={<Inventory userInfo={userInfo} token={token} userID={userID} />} />
         <Route path="inventory/:id" element={<SingleVehiclePage />}/>
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser}/>} />
-        <Route path="/admintoolkit/*" element={<ProtectedRoute component={AdminToolkit} isSuperUser={isSuperUser} token={token}/>}  />
+        <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser} />} />
+        <Route path="employeedashboard" element={<ProtectedEmployeeRoute component={EmployeeDashboard} isEmployee={isEmployee} />}/>
+        <Route path="/admintoolkit/*" element={<ProtectedAdminRoute component={AdminToolkit} isSuperUser={isSuperUser} token={token}/>}  />
         <Route path="/account" element={<Account userInfo={userInfo} userID={userID} token={token} />} />
       </Routes>
     <ChatBot />

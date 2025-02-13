@@ -6,8 +6,8 @@ interface Props {
   [key: string]: any; //This allows additional props to be passed to protected routes.
 }
 
-const ProtectedRoute: React.FC<Props> = ({ component: Component, isSuperUser, ...props }) => {
+const ProtectedAdminRoute: React.FC<Props> = ({ component: Component, isSuperUser, ...props }) => {
   return isSuperUser ? <Component {...props}/> : <Navigate to="/login" />;
 }
 
-export default ProtectedRoute;
+export default ProtectedAdminRoute;
