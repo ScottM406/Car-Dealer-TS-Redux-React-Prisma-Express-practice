@@ -4,15 +4,6 @@ const { authenticate } = require("./auth");
 
 const router = express.Router();
 
-router.get("/", async (req, res, next) => {
-  try {
-    const user = await prisma.user.findMany();
-    res.json(user);
-  } catch (e) {
-    next(e);
-  }
-});
-
 router.get("/:id", authenticate, async (req, res, next) => {
   const { id } = req.params;
   try {
