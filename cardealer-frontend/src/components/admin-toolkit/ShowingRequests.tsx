@@ -28,7 +28,6 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
           }
         });
         const employeeArray = await response.json();
-        console.log(employeeArray);
       } catch (e: any) {
         throw new Error(e.message || "Could not fetch employees. Please try again later or contact webmaster." )
       }
@@ -44,7 +43,6 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
         }
       });
       const showingRequestArray = await response.json();
-      console.log(showingRequestArray)
       setShowingRequestList(showingRequestArray);
     }
     getShowingRequests();
