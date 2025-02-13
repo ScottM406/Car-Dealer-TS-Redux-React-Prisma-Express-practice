@@ -1,6 +1,6 @@
 const prisma = require("../prisma")
-const makes = require("./seed-data/makes-and-models.ts");
-const testCars = require("./seed-data/test-cars.ts")
+const makes = require("./seed-data/makes-and-models.js");
+const testCars = require("./seed-data/test-cars.js")
 
 const seed = async () => {
 
