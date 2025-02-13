@@ -7,16 +7,15 @@ import VehicleDatabase from "./VehicleDatabase";
 import ShowingRequests from "./ShowingRequests";
 
 interface Props {
-  token: string
+  token: string;
+  isSuperUser: boolean;
 }
 
-const AdminToolkit: React.FC<Props> = ({ token }) => {
+const AdminToolkit: React.FC<Props> = ({ token, isSuperUser }) => {
   const location = useLocation();
   const basePath =  useMemo(() => {
     return location.pathname.split('/').slice(0, 2).join('/');
   }, [location.pathname]);
-
-  console.log(token)
 
   return (
     <>
@@ -36,7 +35,7 @@ const AdminToolkit: React.FC<Props> = ({ token }) => {
         <Route path="addmake" element={<AddMake />} />
         <Route path="addmodel" element={<AddModel />} />
         <Route path="vehicledatabase" element={<VehicleDatabase />} />
-        <Route path="showingrequests" element={<ShowingRequests token={token}/>}/>
+        <Route path="showingrequests" element={<ShowingRequests token={token} isSuperUser={isSuperUser}/>}/>
       </Routes>
     </>
   );
