@@ -26,9 +26,9 @@ router.use(async (req, res, next) => {
 });
 
 router.post("/register", async (req, res, next) => {
-  const { email, password} = req.body;
+  const { email, password, firstName, lastName, phoneNumber} = req.body;
   try {
-    const user = await prisma.user.register(email, password);
+    const user = await prisma.user.register(email, password, firstName, lastName, phoneNumber);
     const token = createToken(user.id);
     res.status(201).json({ token });
   } catch (e) {
