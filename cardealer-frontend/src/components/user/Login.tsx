@@ -5,7 +5,7 @@ interface Props {
   token: string;
   setToken: Dispatch<SetStateAction<string>>
   setUserID: Dispatch<SetStateAction<number>>
-  setIsSuperUser: (value: boolean) => void;
+  setIsSuperUser: Dispatch<SetStateAction<boolean>>
 }
 
 const Login: React.FC<Props> = ({ token, setToken, setUserID, setIsSuperUser }) => {
