@@ -1,15 +1,14 @@
 @host=http://localhost:3000
 
-### GET ALL USERS
-GET {{host}}/users
-
 ### REGISTER USER
 POST {{host}}/register
 Content-Type: application/json
 
 {
   "email": "jankypete3000@gmail.com",
-  "password": "OgresAreLikeOnions1!"
+  "password": "OgresAreLikeOnions1!",
+  "firstName": "Shrek",
+  "lastName": "Jones"
 }
 
 ### LOGIN
@@ -21,6 +20,11 @@ Content-Type: application/json
   "email": "jankypete3000@gmail.com",
   "password": "OgresAreLikeOnions1!"
 }
+
+### GET USER
+@token = {{login.response.body.token}}
+GET {{host}}/users/5
+Authorization: Bearer {{token}}
 
 ### GET ALL CARS ON LOT
 GET {{host}}/cars-on-lot
