@@ -46,6 +46,7 @@ model ShowingRequest {
   desiredTime String
   actualTime String?
   initialContactMade Boolean @default(false)
+  showingConfirmed Boolean?
   testDriveRequested Boolean
   assignedEmployee User? @relation(fields: [userID], references: [id])
   userID Int?
