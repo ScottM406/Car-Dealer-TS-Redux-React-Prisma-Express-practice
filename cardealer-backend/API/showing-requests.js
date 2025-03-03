@@ -44,18 +44,18 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", authenticate, async (req, res, next) => {
   const { id } = req.params;
-  const { actualTime, showingConfirmed, userID } = req.body;
-  
+  const { showingConfirmed, actualTime, userID } = req.body;
+
   try {
     const showingRequest = await prisma.showingRequest.update({
       where: {
         id: Number(id),
       },
       data: {
-        actualTime: actualTime,
         showingConfirmed: showingConfirmed,
+        actualTime: actualTime,
         userID: userID
       }
     });
