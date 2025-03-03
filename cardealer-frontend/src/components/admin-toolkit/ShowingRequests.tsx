@@ -25,7 +25,7 @@ interface Employee {
 const ShowingRequests: React.FC<Props> = ({ token }) => {
   const [showingRequestList, setShowingRequestList] = useState<Array<ShowingRequest>>([])
   const [employeeList, setEmployeeList] = useState<Array<Employee>>([])
-  const [customerContacted, setCusomerContacted] = useState<boolean>(false);
+  const [customerContactedConfirmationNumber, setCusomerContactedConfirmationNumber] = useState<number>();
   const [showingConfirmed, setShowingConfirmed] = useState<boolean | string>("unselected");
   const [timeScheduled, setTimeScheduled] = useState<string>("");
 
@@ -76,8 +76,8 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
           <p>Phone: {showingRequest.phoneNumber}</p>
           <p>Email: {showingRequest.emailAddress}</p>
           <p>Requested Showing Type: {showingRequest.testDriveRequested ? "Showing and Test Drive" : "Showing Only"}</p>
-          <button onClick={() => setCusomerContacted(true)}>Customer Contacted</button>
-          { customerContacted &&
+          <button onClick={() => setCusomerContactedConfirmationNumber(Number(showingRequest.id))}>Customer Contacted</button>
+          { customerContactedConfirmationNumber === Number(showingRequest.id) &&
             <div>
             <label htmlFor={`showing-requests-form-showing-confirmed-select-${showingRequest.id}`}>Showing Confirmed:</label>
             <select
@@ -91,7 +91,7 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
             </select>
             </div>
           }
-          { showingConfirmed && (showingConfirmed !== "unselected") &&
+          { showingConfirmed && (showingConfirmed !== "unselected") && customerContactedConfirmationNumber === Number(showingRequest.id) &&
             <div>
               <label htmlFor={`showing-requests-form-scheduled-time-input-${showingRequest.id}`}>Actual Time Scheduled:</label>
               <input 
@@ -111,7 +111,7 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
               <button>Confirm Assignment</button>
             </div>
           }
-          { customerContacted &&  !showingConfirmed && showingConfirmed !== "unselected" &&
+          { customerContactedConfirmationNumber &&  !showingConfirmed && showingConfirmed !== "unselected" &&
             <button>Dismiss Request</button>
           }
         </section>
