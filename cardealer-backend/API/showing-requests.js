@@ -42,6 +42,28 @@ router.post("/", async (req, res, next) => {
   } catch (e) {
     next (e);
   }
-})
+});
+
+router.put("/:id", authenticate, async (req, res, next) => {
+  const { id } = req.params;
+  const { showingConfirmed, actualTime, userID } = req.body;
+
+  try {
+    const showingRequest = await prisma.showingRequest.update({
+      where: {
+        id: Number(id),
+      },
+      data: {
+        showingConfirmed: showingConfirmed,
+        actualTime: actualTime,
+        userID: userID
+      }
+    });
+
+    res.json(showingRequest);
+  } catch (e) {
+    next (e);
+  }
+});
 
 module.exports = router

@@ -25,9 +25,10 @@ interface Employee {
 const ShowingRequests: React.FC<Props> = ({ token }) => {
   const [showingRequestList, setShowingRequestList] = useState<Array<ShowingRequest>>([])
   const [employeeList, setEmployeeList] = useState<Array<Employee>>([])
-  const [customerContacted, setCusomerContacted] = useState<boolean>(false);
+  const [activeShowingRequest, setActiveShowingRequest] = useState<number>();
   const [showingConfirmed, setShowingConfirmed] = useState<boolean | string>("unselected");
   const [timeScheduled, setTimeScheduled] = useState<string>("");
+  const [selectedEmployee, setSelectedEmployee] = useState<number>(0)
 
   useEffect( () => {
     const getEmployees = async () => {
@@ -38,7 +39,6 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
           }
         });
         const employeeArray = await response.json();
-        console.log(employeeArray)
         setEmployeeList(employeeArray)
       } catch (e: any) {
         throw new Error(e.message || "Could not fetch employees. Please try again later or contact webmaster." )
@@ -64,6 +64,32 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
     const value = event.target.value;
     setShowingConfirmed(value === "unselected" ? "unselected" : value === 'true')
   }
+
+  const assignShowingRequest = async () => {
+    try {
+    const response = await fetch(`http://localhost:3000/showing-requests/${activeShowingRequest}`, {
+      method: "PUT",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        showingConfirmed: showingConfirmed, 
+        actualTime: timeScheduled,
+        userID: selectedEmployee
+      })
+    })
+    if (!response.ok) {
+      alert("Something has gone wrong. Please try again.")
+    } else {
+      alert("Assignment confirmed.")
+    }
+  } catch (e:any){
+    throw new Error(e.message || "Something has gone wrong. Please try again.")
+  }
+};
+
+console.log(selectedEmployee)
   
   return (
     <div id="view-showing-requests-block">
@@ -76,8 +102,8 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
           <p>Phone: {showingRequest.phoneNumber}</p>
           <p>Email: {showingRequest.emailAddress}</p>
           <p>Requested Showing Type: {showingRequest.testDriveRequested ? "Showing and Test Drive" : "Showing Only"}</p>
-          <button onClick={() => setCusomerContacted(true)}>Customer Contacted</button>
-          { customerContacted &&
+          <button onClick={() => setActiveShowingRequest(Number(showingRequest.id))}>Customer Contacted</button>
+          { activeShowingRequest === Number(showingRequest.id) &&
             <div>
             <label htmlFor={`showing-requests-form-showing-confirmed-select-${showingRequest.id}`}>Showing Confirmed:</label>
             <select
@@ -91,7 +117,7 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
             </select>
             </div>
           }
-          { showingConfirmed && (showingConfirmed !== "unselected") &&
+          { showingConfirmed && (showingConfirmed !== "unselected") && activeShowingRequest === Number(showingRequest.id) &&
             <div>
               <label htmlFor={`showing-requests-form-scheduled-time-input-${showingRequest.id}`}>Actual Time Scheduled:</label>
               <input 
@@ -102,16 +128,20 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
               onChange={(e) => setTimeScheduled(e.target.value)}
               />
               <label htmlFor={`showing-requests-form-employee-assigned-select-${showingRequest.id}`}>Salesman Assigned:</label>
-              <select name="employeeAssignedSelect" id={`showing-requests-form-employee-assigned-select-${showingRequest.id}`}>
+              <select
+              name="employeeAssignedSelect"
+              id={`showing-requests-form-employee-assigned-select-${showingRequest.id}`}
+              onChange={(e) => setSelectedEmployee(Number(e.target.value))}
+              >
                 <option>---</option>
                 {employeeList.map((employee) => (
-                  <option key={employee.id}>{employee.firstName} {employee.lastName}</option>
+                  <option key={employee.id} value={employee.id}>{employee.firstName} {employee.lastName}</option>
                 ))}
               </select>
-              <button>Confirm Assignment</button>
+              <button onClick={assignShowingRequest}>Confirm Assignment</button>
             </div>
           }
-          { customerContacted &&  !showingConfirmed && showingConfirmed !== "unselected" &&
+          { activeShowingRequest &&  !showingConfirmed && showingConfirmed !== "unselected" &&
             <button>Dismiss Request</button>
           }
         </section>
