@@ -90,7 +90,7 @@ const OpenShowingRequests: React.FC<Props> = ({ token }) => {
   };
   
   return (
-    <div id="view-showing-requests-block">
+    <div className="view-showing-requests-block">
       {showingRequestList.map((showingRequest) => (
         <section key={showingRequest.id}>
           <h2>ID: {showingRequest.id}</h2>
