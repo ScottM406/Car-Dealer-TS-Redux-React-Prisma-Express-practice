@@ -22,7 +22,7 @@ interface Employee {
   lastName: string;
 }
 
-const ShowingRequests: React.FC<Props> = ({ token }) => {
+const OpenShowingRequests: React.FC<Props> = ({ token }) => {
   const [showingRequestList, setShowingRequestList] = useState<Array<ShowingRequest>>([])
   const [employeeList, setEmployeeList] = useState<Array<Employee>>([])
   const [activeShowingRequest, setActiveShowingRequest] = useState<number>();
@@ -55,7 +55,7 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
         }
       });
       const showingRequestArray = await response.json();
-      setShowingRequestList(showingRequestArray);
+      setShowingRequestList(showingRequestArray.filter((showingRequest: { userID: number | null }) => showingRequest.userID === null));
     }
     getShowingRequests();
   }, [])
@@ -67,29 +67,27 @@ const ShowingRequests: React.FC<Props> = ({ token }) => {
 
   const assignShowingRequest = async () => {
     try {
-    const response = await fetch(`http://localhost:3000/showing-requests/${activeShowingRequest}`, {
-      method: "PUT",
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        showingConfirmed: showingConfirmed, 
-        actualTime: timeScheduled,
-        userID: selectedEmployee
+      const response = await fetch(`http://localhost:3000/showing-requests/${activeShowingRequest}`, {
+        method: "PUT",
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          showingConfirmed: showingConfirmed, 
+          actualTime: timeScheduled,
+          userID: selectedEmployee
+        })
       })
-    })
-    if (!response.ok) {
-      alert("Something has gone wrong. Please try again.")
-    } else {
-      alert("Assignment confirmed.")
+      if (!response.ok) {
+        alert("Something has gone wrong. Please try again.")
+      } else {
+        alert("Assignment confirmed.")
+      }
+    } catch (e:any){
+      throw new Error(e.message || "Something has gone wrong. Please try again.")
     }
-  } catch (e:any){
-    throw new Error(e.message || "Something has gone wrong. Please try again.")
-  }
-};
-
-console.log(selectedEmployee)
+  };
   
   return (
     <div id="view-showing-requests-block">
@@ -150,4 +148,4 @@ console.log(selectedEmployee)
   )
 }
 
-export default ShowingRequests;
+export default OpenShowingRequests;
