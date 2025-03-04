@@ -4,7 +4,7 @@ $theme-colors: (
   "background": rgba(19, 18, 18, 0.925),
   "primary": rgba(177, 150, 91, 0.966),
   "secondary": whitesmoke,
-  "admin-text": firebrick,
+  "admin-text": rgb(197, 35, 35),
   "gold-text": goldenrod,
   "popover": rgba(58, 57, 55, 0.938),
   "submit-button": rgb(4, 190, 4),
@@ -420,7 +420,7 @@ body::before {
   }
 }
 
-#view-showing-requests-block {
+.view-showing-requests-block {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -435,6 +435,10 @@ body::before {
     text-align: center;
     border: 2px solid map-get($map: $theme-colors, $key: "secondary");
     color: map-get($map: $theme-colors, $key: "secondary")
+  }
+  .assigned-showing-requests-assigned-salesman-p {
+    font-size: 20px;
+    color: map-get($map: $theme-colors, $key: "admin-text");
   }
 }
 

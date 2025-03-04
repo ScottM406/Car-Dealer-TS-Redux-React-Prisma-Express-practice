@@ -4,7 +4,8 @@ import AddInventory from "./AddInventory";
 import AddMake from "./AddMake";
 import AddModel from "./AddModel";
 import VehicleDatabase from "./VehicleDatabase";
-import ShowingRequests from "./ShowingRequests";
+import OpenShowingRequests from "./OpenShowingRequests";
+import AssignedShowingRequests from "./AssignedShowingRequests";
 
 interface Props {
   token: string;
@@ -26,7 +27,10 @@ const AdminToolkit: React.FC<Props> = ({ token, isSuperUser }) => {
         <Link to={`${basePath}/addmodel`}>Add Model</Link>
         <div>
           <Link to={`${basePath}/vehicledatabase`}>View Vehicle Database</Link>
-          <Link to={`${basePath}/showingrequests`}>View Showing Requests</Link>
+          <Link to={`${basePath}/openshowingrequests`}>View Open Showing Requests</Link>
+        </div>
+        <div>
+          <Link to={`${basePath}/assignedshowingrequests`}>View Assigned Showing Requests</Link>
         </div>
       </div>
 
@@ -35,7 +39,8 @@ const AdminToolkit: React.FC<Props> = ({ token, isSuperUser }) => {
         <Route path="addmake" element={<AddMake />} />
         <Route path="addmodel" element={<AddModel />} />
         <Route path="vehicledatabase" element={<VehicleDatabase />} />
-        <Route path="showingrequests" element={<ShowingRequests token={token} isSuperUser={isSuperUser}/>}/>
+        <Route path="openshowingrequests" element={<OpenShowingRequests token={token} isSuperUser={isSuperUser}/>} />
+        <Route path="assignedshowingrequests" element={<AssignedShowingRequests token={token} isSuperUser={isSuperUser}/>} />
       </Routes>
     </>
   );
