@@ -8,7 +8,8 @@ router.get("/", authenticate, async (req, res, next) => {
   try {
   const showingRequests = await prisma.showingRequest.findMany({
     include: {
-      car: true
+      car: true,
+      assignedEmployee: true
     }
   });  
   res.json(showingRequests);
