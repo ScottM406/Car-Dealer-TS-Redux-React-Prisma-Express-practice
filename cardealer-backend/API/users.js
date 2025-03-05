@@ -10,13 +10,26 @@ router.get("/:id", authenticate, async (req, res, next) => {
     if (req.user.id !== Number(id)) {
       return res.status(403).json("You are forbidden from accessing this.")
     }
-    const user = await prisma.user.findUniqueOrThrow({
-      where: { id: Number(id) },
-      include: { watchlist: {
-        include: { cars: true }
-      }}
-    });
-    res.json(user);
+    if (req.user.isEmployee === true) {
+      const user = await prisma.user.findUniqueOrThrow({
+        where: { id: Number(id) },
+        include: { 
+          watchlist: {
+            include: { cars: true }
+            },
+          employeeAppointments: true
+        },
+      });
+      res.json(user);
+    } else {
+      const user = await prisma.user.findUniqueOrThrow({
+        where: { id: Number(id) },
+        include: { watchlist: {
+          include: { cars: true }
+        }}
+      });
+      res.json(user);
+    }
   } catch (e) {
     next(e);
   }
