@@ -35,18 +35,18 @@ body::before {
   position: fixed;
   z-index: 4;
   width: 100%;
+  height: 40px;
   justify-content: center;
   background-color: map-get($map: $theme-colors, $key: "primary");
-  height: 35px;
   border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
   a {
     margin: 0 5% 0 5%;
     font-size: 20px;
     text-decoration: none;
-    color: black;
+    color: map-get($map: $theme-colors, $key: "secondary") !important;
   }
   #admin-toolkit-link {
-    color: map-get($map: $theme-colors, $key: "admin-text" );
+    color: map-get($map: $theme-colors, $key: "admin-text");
     font-weight: 900;
   }
 }
