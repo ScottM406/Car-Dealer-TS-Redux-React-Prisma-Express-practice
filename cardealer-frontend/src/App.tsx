@@ -17,10 +17,16 @@ import Banner from "./components/Banner.tsx";
 import ChatBot from "./components/ChatBot.tsx";
 
 interface UserInfo {
-  id: number
-  email: string
-  isEmployee: boolean
-  watchlist: { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> }
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  employeeAddress: string | null;
+  employeeHireDate: string | null;
+  employeeAppointments: object;
+  phoneNumber: string | null;
+  isEmployee: boolean;
+  watchlist: { id: number, userID: number, cars: Array<{ carsOnLotID: number, watchlistID: number }> };
 }
 
 const App = () => {
@@ -54,7 +60,7 @@ const App = () => {
         <Route path="inventory/:id" element={<SingleVehiclePage />}/>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login token={token} setToken={setToken} setUserID={setUserID} setIsSuperUser={setIsSuperUser} />} />
-        <Route path="employeedashboard" element={<ProtectedEmployeeRoute component={EmployeeDashboard} isEmployee={isEmployee} />}/>
+        <Route path="employeedashboard" element={<ProtectedEmployeeRoute component={EmployeeDashboard} userInfo={userInfo} isEmployee={isEmployee} />}/>
         <Route path="/admintoolkit/*" element={<ProtectedAdminRoute component={AdminToolkit} isSuperUser={isSuperUser} token={token}/>}  />
         <Route path="/account" element={<Account userInfo={userInfo} userID={userID} token={token} />} />
       </Routes>
