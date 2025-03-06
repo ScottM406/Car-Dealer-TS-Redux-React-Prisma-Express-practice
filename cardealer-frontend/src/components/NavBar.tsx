@@ -11,7 +11,7 @@ const NavBar: React.FC<Props> = ({ token, isEmployee, isSuperUser }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false)
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+    <nav  id="navbar" className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <h1 className="navbar-brand">Navigation</h1>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,15 +29,15 @@ const NavBar: React.FC<Props> = ({ token, isEmployee, isSuperUser }) => {
               <a className="nav-link dropdown-toggle" href="#" onClick={() => setIsDropdownOpen(!isDropdownOpen)} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded={isDropdownOpen}>
                 Account
               </a>
-              <ul className={`dropdown-menu ${isDropdownOpen && "show"}`} aria-labelledby="navbarDropdown">
-                {!token && <li><Link className="dropdown-item" to="/register">Register</Link></li>}
-                {!token && <li><Link className="dropdown-item" to="/login">Log In</Link></li>}
-                {token && isEmployee && <li><Link to="/employeedashboard">Employee Dashboard</Link></li>}
-                {token && isSuperUser && (
-                  <li><Link id="admin-toolkit-link" to="/admintoolkit">Admin Toolkit</Link></li>
-                )}
+              <ul  id="navbar-account-dropdown-list" className={`dropdown-menu ${isDropdownOpen && "show"}`} aria-labelledby="navbarDropdown">
+                {!token && <li><Link to="/register">Register</Link></li>}
+                {!token && <li><Link to="/login">Log In</Link></li>}
               </ul>
             </li>
+            {token && isEmployee && <li className="special-navbar-line"><Link className="special-navbar-link" to="/employeedashboard">Employee Dashboard</Link></li>}
+            {token && isSuperUser && (
+              <li className="special-navbar-line"><Link className="special-navbar-link" id="admin-toolkit-link" to="/admintoolkit">Admin Toolkit</Link></li>
+            )}
           </ul>
         </div>
       </div>
