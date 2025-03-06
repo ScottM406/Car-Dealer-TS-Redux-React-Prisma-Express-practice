@@ -35,20 +35,41 @@ body::before {
   position: fixed;
   z-index: 4;
   width: 100%;
-  justify-content: center;
-  background-color: map-get($map: $theme-colors, $key: "primary");
-  height: 35px;
+  height: 40px;
+  justify-content: center !important;
+  background-image: url('./assets/body-background.jpg');
   border-bottom: 2px solid map-get($map: $theme-colors, $key: "secondary");
   a {
     margin: 0 5% 0 5%;
     font-size: 20px;
     text-decoration: none;
-    color: black;
+    white-space: nowrap;
+    color: map-get($map: $theme-colors, $key: "secondary");
   }
-  #admin-toolkit-link {
-    color: map-get($map: $theme-colors, $key: "admin-text" );
+  .special-navbar-line {
+    margin-top: 2%; 
+  }
+  .special-navbar-link {
+    color: map-get($map: $theme-colors, $key: "admin-text") !important;
     font-weight: 900;
   }
+  #navbar-account-dropdown-list {
+    background-color: map-get($map: $theme-colors, $key: "popover");
+    border: 2px solid map-get($map: $theme-colors, $key: "secondary");
+    > *:hover {
+        background-color: black !important; /* Remove hover and focus states */
+    }
+  }
+}
+
+#navbar::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: map-get($map: $theme-colors, $key: "background");
+  opacity: 85%;
+  z-index: -1;
+  position: absolute;
 }
 
 #landing-page-main-block {
