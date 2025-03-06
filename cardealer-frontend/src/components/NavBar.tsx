@@ -46,5 +46,3 @@ const NavBar: React.FC<Props> = ({ token, isEmployee, isSuperUser }) => {
 }
 
 export default NavBar;
-
-// 
